@@ -1,0 +1,37 @@
+\documentclass{article}
+\usepackage{multirow}
+
+\begin{document}
+\title{Epics and User Stories}
+\maketitle
+\section{Epics}
+\begin{tabular}{| l | p{12cm} |}
+	\hline	
+	ID & Epic \\
+	\hline
+	1 & A user must be able to learn a DAG, which represents causal relationships, from data using the PC algorithm \\
+	\hline
+	2 & A user must be able to learn a PAG, which represents causal relationships, from data using the FCI algorithm \\
+	\hline
+	3 & A user must be able to learn a PAG, which represents causal relationships, from data using the RFCI algorithm \\
+	\hline
+\end{tabular}
+
+\section{User Stories}
+
+\begin{tabular}{| l | l | p{9.5cm} |}
+	\hline
+	Epic ID & Story ID & Story \\
+	\hline
+	\multirow{4}{*}{1} & 1.1 & A user must be able to define a custom conditional independence  function\\
+	\cline{2-3}
+	& 1.2 & A user  must be able call a function on data and an conditional independence function which returns a Directed Acyclic Graph \\
+	\cline{2-3}
+	& 1.3 & A user must be able to export a learned DAG to a file \\
+	\cline{2-3}
+	& 1.4 & A user must be able to draw and view an inferred DAG \\
+	\hline
+	 
+\end{tabular}
+
+\end{document}
