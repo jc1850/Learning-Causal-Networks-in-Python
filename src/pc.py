@@ -4,8 +4,9 @@ from algorithms import GraphLearner
 
 
 class PCAlg(GraphLearner):
-
-    def orientEdges(self, skeleton):
+    
+    
+    def orientEdges(self, skeleton, sepset):
         """ A method to orient the edges of a skeleton
 
         Parameters
@@ -24,7 +25,7 @@ class PCAlg(GraphLearner):
         directed = nx.DiGraph()
         directed.add_nodes_from(skeleton.nodes)
         undirected = skeleton.copy()
-        self.orient_V( undirected, directed)
+        self.orient_V( undirected, directed, sepset)
         old_directed = nx.DiGraph()
         while old_directed.edges != directed.edges:
             old_directed = directed.copy()
@@ -55,8 +56,9 @@ class PCAlg(GraphLearner):
         #generate PDAG
         pdag = self.pdag_union(directed, undirected)
         return pdag
-
-    def orient_V(self, undirected, directed):
+    
+    
+    def orient_V(self, undirected, directed, sepset):
         """
         A method to orient all "V-structures" in a graph
 
@@ -69,12 +71,13 @@ class PCAlg(GraphLearner):
                 if i != j:
                     for k in undirected:
                         if i != k and j != k:
-                            if undirected.has_edge(i,k) and undirected.has_edge(k,j) and not undirected.has_edge(i,j):
+                            if undirected.has_edge(i,k) and undirected.has_edge(k,j) and not undirected.has_edge(i,j) and k not in sepset[(i,j)]:
                                 directed.add_edge(j,k)
                                 undirected.remove_edge(j,k)
                                 directed.add_edge(i,k)
                                 undirected.remove_edge(i,k)
-
+    
+    
     def pdag_union(self, directed, undirected):
         """
         A method to orient all "V-structures" in a graph
@@ -89,12 +92,13 @@ class PCAlg(GraphLearner):
         for edge in undirected.edges:
             pdag.add_edge(*edge, False)
         return pdag
-
+    
+    
     def learnGraph(self):
         print('Learning Skeleton of graph...')
-        skeleton = self.learnSkeleton()
+        skeleton, sepset = self.learnSkeleton()
         print('...Skeleton learnt')
         print('Orienting Edges...')
-        pdag = self.orientEdges(skeleton)
+        pdag = self.orientEdges(skeleton, sepset)
         print('...Learning complete')
         return pdag

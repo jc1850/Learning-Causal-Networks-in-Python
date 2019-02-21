@@ -36,7 +36,12 @@ class GraphLearner(object):
         #Rename nodes in graph with labels
         name_map = {i:label for i,label in enumerate(labels)}
         graph = nx.relabel_nodes(graph, name_map)
+        sepset = {}
         condsize = 0
+        for x in graph:
+            for y in x.adj:
+                sepset[(x,y)] = ()
+                sepset[(y,x)] = ()
         # Iterate over each pair of adjacent nodes
         condlen = 1
         while condlen != 0:
@@ -59,9 +64,11 @@ class GraphLearner(object):
                             if indep:
                                 print('removing edge {},{}'.format(x,y))
                                 graph.remove_edge(x,y)
+                                sepset[(x,y)] = condset
+                                sepset[(y,x)] = condset
                                 break
             condsize += 1      
-        return graph
+        return graph, sepset
 
     def gen_cond_sets(self, x,y, g, size):
         """ A  function to build the set of conditioning sets to be for variables x and y
