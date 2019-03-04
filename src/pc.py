@@ -34,7 +34,7 @@ class PCAlg(GraphLearner):
                     if i != j:
                         for k in skeleton:
                             if i != k and j != k:
-                                if directed.has_edge(i,j) and not undirected.has_edge(k,i) and undirected.has_edge(j,k):
+                                if directed.has_edge(i,j) and not skeleton.has_edge(k,i) and undirected.has_edge(j,k):
                                     directed.add_edge(j,k)
                                     undirected.remove_edge(j,k)
                                 if directed.has_edge(i,k) and directed.has_edge(k,j) and undirected.has_edge(i,j):
@@ -44,13 +44,14 @@ class PCAlg(GraphLearner):
                                     if l not in [i,j,k]:
                                         first_chain = undirected.has_edge(i,k) and directed.has_edge(k,j)
                                         second_chain = undirected.has_edge(i,l) and directed.has_edge(l,j)
-                                        if first_chain and second_chain and not undirected.has_edge(k,l) and undirected.has_edge(i,j):
+                                        if first_chain and second_chain and not skeleton.has_edge(k,l) and undirected.has_edge(i,j):
+                                            print(i,j,k,l)
                                             directed.add_edge(i,j)
                                             undirected.remove_edge(i,j)
 
                                         first_chain = skeleton.has_edge(i,k) and directed.has_edge(k,l)
                                         second_chain = directed.has_edge(k,l) and directed.has_edge(l,j)
-                                        if first_chain and second_chain and not undirected.has_edge(k,l) and undirected.has_edge(i,j):
+                                        if first_chain and second_chain and not skeleton.has_edge(k,l) and undirected.has_edge(i,j):                
                                             directed.add_edge(i,j)
                                             undirected.remove_edge(i,j)
         #generate PDAG
@@ -66,16 +67,19 @@ class PCAlg(GraphLearner):
         ----------
         undirected:
         """
+        skeleton = undirected.copy()
         for i in undirected:
             for j in undirected:
                 if i != j:
                     for k in undirected:
                         if i != k and j != k:
-                            if undirected.has_edge(i,k) and undirected.has_edge(k,j) and not undirected.has_edge(i,j) and k not in sepset[(i,j)]:
+                            if skeleton.has_edge(i,k) and skeleton.has_edge(k,j) and not skeleton.has_edge(i,j) and k not in sepset[(i,j)]:
                                 directed.add_edge(j,k)
-                                undirected.remove_edge(j,k)
+                                if undirected.has_edge(j,k):
+                                    undirected.remove_edge(j,k)
                                 directed.add_edge(i,k)
-                                undirected.remove_edge(i,k)
+                                if undirected.has_edge(i,k):
+                                    undirected.remove_edge(i,k)
     
     
     def pdag_union(self, directed, undirected):
@@ -102,3 +106,5 @@ class PCAlg(GraphLearner):
         pdag = self.orientEdges(skeleton, sepset)
         print('...Learning complete')
         return pdag
+    
+    
