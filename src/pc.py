@@ -1,6 +1,7 @@
 import networkx as nx 
 from graphs import PDAG
 from algorithms import GraphLearner
+from indepTests import chi
 
 
 class PCAlg(GraphLearner):
@@ -107,4 +108,5 @@ class PCAlg(GraphLearner):
         print('...Learning complete')
         return pdag
     
+
     

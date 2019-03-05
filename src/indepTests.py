@@ -38,9 +38,9 @@ def chi(data, X,Y,Z):
             for y in yvalues:
                 observed.append(cont[y][x])
                 expected.append(xsums[x]/total * ysums[y])
-        freedom = len(xvalues) * len(yvalues) - ((len(xvalues) - 1) * (len(yvalues) - 1))
-        chisq, p = scipy.stats.chisquare(observed, f_exp=expected, ddof=2)
-        return p
+        freedom = len(xvalues) * len(yvalues) - ((len(xvalues) - 1) * (len(yvalues) - 1)) -1
+        chisq, p = scipy.stats.chisquare(observed, f_exp=expected, ddof=freedom)
+        return p, chisq
     else:
         zdata = [data[z] for z in Z]
         zdata = list(zip(*(column for column in zdata)))
@@ -54,6 +54,7 @@ def chi(data, X,Y,Z):
         cont = pd.crosstab(data[X],[data[Y], zdata['z']])
         xvalues = [val for val in cont.index]
         labels = cont.columns.labels
+        #ALL works up to here
         yvalues = cont.columns.levels[0]
         zvalues = cont.columns.levels[1]
         zyvalues = {y: [] for y in yvalues}
@@ -62,21 +63,22 @@ def chi(data, X,Y,Z):
         xsums = {val: sum(cont.loc[val]) for val in xvalues}
         ysums = ({y: sum(sum([cont[y][z] for z in zyvalues[y]]))  for y in yvalues})
         zsums = {z:  0 for z in zvalues}
+        
         for y in yvalues:
             for z in zyvalues[y]:
                 zsums[z] += sum(cont[y][z])
         total = sum(xsums.values())
-        observed = []
-        expected = []
+        chisq = 0
         for x in xvalues:
             for y in yvalues:
                 for z in zyvalues[y]:
-                    observed.append(cont[y][z][x])
-                    expected.append(xsums[x]*ysums[y]*zsums[z]/ (total**2))
+                    observed = cont[y][z][x]
+                    expected = ((xsums[x]/ total*ysums[y]/ total*zsums[z]))
+                    chisq += ((observed-expected)**2)/expected
 
         freedom = len(xvalues) * len(yvalues) * len(zvalues) - ((len(xvalues) - 1) * (len(yvalues) - 1) * (len(xvalues) - 1)) -1
-        chisq, p = scipy.stats.chisquare(observed, f_exp=expected, ddof = freedom)
-        return p
+        p = 1
+        return p, chisq
             
         
         

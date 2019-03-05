@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6730 64-bit) (preloaded format=pdflatex 2019.2.21)  21 FEB 2019 14:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6730 64-bit) (preloaded format=pdflatex 2019.3.5)  5 MAR 2019 11:53
 entering extended mode
 **./Design.tex
 (Design.tex
@@ -108,7 +108,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--47
 [2] [3] (Design.aux) ) 
 Here is how much of TeX's memory you used:
  303 strings out of 492969
- 3507 string characters out of 3142014
+ 3507 string characters out of 3142015
  63729 words of memory out of 3000000
  4254 multiletter control sequences out of 15000+200000
  5158 words of font info for 19 fonts, out of 3000000 for 9000
@@ -118,7 +118,7 @@ Here is how much of TeX's memory you used:
 <C:/TeX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/TeX/MiKTeX/fonts/t
 ype1/public/amsfonts/cm/cmmi10.pfb><C:/TeX/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmr10.pfb><C:/TeX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-Output written on Design.pdf (3 pages, 71790 bytes).
+Output written on Design.pdf (3 pages, 71838 bytes).
 PDF statistics:
  32 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

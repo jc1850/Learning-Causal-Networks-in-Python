@@ -3,46 +3,58 @@ import unittest
 import matplotlib.pyplot as plt
 from pc import PCAlg
 from indepTests import chi
-"""
+
 class ChiSquareTests(unittest.TestCase):
     def setUp(self):
         self.data = PCAlg.prepare_data('alarm_10000.dat', ' ', True)
 
     
     def test1(self):
-        p = chi(self.data, 'EXPCO2', 'EXPCO2', [])
+        p, *_= chi(self.data, 'EXPCO2', 'EXPCO2', [])
         assert(p == 0)
         
     def test2(self):
-        p = chi(self.data, 'EXPCO2', 'EXPCO2', ['PAP'])
+        p, *_ = chi(self.data, 'EXPCO2', 'EXPCO2', ['PAP'])
         assert(p == 0)
     
     def test3(self):
-        p = chi(self.data, 'EXPCO2', 'EXPCO2', ['PAP','PULMEMBOLUS'])
+        p, *_ = chi(self.data, 'EXPCO2', 'EXPCO2', ['PAP','PULMEMBOLUS'])
         assert(p == 0)
         
     def test4(self):
         self.data =  PCAlg.prepare_data('testdata.dat', ' ', True)
-        p = chi(self.data, 'A', 'B', [])
+        p, *_ = chi(self.data, 'A', 'B', [])
         assert(p==1) 
 
     def test5(self):
         self.data =  PCAlg.prepare_data('testdata.dat', ' ', True)
-        p = chi(self.data, 'A', 'C', [])
+        p, *_ = chi(self.data, 'A', 'C', [])
         assert(round(p,3)==0.505)   
 
     def test6(self):
         self.data =  PCAlg.prepare_data('testdata.dat', ' ', True)
-        p = chi(self.data, 'A', 'D', [])
+        p, *_ = chi(self.data, 'A', 'D', [])
         assert(round(p,3)==0.505) 
     
-    def test7(self):
+    def atest7(self):
         self.data =  PCAlg.prepare_data('testdata.dat', ' ', True)
-        p = chi(self.data, 'A', 'B', ['C'])
+        p, *_ = chi(self.data, 'A', 'B', ['C'])
         print(p)
         assert(round(p,3)==0.018) 
 
-"""
+    def test8(self):
+        p, h = chi(self.data, 'PAP', 'PULMEMBOLUS', [])
+        assert(round(h,1)==1041.7)
+    
+    def test9(self):
+        p, h = chi(self.data, 'EXPCO2', 'PULMEMBOLUS', [])
+        assert(round(h,3)==0.349)
+        
+    def test10(self):
+        p, h = chi(self.data, 'EXPCO2', 'PULMEMBOLUS', ['PAP'])
+        print(h)
+        print(p)
+        assert(round(h,3)== 3.841)
 
 class SkeletonTests(unittest.TestCase):
     

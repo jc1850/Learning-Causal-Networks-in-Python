@@ -4,7 +4,7 @@ from pandas import DataFrame
 
 class GraphLearner(object):
 
-    def __init__(self, data, indep_test,  alpha = 0.9):
+    def __init__(self, data, indep_test,  alpha = 0.95):
         # TODO: Validate values 
         self.alpha = alpha
         self.data = data
@@ -39,7 +39,7 @@ class GraphLearner(object):
         sepset = {}
         condsize = 0
         for x in graph:
-            for y in x.adj:
+            for y in graph.neighbors(x):
                 sepset[(x,y)] = ()
                 sepset[(y,x)] = ()
         # Iterate over each pair of adjacent nodes
@@ -48,9 +48,8 @@ class GraphLearner(object):
             condlen = 0
             ylabels = labels.copy()
             for x in labels:
-                ylabels.remove(x)
-                for y in ylabels:
-                    if y in graph.neighbors(x):
+                for y in labels:
+                    if y in graph.neighbors(x) and y != x:
                         # Generate the conditioning sets needed for independence tests
                         condSets = self.gen_cond_sets(x,y,graph,condsize)
                         if len(condSets) == 0:
@@ -59,7 +58,8 @@ class GraphLearner(object):
                         # Test for independence with each conditioning set
                         for condset in condSets:
                             print('testing {} indep {} given {}'.format(x,y,condset))
-                            indep = self.indep_test(self.data, x, y, condset) > self.alpha
+                            p, *_ = self.indep_test(self.data, x, y, condset) 
+                            indep = p > self.alpha
                             #stop testing if independence is found and remove edge
                             if indep:
                                 print('removing edge {},{}'.format(x,y))
@@ -119,9 +119,9 @@ class GraphLearner(object):
                 line1 = f.readline().replace('\n','').split(delim)
                 labels = [i for i in range(len(line1))]
             data = []
-            data.append(line1[:10])
+            data.append(line1)
             for line in f.readlines():
                 line = line.replace('\n','').split(delim)
-                data.append(line[:10]) 
-            data = DataFrame(data, columns = labels[:10])   
+                data.append(line) 
+            data = DataFrame(data, columns = labels)   
         return data
