@@ -5,6 +5,7 @@
 \usepackage{cite}
 \usepackage{enumerate}
 \usepackage{tikz}
+\usepackage{multirow}
 \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
 
@@ -165,6 +166,45 @@ For the FCI and RFCI algorithms the notion of discriminating paths is needed. A 
 \item Y is a non-endpoint on $\pi$ and is adjacent to Z on $\pi$.
 \item A is not adjacent to Z and every other node is a collider on $\pi$ and a parent of Z. \cite{colombo2012learning} 
 \end{enumerate}
+
+\subsection{Tests for Independence}
+When trying to find causal relations between variables tests for independence and conditional independence must be performed. These tests allow us to find correlation between variables and also find out if the correlation between two variables is actually caused by another.\\
+
+One such test is the $\chi^2$ test, this test gives the probability that some data was drawn from a particular distribution.\\
+
+If the variables $X$ and $Y$ are independent then $p(X,Y) = p(X)p(Y)$. Both of these distributions can be calculated from data. The $\chi^2$ test can then be used to find the probability that they are equal.\\
+
+To estimate $p(X,Y)$ the counts of all pairs of values taken by the variables can be found. They can then divided by the count of all data points. These counts can be stored in a table with the values of $X$ as columns, values of $Y$ as rows (or visa versa) and entries as observed counts, for ease of access. This type of table is known as a contingency table.\\
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{c|c}
+		X & Y \\ \cline{1-2}
+		1 & 0 \\
+		1 & 1 \\ 
+		0 & 1 \\ 
+		1 & 1 \\ 
+		0 & 0 \\ 
+		1 & 1 \\ 
+		1 & 0 \\ 
+	\end{tabular}
+	\begin{tabular}{c|c|cc|}
+		\multicolumn{2}{c}{}& \multicolumn{2}{c}{X} \\ \cline{3-4}
+		\multicolumn{2}{c|}{} & 0 & 1 \\ \cline{2-4}
+		\multirow{2}{*}{Y} & 0 & 1 & 2\\
+		& 1 & 1 & 3 \\
+		\cline{2-4} 
+	\end{tabular}
+\end{table}
+
+To estimate the distribution $p(X)$, the count of points in which $X$ takes a value over the total number of points for all values of $X$. The counts can be found with the sum of the columns of the contingency table. The same can be done for $p(Y)$ with the rows of the table.\\
+
+The $\chi^2$ statistic can then be calculated with:
+
+\begin{center}
+	$\chi^2 = \sum\frac{(p(X)p(Y)-p(X,Y))^2}{p(X)p(Y)}$
+\end{center}
+
 
 \subsection{Algorithms For Learning Causal Networks}
  There have been a number of algorithms developed to learn graphical causal representations from data. Over the course of this project, I plan to implement: The PC algorithm \cite{spirtes1991algorithm}, the Fast Causal Inference (FCI) algorithm \cite{colombo2012learning}, and the Really Fast Causal Inference (RFCI) Algorithm \cite{colombo2012learning}.

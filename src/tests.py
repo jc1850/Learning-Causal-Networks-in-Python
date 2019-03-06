@@ -13,27 +13,18 @@ class ChiSquareTests(unittest.TestCase):
         p, *_= chi(self.data, 'EXPCO2', 'EXPCO2', [])
         assert(p == 0)
         
+
+
     def test2(self):
-        p, *_ = chi(self.data, 'EXPCO2', 'EXPCO2', ['PAP'])
-        assert(p == 0)
-    
-    def test3(self):
-        p, *_ = chi(self.data, 'EXPCO2', 'EXPCO2', ['PAP','PULMEMBOLUS'])
-        assert(p == 0)
-
-
-    def test8(self):
         p, h = chi(self.data, 'PAP', 'PULMEMBOLUS', [])
         assert(round(h,1)==1041.7)
     
-    def test9(self):
+    def test3(self):
         p, h = chi(self.data, 'EXPCO2', 'PULMEMBOLUS', [])
         assert(round(h,3)==0.349)
         
-    def test10(self):
+    def test4(self):
         p, h = chi(self.data, 'EXPCO2', 'PULMEMBOLUS', ['PAP'])
-        print(h)
-        print(p)
         assert(round(h,3)== 3.841)
 
 class SkeletonTests(unittest.TestCase):

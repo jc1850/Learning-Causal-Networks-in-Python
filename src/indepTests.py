@@ -52,16 +52,13 @@ def chi(data, X,Y,Z):
             zdatastr.append(pointstr)
         zdata = pd.DataFrame(data=zdatastr,columns=['z'])
         cont = pd.crosstab(data[X],[zdata['z'], data[Y],])
-        print(cont)
         xvalues = [val for val in cont.index]
         yvalues = cont.columns.levels[1]
         zvalues = cont.columns.levels[0]
         labels = cont.columns.labels
-        print(labels)
         zyvalues = {z: [] for z in zvalues}
         for i in range(len(labels[0])):
             zyvalues[zvalues[labels[0][i]]].append(yvalues[labels[1][i]])
-        print(zyvalues)
         ygz = {}
         xgz = {}
         #find x|z and y|z
@@ -84,13 +81,12 @@ def chi(data, X,Y,Z):
                 xgz[z][x] = xgz[z][x]/ztotal[z]
         observed = []
         expected = []
-        chisq = 0
         for z in zvalues:
             for y in zyvalues[z]:
                 for x in xvalues:
-                    observed= cont[z][y][x]
-                    expected = ygz[z][y] * xgz[z][x] * ztotal[z]
-                    chisq += ((observed-expected)**2)/expected
+                    observed.append(cont[z][y][x])
+                    expected.append(ygz[z][y] * xgz[z][x] * ztotal[z])
         freedom = len(xvalues) * len(yvalues) * len(zvalues) - ((len(xvalues) - 1) * (len(yvalues) - 1) * (len(xvalues) - 1)) -1
+        chisq, p =  scipy.stats.chisquare(observed, f_exp=expected, ddof=freedom)
         p = 1
         return p, chisq
