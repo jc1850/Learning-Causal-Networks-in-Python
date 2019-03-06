@@ -20,27 +20,7 @@ class ChiSquareTests(unittest.TestCase):
     def test3(self):
         p, *_ = chi(self.data, 'EXPCO2', 'EXPCO2', ['PAP','PULMEMBOLUS'])
         assert(p == 0)
-        
-    def test4(self):
-        self.data =  PCAlg.prepare_data('testdata.dat', ' ', True)
-        p, *_ = chi(self.data, 'A', 'B', [])
-        assert(p==1) 
 
-    def test5(self):
-        self.data =  PCAlg.prepare_data('testdata.dat', ' ', True)
-        p, *_ = chi(self.data, 'A', 'C', [])
-        assert(round(p,3)==0.505)   
-
-    def test6(self):
-        self.data =  PCAlg.prepare_data('testdata.dat', ' ', True)
-        p, *_ = chi(self.data, 'A', 'D', [])
-        assert(round(p,3)==0.505) 
-    
-    def atest7(self):
-        self.data =  PCAlg.prepare_data('testdata.dat', ' ', True)
-        p, *_ = chi(self.data, 'A', 'B', ['C'])
-        print(p)
-        assert(round(p,3)==0.018) 
 
     def test8(self):
         p, h = chi(self.data, 'PAP', 'PULMEMBOLUS', [])

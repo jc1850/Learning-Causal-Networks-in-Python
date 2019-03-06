@@ -51,35 +51,46 @@ def chi(data, X,Y,Z):
                 pointstr += str(var) + ","
             zdatastr.append(pointstr)
         zdata = pd.DataFrame(data=zdatastr,columns=['z'])
-        cont = pd.crosstab(data[X],[data[Y], zdata['z']])
+        cont = pd.crosstab(data[X],[zdata['z'], data[Y],])
+        print(cont)
         xvalues = [val for val in cont.index]
+        yvalues = cont.columns.levels[1]
+        zvalues = cont.columns.levels[0]
         labels = cont.columns.labels
-        #ALL works up to here
-        yvalues = cont.columns.levels[0]
-        zvalues = cont.columns.levels[1]
-        zyvalues = {y: [] for y in yvalues}
+        print(labels)
+        zyvalues = {z: [] for z in zvalues}
         for i in range(len(labels[0])):
-            zyvalues[yvalues[labels[0][i]]].append(zvalues[labels[1][i]])
-        xsums = {val: sum(cont.loc[val]) for val in xvalues}
-        ysums = ({y: sum(sum([cont[y][z] for z in zyvalues[y]]))  for y in yvalues})
-        zsums = {z:  0 for z in zvalues}
-        
-        for y in yvalues:
-            for z in zyvalues[y]:
-                zsums[z] += sum(cont[y][z])
-        total = sum(xsums.values())
+            zyvalues[zvalues[labels[0][i]]].append(yvalues[labels[1][i]])
+        print(zyvalues)
+        ygz = {}
+        xgz = {}
+        #find x|z and y|z
+        ztotal = {}
+        for z in zvalues:
+            #calculate y|z for all y and z
+            #also capture z totals
+            ygz[z] = {}
+            xgz[z] = {x: 0 for x in xvalues}
+            ztotal[z] = 0
+            for y in zyvalues[z]:
+                zytotal = sum(cont[z][y])
+                ygz[z][y] = zytotal
+                ztotal[z] += zytotal
+                for x in xvalues:
+                    xgz[z][x] += cont[z][y][x]
+            for y in zyvalues[z]:
+                ygz[z][y] =  ygz[z][y] / ztotal[z]
+            for x in xvalues:
+                xgz[z][x] = xgz[z][x]/ztotal[z]
+        observed = []
+        expected = []
         chisq = 0
-        for x in xvalues:
-            for y in yvalues:
-                for z in zyvalues[y]:
-                    observed = cont[y][z][x]
-                    expected = ((xsums[x]/ total*ysums[y]/ total*zsums[z]))
+        for z in zvalues:
+            for y in zyvalues[z]:
+                for x in xvalues:
+                    observed= cont[z][y][x]
+                    expected = ygz[z][y] * xgz[z][x] * ztotal[z]
                     chisq += ((observed-expected)**2)/expected
-
         freedom = len(xvalues) * len(yvalues) * len(zvalues) - ((len(xvalues) - 1) * (len(yvalues) - 1) * (len(xvalues) - 1)) -1
         p = 1
         return p, chisq
-            
-        
-        
-            
