@@ -85,8 +85,7 @@ def chi(data, X,Y,Z):
             for y in zyvalues[z]:
                 for x in xvalues:
                     observed.append(cont[z][y][x])
-                    expected.append(ygz[z][y] * xgz[z][x] * ztotal[z])
+                    expected.append(max(ygz[z][y] * xgz[z][x] * ztotal[z],0.000000000001))
         freedom = len(xvalues) * len(yvalues) * len(zvalues) - ((len(xvalues) - 1) * (len(yvalues) - 1) * (len(xvalues) - 1)) -1
         chisq, p =  scipy.stats.chisquare(observed, f_exp=expected, ddof=freedom)
-        p = 1
         return p, chisq

@@ -4,7 +4,7 @@ from pandas import DataFrame
 
 class GraphLearner(object):
 
-    def __init__(self, data, indep_test,  alpha = 0.95):
+    def __init__(self, data, indep_test,  alpha = 0.99):
         # TODO: Validate values 
         self.alpha = alpha
         self.data = data
@@ -49,7 +49,7 @@ class GraphLearner(object):
             ylabels = labels.copy()
             for x in labels:
                 for y in labels:
-                    if y in graph.neighbors(x) and y != x:
+                    if y in graph.neighbors(x):
                         # Generate the conditioning sets needed for independence tests
                         condSets = self.gen_cond_sets(x,y,graph,condsize)
                         if len(condSets) == 0:
@@ -117,7 +117,7 @@ class GraphLearner(object):
                 line1 = f.readline().replace('\n','').split(delim)
             else:
                 line1 = f.readline().replace('\n','').split(delim)
-                labels = [i for i in range(len(line1))]
+                labels = [str(i) for i in range(len(line1))]
             data = []
             data.append(line1)
             for line in f.readlines():

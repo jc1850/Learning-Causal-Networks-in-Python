@@ -26,11 +26,19 @@ class ChiSquareTests(unittest.TestCase):
     def test4(self):
         p, h = chi(self.data, 'EXPCO2', 'PULMEMBOLUS', ['PAP'])
         assert(round(h,3)== 3.841)
+    
+    def test5(self):
+        p, h = chi(self.data, 'EXPCO2', 'PULMEMBOLUS', ['PAP','KINKEDTUBE'])
+        assert(round(h,3)== 3.862)
+        
+    def test5(self):
+        p, h = chi(self.data, 'EXPCO2', 'PULMEMBOLUS', ['KINKEDTUBE','PAP',])
+        assert(round(h,3)== 3.862)
 
 class SkeletonTests(unittest.TestCase):
     
     def setUp(self):
-        self.data = PCAlg.prepare_data('alarm_10000.dat', ' ', True)
+        self.data = PCAlg.prepare_data('asia_1000.data', ' ', True)
         self.pcalg = PCAlg(self.data, chi)
         self.skeleton = nx.Graph()
         
@@ -44,6 +52,12 @@ class SkeletonTests(unittest.TestCase):
         self.skeleton.add_edges_from([[1,2],[3,4],[3,5],[4,2],[5,2]])
         directed = self.pcalg.orientEdges(self.skeleton, sepset)
         assert(list(directed.edges) ==  [(1, 2), (4, 2), (4, 3), (5, 2), (5, 3), (3, 4), (3, 5)])
+        
+    def test2(self):
+        pdag = self.pcalg.learnGraph()
+        print(pdag.edges)
+        nx.draw_networkx(pdag)
+        plt.show()
 
 if __name__ == '__main__':
     unittest.main()
