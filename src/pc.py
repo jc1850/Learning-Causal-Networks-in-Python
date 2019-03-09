@@ -46,13 +46,12 @@ class PCAlg(GraphLearner):
                                         first_chain = undirected.has_edge(i,k) and directed.has_edge(k,j)
                                         second_chain = undirected.has_edge(i,l) and directed.has_edge(l,j)
                                         if first_chain and second_chain and not skeleton.has_edge(k,l) and undirected.has_edge(i,j):
-                                            print(i,j,k,l)
                                             directed.add_edge(i,j)
                                             undirected.remove_edge(i,j)
 
                                         first_chain = skeleton.has_edge(i,k) and directed.has_edge(k,l)
                                         second_chain = directed.has_edge(k,l) and directed.has_edge(l,j)
-                                        if first_chain and second_chain and not skeleton.has_edge(k,l) and undirected.has_edge(i,j):                
+                                        if first_chain and second_chain and not skeleton.has_edge(i,l) and undirected.has_edge(i,j):                
                                             directed.add_edge(i,j)
                                             undirected.remove_edge(i,j)
         #generate PDAG
@@ -108,5 +107,26 @@ class PCAlg(GraphLearner):
         print('...Learning complete')
         return pdag
     
+    @staticmethod
+    def findPath( x,y, undirected, directed, explored = []):
+        explored.append(x)
+        neigh = []
+        for n in undirected.neighbors(x):
+            neigh.append(n)
+        for n in directed.successors(x):
+            neigh.append(n)
+        Z = []
+        for n in neigh:
+            if n  not in explored:
+                Z.append(n)
+        if y in Z:
+            return True
+        if len(Z) == 0:
+            return False
+        path = False  
+        for z in Z:
+            path = path or PCAlg.findPath(z,y, undirected, directed, explored)
+        return path
+
 
     

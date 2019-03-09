@@ -7,3 +7,6 @@ class PDAG(nx.DiGraph):
         if not directed:
             super().add_edge(v,u)
     
+class PAG(nx.MultiDiGraph):
+    def add_edge(self):
+        pass

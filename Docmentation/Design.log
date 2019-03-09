@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6730 64-bit) (preloaded format=pdflatex 2019.3.5)  5 MAR 2019 11:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.2.7)  9 MAR 2019 15:32
 entering extended mode
 **./Design.tex
 (Design.tex
-LaTeX2e <2018-04-01> patch level 5
-(C:\TeX\MiKTeX\tex\latex\base\article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(C:\TeX\MiKTeX\tex\latex\base\size10.clo
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+LaTeX2e <2018-12-01>
+("C:\Users\James\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
+Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
+("C:\Users\James\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size10.clo"
+File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 )
 \c@part=\count80
 \c@section=\count81
@@ -19,12 +19,12 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-(C:\TeX\MiKTeX\tex\latex\cite\cite.sty
+) ("C:\Users\James\AppData\Local\Programs\MiKTeX 2.9\tex/latex/cite\cite.sty"
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 332.
 Package: cite 2015/02/27  v 5.5
-) (Design.aux)
+)
+(Design.aux)
 \openout1 = `Design.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
@@ -76,51 +76,74 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--30
 
 [1
 
-{C:/Users/jc1850/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
+{C:/Users/James/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 39--40
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--43
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--73
 
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 44.
+(Font)              <7> on input line 74.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 44.
+(Font)              <5> on input line 74.
 
-Underfull \hbox (badness 10000) in paragraph at lines 44--45
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
-[2] [3] (Design.aux) ) 
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
+
+ []
+
+[3] [4] (Design.aux) ) 
 Here is how much of TeX's memory you used:
- 303 strings out of 492969
- 3507 string characters out of 3142015
- 63729 words of memory out of 3000000
- 4254 multiletter control sequences out of 15000+200000
+ 303 strings out of 492946
+ 3792 string characters out of 3126267
+ 64296 words of memory out of 3000000
+ 4279 multiletter control sequences out of 15000+200000
  5158 words of font info for 19 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  23i,4n,18p,457b,107s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/TeX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-<C:/TeX/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/TeX/MiKTeX/fonts/t
-ype1/public/amsfonts/cm/cmmi10.pfb><C:/TeX/MiKTeX/fonts/type1/public/amsfonts/c
-m/cmr10.pfb><C:/TeX/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-Output written on Design.pdf (3 pages, 71838 bytes).
+<C:/Users/James/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmbx10.pfb><C:/Users/James/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/James/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/James/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Us
+ers/James/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7
+.pfb>
+Output written on Design.pdf (4 pages, 73465 bytes).
 PDF statistics:
- 32 PDF objects out of 1000 (max. 8388607)
+ 35 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

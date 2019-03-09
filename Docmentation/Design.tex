@@ -26,24 +26,17 @@ The agile approach is a methodology which focuses on iterative development. Deli
 
 Many parts of the agile methodology are not needed in this project such the parts that deal with the customer and cooperation between developers as this is a solo project without a customer.\\
 
-The most important part of agile is its ability to deal with changing scope through iteration. Also since testing is done at each stage it will allow the project to be easily shortened or extended based on time constraints\\
+The most important part of agile is its ability to deal with changing scope through process. Also since testing is done at each stage it will allow the project to be easily shortened or extended based on time constraints, as after every sprint a working piece of software has been developed.\\
 
 \subsubsection{Chosen Approach}
 
-\subsection{Tools}
-A number of existing tools were used throughout the project to aid in development. 
+The chosen approach for this project was agile. The reduced amount of documentation will speed up development. Agile development also allows the scope of the project to change over time. This allowed the scope of the project to start off small and increase if time allowed it.\\
 
-\subsubsection{Version Control}
-An important part of software development is Version Control (VC). VC allows changes to be made to software without risk of losing previous iterations. At any point software can be reverted to a previous version if needed. VC also helps with agile development as deliverables can be easily identified in a VC system.\\
+For example, once the PC algorithm had been implemented, if time allowed, the project could easily be extended to include the FCI algorithm.\\
 
-Git is a standard VC system used in development.\\
+Within the Agile methodology there are a number of popular frameworks. However, these teams are designed for teams of software engineers with clients. Since this is a solo project without a client many parts of these frameworks will not be applicable. Therefore, the applicable parts of various frameworks were chosen and compiled into a framework that will work for this project.
 
-\subsubsection{Python Libraries}
-Various external python libraries were used to facilitate development.\\
 
-Pandas is a library containing DataFrames which allow easy manipulation of data. This includes labelling variables and calculating contingency tables which is important in the $\chi^2$ test of independence.\\
-
-NetworkX was used for graphical models, the Graph and Digraph were used and extended to store various graphs used in the algorithms. The built in functionality of these graphs made extension to new types such as a PDAG simple.\\
 
 \subsection{Requirements}
 Requirements were elicited at the beginning of a sprint. A deliverable was chosen and the requirements were found for that deliverable.
@@ -62,6 +55,23 @@ Each task has associated stories so that all software can be traced back to an e
 \subsection{Sprints}
 \subsubsection{Tasks}
 \subsubsection{Concrete Architecture}
-\subsubsection{Unit Test}
-All software was tested using the python unittest library. 
+\subsubsection{Unit Testing}
+Test driven development (TDD) was one of the main features of the development framework. In this development, tests were created before the actual software was written. This ensured that all software that was written would be functional. It also ensures that any refactoring performed would not compromise the functionality of software.\\
+
+All software was tested using the python unittest framework. In this framework, list of tests can be compiled into test cases and cases compiled into a test suite. Test cases test an individual feature of software, so can be run individually when a feature is being developed or maintained. Test Suites can then test the software as a whole.\\
+
+\subsection{Tools}
+A number of existing tools were used throughout the project to aid in development. 
+
+\subsubsection{Version Control}
+An important part of software development is Version Control (VC). VC allows changes to be made to software without risk of losing previous iterations. At any point software can be reverted to a previous version if needed. VC also helps with agile development as deliverables can be easily identified in a VC system.\\
+
+Git is a standard VC system used in development.\\
+
+\subsubsection{Python Libraries}
+Various external python libraries were used to facilitate development.\\
+
+Pandas is a library containing DataFrames which allow easy manipulation of data. This includes labelling variables and calculating contingency tables which is important in the $\chi^2$ test of independence.\\
+
+NetworkX was used for graphical models, the Graph and Digraph were used and extended to store various graphs used in the algorithms. The built in functionality of these graphs made extension to new types such as a PDAG simple.\\
 \end{document}
