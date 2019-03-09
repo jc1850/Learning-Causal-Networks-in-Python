@@ -38,22 +38,9 @@ class PCAlg(GraphLearner):
                                 if directed.has_edge(i,j) and not skeleton.has_edge(k,i) and undirected.has_edge(j,k):
                                     directed.add_edge(j,k)
                                     undirected.remove_edge(j,k)
-                                if directed.has_edge(i,k) and directed.has_edge(k,j) and undirected.has_edge(i,j):
+                                if PCAlg.findPath(i,j, directed, []) and undirected.has_edge(i,j):
                                     directed.add_edge(i,j)
                                     undirected.remove_edge(i,j)
-                                for l in skeleton:
-                                    if l not in [i,j,k]:
-                                        first_chain = undirected.has_edge(i,k) and directed.has_edge(k,j)
-                                        second_chain = undirected.has_edge(i,l) and directed.has_edge(l,j)
-                                        if first_chain and second_chain and not skeleton.has_edge(k,l) and undirected.has_edge(i,j):
-                                            directed.add_edge(i,j)
-                                            undirected.remove_edge(i,j)
-
-                                        first_chain = skeleton.has_edge(i,k) and directed.has_edge(k,l)
-                                        second_chain = directed.has_edge(k,l) and directed.has_edge(l,j)
-                                        if first_chain and second_chain and not skeleton.has_edge(i,l) and undirected.has_edge(i,j):                
-                                            directed.add_edge(i,j)
-                                            undirected.remove_edge(i,j)
         #generate PDAG
         pdag = self.pdag_union(directed, undirected)
         return pdag
@@ -80,6 +67,7 @@ class PCAlg(GraphLearner):
                                 directed.add_edge(i,k)
                                 if undirected.has_edge(i,k):
                                     undirected.remove_edge(i,k)
+                            
     
     
     def pdag_union(self, directed, undirected):
@@ -108,11 +96,9 @@ class PCAlg(GraphLearner):
         return pdag
     
     @staticmethod
-    def findPath( x,y, undirected, directed, explored = []):
+    def findPath( x,y, directed, explored):
         explored.append(x)
         neigh = []
-        for n in undirected.neighbors(x):
-            neigh.append(n)
         for n in directed.successors(x):
             neigh.append(n)
         Z = []
@@ -125,7 +111,7 @@ class PCAlg(GraphLearner):
             return False
         path = False  
         for z in Z:
-            path = path or PCAlg.findPath(z,y, undirected, directed, explored)
+            path = path or PCAlg.findPath(z,y, directed, explored)
         return path
 
 

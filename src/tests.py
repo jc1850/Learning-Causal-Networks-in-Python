@@ -56,38 +56,36 @@ class SkeletonTests(unittest.TestCase):
 
 class PathTests(unittest.TestCase):
     def setUp(self):
-        self.undirected = nx.Graph()
-        self.undirected.add_nodes_from([1,2,3,4,5])
         self.directed = nx.DiGraph()
         self.directed.add_nodes_from([1,2,3,4,5])
 
     def test1(self):
-        self.undirected.add_edges_from([[1,2],[2,3]])
-        assert(PCAlg.findPath(1,3,self.undirected,self.directed, []))
+        self.directed.add_edges_from([[1,2],[2,3]])
+        assert(PCAlg.findPath(1,3,self.directed, []))
 
     def test2(self):
-        self.undirected.add_edges_from([[1,2],[2,3]])
-        assert(not PCAlg.findPath(1,5,self.undirected,self.directed, []))
+        self.directed.add_edges_from([[1,2],[2,3]])
+        assert(not PCAlg.findPath(1,5,self.directed, []))
     
     def test3(self):
-        self.undirected.add_edges_from([[1,2],[2,3]])
+        self.directed.add_edges_from([[1,2],[2,3]])
         self.directed.add_edges_from([[3,4]])
-        assert(PCAlg.findPath(3,4,self.undirected,self.directed, []))
+        assert(PCAlg.findPath(3,4,self.directed, []))
 
     def test4(self):
-        self.undirected.add_edges_from([[1,2],[2,3]])
+        self.directed.add_edges_from([[1,2],[2,3]])
         self.directed.add_edges_from([[3,4]])
-        assert(PCAlg.findPath(1,4,self.undirected,self.directed, []))
+        assert(PCAlg.findPath(1,4,self.directed, []))
 
     def test5(self):
-        self.undirected.add_edges_from([[1,2],[1,3]])
+        self.directed.add_edges_from([[1,2],[1,3]])
         self.directed.add_edges_from([[3,4],[3,5]])
-        assert(PCAlg.findPath(1,5,self.undirected,self.directed, []))
+        assert(PCAlg.findPath(1,5,self.directed, []))
 
     def test6(self):
-        self.undirected.add_edges_from([[1,3]])
+        self.directed.add_edges_from([[1,3]])
         self.directed.add_edges_from([[1,2],[3,4],[3,5]])
-        assert(not PCAlg.findPath(2,5,self.undirected,self.directed, []))
+        assert(not PCAlg.findPath(2,5,self.directed, []))
 if __name__ == '__main__':
     unittest.main()
     
