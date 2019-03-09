@@ -110,9 +110,17 @@ To ensure that the algorithm was behaving as intended all parts must be thorough
 
 For the chi squared independence test a sanity check consisting of testing whether a variable was independent of itself was used. Obviously the test will result in a p-value of 0 so was very easy to to test. This test was repeated in the case of a conditioning set of size 1 and size 2 to ensure this did not affect functionality.\\
 
-Next a preexisitng test from r was used to find results on realistic data. This data was tested with the python implementation and the results compared. Variables from the alarm\_10000 dataset were used. many tests with different variables and conditioning sets were used
+Next a pre-existing test from r was used to find results on realistic data. This data was tested with the python implementation and the results compared. Data from the alarm\_10000 dataset was used. Many tests with different variables and conditioning sets were performed.\\
 
+To test the skeleton estimation again the R implementation was used. However, the R version does not use a chi squared test, a wrapper needed to be written to make it compatible with the R skeleton function. With this, skeletons could be generated from data in the same way in python and R and the results compared. The separation sets were also recorded and compared.\\
 
+Testing the edge orientation for the PC algorithm first started with small sanity checks. For example the collider orientation was tested on networks with 3 nodes and two edges and simple separation sets.\\
 
+The path checking needed for the pc algorithm was also 
+tested on small networks where paths were linear and some with many branches. It was also tested on a few negative examples.\\
+
+Finally a skeleton and separation set generated from the alarms data was oriented in both R and python to test the whole edge orientation process as a whole.\\
+
+With all of these components working the whole algorithm was compared in both implementations.\\
 
 \end{document}
