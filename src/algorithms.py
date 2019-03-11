@@ -1,6 +1,7 @@
 import networkx as nx
 import itertools
 from pandas import DataFrame
+from graphs import PDAG
 
 class GraphLearner(object):
 
@@ -28,7 +29,7 @@ class GraphLearner(object):
             networkx.Graph
                 The skeleton of the causal network
         """ 
-
+        
         # Find variable labels
         labels = list(self.data.columns)
         # Generate completed graph
@@ -125,3 +126,65 @@ class GraphLearner(object):
                 data.append(line) 
             data = DataFrame(data, columns = labels)   
         return data
+
+    @staticmethod
+    def findPath( x,y, directed, explored):
+        explored.append(x)
+        neigh = []
+        for n in directed.successors(x):
+            neigh.append(n)
+        Z = []
+        for n in neigh:
+            if n  not in explored:
+                Z.append(n)
+        if y in Z:
+            return True
+        if len(Z) == 0:
+            return False
+        isPath = False
+        for z in Z:    
+            zcont =  GraphLearner.findPath(z,y, directed, explored)
+            isPath = isPath or zcont
+
+        return isPath
+
+    def orient_V(self, undirected, directed, sepset):
+        """
+        A method to orient all "V-structures" in a graph
+
+        Parameters
+        ----------
+        undirected:
+        """
+        skeleton = undirected.copy()
+        for i in undirected:
+            for j in undirected:
+                if i != j:
+                    for k in undirected:
+                        if i != k and j != k:
+                            if skeleton.has_edge(i,k) and skeleton.has_edge(k,j) and not skeleton.has_edge(i,j) and k not in sepset[(i,j)]:
+                                directed.add_edge(j,k)
+                                if undirected.has_edge(j,k):
+                                    undirected.remove_edge(j,k)
+                                directed.add_edge(i,k)
+                                if undirected.has_edge(i,k):
+                                    undirected.remove_edge(i,k)
+                            
+    
+    
+    def pdag_union(self, directed, undirected):
+        """
+        A method to orient all "V-structures" in a graph
+
+        Parameters
+        ----------
+        undirected:
+        """
+        pdag = PDAG()
+        for edge in directed.edges:
+            pdag.add_edge(*edge)
+        for edge in undirected.edges:
+            pdag.add_edge(*edge, False)
+        return pdag
+    
+

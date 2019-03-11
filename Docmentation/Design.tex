@@ -47,14 +47,20 @@ Epics describe a very high level interaction between a user and the software. Th
 Each epic is then broken down into user stories. The stories describe describe what a user must be able to do with the software during the epic. They are fairly low level and form a set of required functionality of the software.
 
 \subsubsection{Tasks}
-From the stories can be formed. Theses tasks describe the software that must be implemented to fulfil the requirements. 
-
-Each task has associated stories so that all software can be traced back to an epic.
-\subsection{Abstract Design}
+From the stories can be formed. Theses tasks describe the software that must be implemented to fulfil the requirements. \\
 
 \subsection{Sprints}
-\subsubsection{Tasks}
-\subsubsection{Concrete Architecture}
+Sprints are sections of development defined by deliverables. They outline the tasks required to be completed to develop a deliverable and the time frame needed.\\
+
+When a sprint is completed, the scope of the project and the requirements can be updated and modified if needed.\\
+
+Each task has associated stories so that all software can be traced back to an epic.
+
+\subsection{Abstract Design}
+
+
+
+\subsection{Concrete Architecture}
 \subsubsection{Unit Testing}
 Test driven development (TDD) was one of the main features of the development framework. In this development, tests were created before the actual software was written. This ensured that all software that was written would be functional. It also ensures that any refactoring performed would not compromise the functionality of software.\\
 
@@ -66,12 +72,14 @@ A number of existing tools were used throughout the project to aid in developmen
 \subsubsection{Version Control}
 An important part of software development is Version Control (VC). VC allows changes to be made to software without risk of losing previous iterations. At any point software can be reverted to a previous version if needed. VC also helps with agile development as deliverables can be easily identified in a VC system.\\
 
-Git is a standard VC system used in development.\\
+Git is a standard VC system used in development. Git was chosen as github provides free repositories which can be used to store code. This makes code accessible for anywhere and greatly reduces the risk of it being lost. Github makes git repositories incredibly easy to set up and maintain.\\
 
 \subsubsection{Python Libraries}
 Various external python libraries were used to facilitate development.\\
 
 Pandas is a library containing DataFrames which allow easy manipulation of data. This includes labelling variables and calculating contingency tables which is important in the $\chi^2$ test of independence.\\
 
-NetworkX was used for graphical models, the Graph and Digraph were used and extended to store various graphs used in the algorithms. The built in functionality of these graphs made extension to new types such as a PDAG simple.\\
+NetworkX was used for graphical models, the Graph and Digraph were used and extended to store various graphs used in the algorithms. The built in functionality of greatly helped with the implementation of the PDAG and PAG classes. NetworkX also has functions for finding paths in graphs, this was especially useful for the FCI algorithm.\\
+
+Finally, Scipy was used to calculate the $\chi^2$ statistic and p-value. \\
 \end{document}

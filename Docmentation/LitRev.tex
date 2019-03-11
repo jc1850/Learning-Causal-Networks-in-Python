@@ -306,7 +306,7 @@ Once colliders are specified other edges can be oriented. This is done by repeat
 		\multicolumn{2}{|l|}{\quad\quad\textbf{if} $ k $ \textbf{not in} $ adj(i,G) $:}\\
 		\multicolumn{2}{|l|}{\quad\quad\quad orient $ i\rightarrow j-k $ as $ i\rightarrow j \rightarrow k $ }\\
 		\multicolumn{2}{|l|}{\quad\quad\textbf{end if}}\\
-		\multicolumn{2}{|l|}{\quad\quad\textbf{if} $ path(i,j)$ \textbf{in} $G $:}\\
+		\multicolumn{2}{|l|}{\quad\quad\textbf{if} $ directedpath(i,j)$ \textbf{in} $G $:}\\
 		\multicolumn{2}{|l|}{\quad\quad\quad orient $ i- j $ as $ i\rightarrow j $ }\\
 		\multicolumn{2}{|l|}{\quad\quad\textbf{end if}}\\
 
@@ -335,6 +335,61 @@ Next, the final skeleton of the graph is obtained. To do this we must be able to
 Once the final skeleton has been estimated, repeat the step to orient collider edges on the new skeleton. Finally the edges can be oriented using the rules ($R1-R10$) found in \cite{ZHANG20081873}.\cite{colombo2012learning}
 \\
 
+\begin{table}[h!]
+	\begin{tabular}{|l l|}
+		\hline
+		\multicolumn{2}{|l|}{FCI Algorithm to Orient Edges}\\ 
+		\hline
+		\textbf{Input}: & Skeleton of Causal Network, Separation sets of variables\\
+		\textbf{Output}: & Partial Ancestral Graph\\
+		&\\
+		\multicolumn{2}{|l|}{G = Skeleton of network}\\
+		\multicolumn{2}{|l|}{N = nodes of G}\\
+		&\\
+		\multicolumn{2}{|l|}{\textbf{for all} $ i,j,k $ in N:}\\
+		\multicolumn{2}{|l|}{\quad\textbf{if} $ k $ \textbf{not in} $ adj(i,G) $ \textbf{and} $ j $ \textbf{in} $sepSet( i,k)$:}\\
+		\multicolumn{2}{|l|}{\quad\quad orient $ i-j-k $ as $ i\rightarrow j \leftarrow k $ }\\
+		\multicolumn{2}{|l|}{\quad\textbf{end if}}\\
+		\multicolumn{2}{|l|}{\textbf{end for}}\\
+		&\\
+		
+		\multicolumn{2}{|l|}{\textbf{for all} i in N and j in adj(i,G):}\\
+		\multicolumn{2}{|l|}{\quad \textbf{for all} $T \subseteq PossibleDSep(i,G)\setminus \{i,j\}$:}\\
+		\multicolumn{2}{|l|}{\quad\quad \textbf{if} $i \independent j | T$:}\\
+		\multicolumn{2}{|l|}{\quad\quad \quad remove edge i,j from G}\\
+		\multicolumn{2}{|l|}{\quad\quad \quad $sepSet(i,j) = T$}\\	
+		\multicolumn{2}{|l|}{\quad\quad \quad $sepSet(j,i) = T$}\\
+		\multicolumn{2}{|l|}{\quad\quad \quad break}\\
+		\multicolumn{2}{|l|}{\quad\quad\textbf{end if}}\\
+		\multicolumn{2}{|l|}{\quad\textbf{end for}}\\
+		\multicolumn{2}{|l|}{\quad \textbf{for all} $T \subseteq PossibleDSep(j,G)\setminus \{i,j\}$:}\\
+		\multicolumn{2}{|l|}{\quad\quad \textbf{if} $i \independent j | T$:}\\
+		\multicolumn{2}{|l|}{\quad\quad \quad remove edge i,j from G}\\
+		\multicolumn{2}{|l|}{\quad\quad \quad $sepSet(i,j) = T$}\\	
+		\multicolumn{2}{|l|}{\quad\quad \quad $sepSet(j,i) = T$}\\
+		\multicolumn{2}{|l|}{\quad\quad \quad break}\\
+		\multicolumn{2}{|l|}{\quad\quad\textbf{end if}}\\
+		\multicolumn{2}{|l|}{\quad\textbf{end for}}\\
+		\multicolumn{2}{|l|}{\textbf{end for}}\\	
+		&\\
+		\multicolumn{2}{|l|}{set all edges in G to o-o}\\
+		&\\
+		\multicolumn{2}{|l|}{\textbf{while} no more edges can be oriented:}\\
+		\multicolumn{2}{|l|}{\quad\textbf{for all} $ i,j,k $ in N:}\\
+		\multicolumn{2}{|l|}{\quad\quad\textbf{if} $ k $ \textbf{not in} $ adj(i,G) $:}\\
+		\multicolumn{2}{|l|}{\quad\quad\quad orient $ i\rightarrow j-k $ as $ i\rightarrow j \rightarrow k $ }\\
+		\multicolumn{2}{|l|}{\quad\quad\textbf{end if}}\\
+		\multicolumn{2}{|l|}{\quad\quad\textbf{if} $ directedpath(i,j)$ \textbf{in} $G $:}\\
+		\multicolumn{2}{|l|}{\quad\quad\quad orient $ i- j $ as $ i\rightarrow j $ }\\
+		\multicolumn{2}{|l|}{\quad\quad\textbf{end if}}\\
+		
+		\multicolumn{2}{|l|}{\quad\textbf{end for}}\\
+		\multicolumn{2}{|l|}{\textbf{end while}}\\
+		&\\
+		\multicolumn{2}{|l|}{\textbf{return} G}\\
+		\hline 
+	\end{tabular}
+\end{table}
 
 \subsection{RFCI Algorithm}
 Like the other two algorithms the RFCI begins by estimating the skeleton of the final graph.
