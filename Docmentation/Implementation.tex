@@ -30,8 +30,16 @@ The scipy chi2 function was then used to calculate the chi2 statistic and p-valu
 \subsubsection{Variables to be tested}
 With this function the skeleton can be found. A fully connected networkx Graph is generated and then edges between nodes that show conditional independence are removed. 
 
-First unconditional independence tests are performed between each pair of variables and edges removed between those that are found to be independent. The conditional tests based on variables adjacent to the first variable with size of the set increasing by one after all tests have been performed. When first implemented, the algorithm tested $X \independent Y | Z$ and $Y \independent X | Z$, this is inefficient as many tests are repeated. It is however not enough to simply test $X \independent Y | Z$ as the value of $Z$ is dependent on first variable. To avoid repeated tests, the test performed were stored and only performed if they did not exist in the store.\\
+First unconditional independence tests are performed between each pair of variables and edges removed between those that are found to be independent. The conditional tests based on variables adjacent to the first variable with size of the set increasing by one after all tests have been performed. The algorithm tests $X \independent Y | Z$ and $Y \independent X | Z$, this may seem inefficient as it appears that tests are being repeated. However, the members of the set $Z$ are dependent on the first variable in the statement. This means that the tests must all be performed.\\
 
+To find the conditioning sets, the combinations function from the python library itertools was used to find all subsets of $adj(x,G)\ y$ of a certain size.\\
+
+\subsubsection{Order dependence}
+The members of set the conditioning set $ Z $ for the test $X \independent Y|Z$ depend on the tests performed before it. This is due to $Z$ consisting of nodes adjacent $X$, however the set of odes adjacent to $X$ changes as edges are removed.\\
+
+In the R implementation an order independent version has been developed. When the size of conditioning sets is incremented, the conditioning sets for all pairs of variables  are calculated and stored. However the original order dependent version can still be used.\\
+
+\subsubsection{Separation sets}
 Edge orientation requires the separation set of each pair of variables. This was stored as a dictionary of all pairs of edges and simply updated with a conditioning set if that set was found to condition independence between the pair.\\
 
 Since all of the algorithms learn a skeleton, the function is a method of the GraphLearner class which is the parent class of the other algorithm classes. The function returns a networkx Graph containing the estimated edges of the skeleton and a dictionary containing the separation set of each pair of variables.\\
@@ -103,6 +111,16 @@ In the prexisiting R implementation the second approach of overwriting edges was
 
 Finally the other orientatian rules described in the algorithm were followed, these were easy to implement using the networkx graphs as they consisted of testing for undirected and directed edges, then orienting based on those tests. This was repeated until no more edges were oriented, this completed the algorithm
 
+\subsubsection{FCI Algorithm}
+
+The FCI algorithm was able to use exactly the same code and first round v-structure orientation of the pc algorithm. However after this code unique to the fci algorithm must be developed.\\
+
+First the final skeleton of the graph must be found. This is done by performing more independence tests, conditioned on the possible d-separating sets of the variables. Finding these sets was made simple by a networkx function to find paths between nodes on a graph.\\
+
+For the rest of the algorithm the network is a PAG. The data structure used for the PAG was a subclass of the networkx undirected graph. In this graph the direction of an edge was determined by tags stored in a dictionary associated with that edge. This allowed all edge types of a PAG to be stored.\\ 
+
+
+
 
 \subsubsection{Testing}
 
@@ -110,17 +128,19 @@ To ensure that the algorithm was behaving as intended all parts must be thorough
 
 For the chi squared independence test a sanity check consisting of testing whether a variable was independent of itself was used. Obviously the test will result in a p-value of 0 so was very easy to to test. This test was repeated in the case of a conditioning set of size 1 and size 2 to ensure this did not affect functionality.\\
 
-Next a pre-existing test from r was used to find results on realistic data. This data was tested with the python implementation and the results compared. Data from the alarm\_10000 dataset was used. Many tests with different variables and conditioning sets were performed.\\
+Next a pre-existing test from r was used to find results on real data. This data was tested with the python implementation and the results compared. Data from the alarm\_10000 and the sia\_1000 datasets were used. Many tests with different variables and conditioning sets were performed.\\
 
 To test the skeleton estimation again the R implementation was used. However, the R version does not use a chi squared test, a wrapper needed to be written to make it compatible with the R skeleton function. With this, skeletons could be generated from data in the same way in python and R and the results compared. The separation sets were also recorded and compared.\\
 
 Testing the edge orientation for the PC algorithm first started with small sanity checks. For example the collider orientation was tested on networks with 3 nodes and two edges and simple separation sets.\\
 
-The path checking needed for the pc algorithm was also 
-tested on small networks where paths were linear and some with many branches. It was also tested on a few negative examples.\\
+The path checking needed for the pc algorithm was also  tested on small networks where paths were linear and some with many branches. It was also tested on a few negative examples.\\
 
-Finally a skeleton and separation set generated from the alarms data was oriented in both R and python to test the whole edge orientation process as a whole.\\
+Finally a skeleton and separation set generated from the alarms data was oriented in both R and python to test the whole edge orientation process as a whole. However due to the order dependence of the edge orientation the implementations produced slightly different results for the same graphs\\
 
-With all of these components working the whole algorithm was compared in both implementations.\\
+This meant that to test the edge orientation section of the pc algorithm, graphs had to be manually oriented using the algorithm and then compared to those estimated by the software.\\
+
+
+\subsection{Final Structure}
 
 \end{document}

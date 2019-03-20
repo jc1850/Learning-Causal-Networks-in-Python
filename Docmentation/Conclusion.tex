@@ -1,0 +1,16 @@
+\documentclass{article}
+
+\setlength{\parindent}{0pt}
+\usepackage{cite}
+\usepackage{tikz}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\begin{document}
+\section{Conclusion}
+\subsection{Further Work}
+The most obvious extension to this project would be to implement the FCI algorithm described in the literature review.\\
+
+Another improvement would be to increase the speeed of the conditional independence tests. One approach could be to implement the independence test in C and interface with it using Cython. C programs are much faster than those written in python so there would almost definitely be an improvement.\\
+
+Other independence tests could also be written. These tests could be for the same kind of data as the $\chi^2$ or it could be a test for other data for example continuous data.\\
+\end{document}

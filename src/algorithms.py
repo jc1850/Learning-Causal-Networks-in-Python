@@ -5,7 +5,7 @@ from graphs import PDAG
 
 class GraphLearner(object):
 
-    def __init__(self, data, indep_test,  alpha = 0.99):
+    def __init__(self, data, indep_test,  alpha = 0.05):
         # TODO: Validate values 
         self.alpha = alpha
         self.data = data
@@ -53,21 +53,20 @@ class GraphLearner(object):
                     if y in graph.neighbors(x):
                         # Generate the conditioning sets needed for independence tests
                         condSets = self.gen_cond_sets(x,y,graph,condsize)
-                        if len(condSets) == 0:
-                            break
-                        condlen += len(condSets) 
-                        # Test for independence with each conditioning set
-                        for condset in condSets:
-                            print('testing {} indep {} given {}'.format(x,y,condset))
-                            p, *_ = self.indep_test(self.data, x, y, condset) 
-                            indep = p > self.alpha
-                            #stop testing if independence is found and remove edge
-                            if indep:
-                                print('removing edge {},{}'.format(x,y))
-                                graph.remove_edge(x,y)
-                                sepset[(x,y)] = condset
-                                sepset[(y,x)] = condset
-                                break
+                        if not len(condSets) == 0:                           
+                            condlen += len(condSets) 
+                            # Test for independence with each conditioning set
+                            for condset in condSets:
+                                print('testing {} indep {} given {}'.format(x,y,condset))
+                                p, *_ = self.indep_test(self.data, x, y, condset) 
+                                indep = p > self.alpha
+                                #stop testing if independence is found and remove edge
+                                if indep:
+                                    print('removing edge {},{}, with certainty {}'.format(x,y,p))
+                                    graph.remove_edge(x,y)
+                                    sepset[(x,y)] = condset
+                                    sepset[(y,x)] = condset
+                                    break
             condsize += 1      
         return graph, sepset
 
@@ -97,10 +96,7 @@ class GraphLearner(object):
         # Get all neighbors of x in g
         adjy = g.neighbors(x)
         # Remove y from neighbour list
-        adj = []
-        for node in adjy:
-            if node != y:
-                adj.append(node)
+        adj = [node for node in adjy if node!= y]
         # Generate all unique combinations of len size
         combos = itertools.combinations(adj, size)
         # Convert to list
@@ -164,9 +160,13 @@ class GraphLearner(object):
                         if i != k and j != k:
                             if skeleton.has_edge(i,k) and skeleton.has_edge(k,j) and not skeleton.has_edge(i,j) and k not in sepset[(i,j)]:
                                 directed.add_edge(j,k)
+                                if directed.has_edge(k,j):
+                                    directed.remove_edge(k,j)
                                 if undirected.has_edge(j,k):
                                     undirected.remove_edge(j,k)
                                 directed.add_edge(i,k)
+                                if directed.has_edge(k,i):
+                                    directed.remove_edge(k,i)
                                 if undirected.has_edge(i,k):
                                     undirected.remove_edge(i,k)
                             

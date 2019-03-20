@@ -6,6 +6,7 @@
 \usepackage{enumerate}
 \usepackage{tikz}
 \usepackage{multirow}
+\usepackage{longtable}
 \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
 
@@ -19,11 +20,17 @@
 
 \newpage
 
+
+\section{Introduction}
+The aim of this report is to detail the implementation of various algorithms to learn causal networks in python.These algorithms have already been implemented in the statistical programming environment R. However, recently python has become more widely used in the field of statistical computation.\\
+
+Python offers a number of advantages over R. Python is much more widely used in general than R so an implementation in python would be accessible to a wider array of developers.Python is also used in a variety of settings as it is a general purpose programming language. This would allow the software implementation to be integrated into many different systems, written in python, with relative ease.\\
+
 \section{Literature Review}
 
 \subsection{Causal Networks}
 
-Causal Networks are graphical models which represent a set of variables, their conditional dependencies, and their causal relationships\cite{verma1990causal} as a Directed Acyclic Graph (DAG) or a Maximal Ancestral Graph (MAG). The nodes of the Graph represent the variables and the edges represent causality, the direction of the edge represents the direction of causality with parent nodes causing child nodes\cite{verma1990causal}. 
+Causal Networks are graphical models which represent a set of variables, their conditional dependencies, and their causal relationships\cite{verma1990causal} as a Directed Acyclic Graph (DAG) or a Maximal Ancestral Graph (MAG). The nodes of the Graph represent the variables. The edges of the graph represent causality, the direction of the edge represents the direction of causality with parent nodes causing child nodes\cite{verma1990causal}. 
 \\
 
 In a DAG all edges have a single direction, whereas in a MAG edges may be directed or bidirectional \cite{zhang2008causal}.
@@ -60,14 +67,14 @@ Figure 2 A MAG with 3 nodes and 2 edges
 \end{center}
 
 
-The learning of causal networks allows relationships between variables to be uncovered and presented in a simple and human readable fashion.
+The learning of causal networks allows relationships between variables to be uncovered and presented in a simple and human readable fashion. This can provide useful information for further data analysis as the set of variables that cause another could be used to predict it's value.
 \\
 
 \subsection{Probability and Independence}
-In probability theory we can quantify our confidence in a particular event E occurring. This confidence, denoted as P(E) is a real number between 1 and 0 with 1 representing a certainty and 0 representing an impossibility.
+In probability theory we can quantify our confidence in a particular event $ E $ occurring. This confidence, denoted as $ P(E) $ is a real number between 1 and 0. $  P(E) = 1 $ representing a certainty and $  P(E) = 0 $ representing $E$ being impossible.
 \\
 
-In the case of random variables an event would be a variable $X$ taking a particular value $x_1$, where $x_1$ is a member of the set $x = \{x_1, x_2, ..., x_n\}$ of possible values $X$ can take. The probability of this event is denoted as $P(X=x_1)$.
+In the case of random variables an event would be a variable $X$ taking a particular value $x_i$, where $x_i$ is a member of the set $x = \{x_1, x_2, ..., x_n\}$ of possible values $X$ can take. The probability of this event is denoted as $P(X=x_i)$.
 \\
 
 The probability distribution $P(X=x)$ or simply $P(X)$ defines the probabilities for every value which $X$ can take. 
@@ -76,13 +83,16 @@ The probability distribution $P(X=x)$ or simply $P(X)$ defines the probabilities
 Distributions of more than one variable can be described with joint distributions. For Variables $X$ and $Y$ the distribution $P(X,Y)$  describes the probability of both $X$ and $Y$ taking particular values simultaneously. 
 \\
 
-Joint distributions can also describe how the value of one variable can effect the value of an other. $P(X|Y)$ describes the probabilities of $X$ taking particular values ''given'' a value that $Y$ has taken. $P(X|Y) = P(X,Y)/P(Y)$.
+Joint distributions can also describe how the value of one variable can effect the value of an other. $P(X|Y)$ describes the probabilities of $X$ taking particular values ''given'' a value that $Y$ has taken. $P(X|Y)$ is defined as $P(X,Y)/P(Y)$.
 \\
 
 If two variables are independent there is no correlation between the values they take. That is for two variables $X$ and $Y$, the distribution $P(X|Y)$ would be the same for all values of $Y$. Therefore $P(X|Y) = P(X)$. If two variables are independent we can determine that there is no causal relationship between them.\\
 
-Two variables $X$ and $Y$ can be considered independent conditioned on a third variable $Z$ if there is no correlation between $X$ and $Y$ for particular values of $Z$.\\
+Given the definition $P(X|Y) = P(X,Y)/P(Y)$ and $P(X|Y) = P(X)$ when $X$ and $Y$ are independent, it easy to see that $P(X,Y) = P(X)P(Y) $ if $X$ and $Y$ are independent.\\
 
+Two variables $X$ and $Y$ can be considered independent conditioned on a third variable $Z$ if there is no correlation between $X$ and $Y$ for given the value of	 $Z$.\\
+
+In this case $P(X|Y,Z) = P(X|Z)$, as the value of $Y$ has no impact on the value of $X$. The definition of conditional distributions shows $P(X|Y,Z) = \frac{P(X,Y,Z)}{P(Y,Z)}$, and $P(Y,Z) = P(Y|Z)P(Z)$. Using theses definitions and basic algebra $P(X,Y|Z) = P(X|Z)P(Y|Z)$ can be shown when $X$ and $Y$ are conditionally independent on $Z$.
 
 \subsection{D Separation}
 
@@ -103,7 +113,7 @@ A path is any sequence of adjacent edges regardless of their directionality. A c
 Figure 3 A graph containing a collider
 \end{center}
 
-If every path between nodes X and Y traverses a collider, nodes X and Y are unconditionally d-separated or d-separated conditioned on the empty set \cite{pearl2003causality}. Two unconditionally d-separated nodes in a causal network are considered to be independent\cite{pearl2009}.
+If every path between nodes $ X $ and $ Y $ traverses a collider, nodes $ X $ and $ Y $ are unconditionally d-separated or d-separated conditioned on the empty set \cite{pearl2003causality}. Two unconditionally d-separated nodes in a causal network are considered to be independent\cite{pearl2009}.
 \\
 \begin{center}
 \begin{tikzpicture}[shorten >=1pt,->]
@@ -144,21 +154,21 @@ Figure 5
 
 Two nodes X and Y are d-separated conditioned on set Z if:
 \begin{enumerate}
-	\item There exists no unblocked path from X to Y that does not traverse any members of Z.\cite{pearl2003causality}
-	\item There is no blocked path from X to Y in which all colliders are members of Z or have descendants in Z.\cite{pearl2003causality}
+	\item There exists no unblocked path from $ X $ to $ Y $ that does not traverse any members of $ Z $.\cite{pearl2003causality}
+	\item There is no blocked path from $ X $ to Y in which all colliders are members of $ Z $ or have descendants in $ Z $. \cite{pearl2003causality}
 \end{enumerate} 
 
-Causal networks represent conditional independence with d-separation, variables X and Y are conditionally independent on set Z if nodes X and Y are d-separated by nodes in set Z\cite{verma1990causal}.
+Causal networks represent conditional independence with d-separation, variables X and Y are conditionally independent on set Z if nodes X and Y are d-separated conditioned on nodes in set Z\cite{verma1990causal}.
 \\
 
 \subsection{Faithfulness}
 
 
-By testing for d-separation of variables X and Y given conditioning set Z on a graph we can see if $X \independent Y | Z$ \cite{pearl2009}. However, the reverse is only true if the distribution is faithful to the graph. That is, if a distribution is faithful to a graph then all indpendence relationships are represented on the graph and only these relationships are present \cite{scheines1997introduction}. Assuming faithfulness allows the topology of a graph to be learned by testing pairs of variables for independence given various conditioning sets.
+By testing for d-separation of variables X and Y given conditioning set Z on a graph we can see if $X \independent Y | Z$ \cite{pearl2009}. However, the reverse is only true if the distribution is faithful to the graph. That is, if a distribution is faithful to a graph then all independence relationships are represented on the graph and only these relationships are present \cite{scheines1997introduction}. Assuming faithfulness allows the topology of a graph to be learned by testing pairs of variables for independence given various conditioning sets.
 \\
 
 \subsection{Discriminating paths}
-For the FCI and RFCI algorithms the notion of discriminating paths is needed. A path $\pi$ = (A, .., X,Y,Z) is discriminating if:
+For the FCI and RFCI algorithms the notion of discriminating paths is needed. A path $\pi$ = (A, .., X,Y,Z) is discriminating a discriminating path for Y if:
 \\
 
 \begin{enumerate}
@@ -166,6 +176,25 @@ For the FCI and RFCI algorithms the notion of discriminating paths is needed. A 
 \item Y is a non-endpoint on $\pi$ and is adjacent to Z on $\pi$.
 \item A is not adjacent to Z and every other node is a collider on $\pi$ and a parent of Z. \cite{colombo2012learning} 
 \end{enumerate}
+
+\begin{center}
+	\begin{tikzpicture}[shorten >=1pt,->]
+	\tikzstyle{vertex}=[circle, draw=black!60, minimum size=12pt]
+	\node[vertex] (G_1) at (0,0) {A};
+	\node[vertex] (G_2) at (1,0)   {X};
+	\node[vertex] (G_3) at (3,0)  {Y};
+	\node[vertex] (G_4) at (2,1)  {Z};
+	\draw [->] (G_1) -- (G_2);
+	\draw [<-] (G_2) -- (G_3);
+	\draw [->] (G_2) -- (G_4);
+	\draw [->] (G_3) -- (G_4);
+	\end{tikzpicture}
+\end{center}
+
+\begin{center}
+	Figure 6 \\
+	(A,X,Y,Z) is a discriminating path on Y
+\end{center}
 
 \subsection{Tests for Independence}
 When trying to find causal relations between variables tests for independence and conditional independence must be performed. These tests allow us to find correlation between variables and also find out if the correlation between two variables is actually caused by another.\\
@@ -205,6 +234,17 @@ The $\chi^2$ statistic can then be calculated with:
 	$\chi^2 = \sum\frac{(p(X)p(Y)-p(X,Y))^2}{p(X)p(Y)}$
 \end{center}
 
+The $\chi^2$ value can then be passed to a cumulative density function and a p-value returned. The function used is dependent upon the degrees of freedom. The degrees of freedom are equal to the $(no. rows -1)*(no. columns -1)$. The p-value represents how likely it is that the two variables are independent.\\
+
+The test is similar for conditional independence. The $chi^2$ statistic now depends on conditional distributions. If $X \independent Y | Z$ $p(X,Y|Z) = p(X|Z)p(Y|Z)$. Therefore:\\
+
+\begin{center}
+	$\chi^2 = \sum\frac{(p(X|Z)p(Y|Z)-p(X,Y|Z))^2}{p(X|Z)p(Y|Z)}$
+\end{center}
+
+These values can all be found by calculating a contingency table for $X,Y and Z$.\\
+
+This statistic can then be used in the same way as before to calculate a p-value. However, the degrees of freedom are multiplied by the possible values of Z -1. 
 
 \subsection{Algorithms For Learning Causal Networks}
 \subsubsection{Constraint Based Methods}
@@ -224,22 +264,18 @@ The above algorithms are all constraint based. There is another class of algorit
 
    
 \subsection{Computing a skeleton}
-All three algorithms begin by calculating the skeleton of the graph. The skeleton consists of the edges that are present in the partial DAG or PAG however all edges are undirected. When calculating the skeleton the separation set of each pair of variables is recorded \cite{colombo2012learning, spirtes1991algorithm}.
+All three algorithms begin by calculating the skeleton of the graph. The skeleton consists of the edges that are present in the partial DAG or PAG however all edges are undirected. The separation set of two variables ($sepSet(x,y)$) contains the smallest set of variables that the pair are conditionally independent on.  When calculating the skeleton the separation set of each pair of variables is also recorded as it is needed to orient the edges of the graph\cite{colombo2012learning, spirtes1991algorithm}.
 \\
 
-The skeleton is calculated using a series of conditional independence tests. These conditional independence tests are dependent on the type of input data, therefore conditional independence tests can be defined independently of the algorithm.
+The skeleton is calculated using a series of conditional independence tests. These conditional independence tests are dependent on the type of input data, therefore conditional independence tests can be defined independently of the algorithm. The conditional independence tests must be able to determine if two variables are indpendent based on some set of other variables from data.
 \\
 
 To begin the skeleton computation the fully connected undirected graph of all variables is constructed and then conditional independence tests are performed to determine which edges to remove.
 \\
 
-For the first round of tests, the conditioning set is the empty set Each pair of adjacent variables is tested for independence using some predefined test. For variables X and Y if $X \independent Y$, then the edge X-Y is removed and the empty set is recorded as the separation set (X,Y).
-\\
+Adjacent pairs of variables are tested for independence conditioned upon set of variables adjacent to them. The size of these sets starts at 0 but is incremented after all adjacent pairs have been tested. This repeats until there are not enough adjacent variables to fill the conditioning set.\\
 
-Once all edges have been tested the size of the conditioning set, k, is increased by 1. Now each remaining pair of adjacent variables X and Y are tested for independence given the conditioning set Z. Z is each subset of adj($X$)$\setminus \{Y\}$ of size 1. If any test shows $X \independent Y | Z$ remove the edge X-Y and record Z as the separation set of the pair (X,Y) 
-\\
-
-This process is repeated with k being incremented after all edges X-Y have been tested conditioned upon all subsets Z of adj($X$)$\setminus \{Y\}$ of size k. It halts when there are no sets Z of size k for any edge. The edges which have not been removed form the skeleton of the graph which is needed for the PC, FCI and RFCI algorithms along with the recorded separation sets of removed edges \cite{colombo2012learning, spirtes1991algorithm}.
+ The edges which have not been removed form the skeleton of the graph which is needed for the PC, FCI and RFCI algorithms along with the recorded separation sets of removed edges \cite{colombo2012learning, spirtes1991algorithm}.
 \\
 
 \begin{table}[h!]
@@ -281,7 +317,7 @@ After generating the skeleton and separation sets of pairs of nodes, the pc algo
 It begins by searching for colliders. For each triple of vertices A, B, and C where A and B are adjacent, B and C are adjacent, but A and C are not adjacent orient the edges A-B-C to A$\rightarrow$B$\leftarrow$C if B is not in the separation set of the pair (A,C).
 \\
 
-Once colliders are specified other edges can be oriented. This is done by repeating two steps until no more edges can be given a direction:
+Once colliders are specified other edges can be oriented. This is done by repeating two steps until no more edges can be given a direction. The algorithm for edge orientation is described in.\\
 \\
 
 \begin{table}[h!]
@@ -318,25 +354,24 @@ Once colliders are specified other edges can be oriented. This is done by repeat
 	\end{tabular}
 \end{table}
 
-\begin{enumerate}[i]
-  \item If there is is a directed edge from A to B, there is an undirected edge from B to C, and no edge from A to C, orient edge B-C as B$\rightarrow$C.
-  \item If there is a directed path from node A to node B and an edge A-B orient the edge as A$\rightarrow$B\cite{spirtes1991algorithm}. 
-\end{enumerate}
 
 
 \subsection{The FCI algorithm}
 
-The FCI algorithm starts in the same way as the PC algorithm using exactly the process of conditional independence tests to estimate a skeleton of the final graph. A list of unshielded triples M must also be found. Unshielded triples are 3 nodes, A, B and C where A and B are adjacent, B and C are adjacent, but A and C are not adjacent. In this skeleton however undirected edges are represented as "o-o". Due to the presence of latent variables this may not be the final skeleton of the graph. It also orients the colliders in a similar way to the pc algorithm, going through all unshielded triples (A,B,C) and orienting the edges $A*-oBo-*C$ as $A*->B<-*C$ if B is not in the seperating set of the pair (A,C).
+The FCI algorithm starts in the same way as the PC algorithm using exactly the process of conditional independence tests to estimate a skeleton of the final graph. It also orients colliders in the same way, producing a PDAG.
 \\
 
-Next, the final skeleton of the graph is obtained. To do this we must be able to find the possible d-separation set in the graph of a pair of variables X and Y. This set consists of all nodes Z which are colliders on some path $\pi$ between X and Y and on every subpath of $\pi$ (A,B,C) B is a collider or (A,B,C) is a triangle in the graph.
+Next, the final skeleton of the graph is obtained from the PDAG G. To do this The possible d-separators of every variable must be found in G. For variable X, the possible d separators set in nG ($PossibleDSep(X,G)$) consists of all variables Y for which there is some path $\pi = path(X,Y)$ in G, such that in every sub path $A,B,C$, $B$ is a collider or $A,B,C$ form a triangle. All adjacent variables ($X,Y$) are the tested for conditional independence, conditioned on every subset of each of the possible d separators set. If the test finds conditional independence the edge $X,Y$ is removed and the conditioning set recorded as a separation set. 
 \\
 
-Once the final skeleton has been estimated, repeat the step to orient collider edges on the new skeleton. Finally the edges can be oriented using the rules ($R1-R10$) found in \cite{ZHANG20081873}.\cite{colombo2012learning}
-\\
+The PDAG can then be converted to a PAG by setting all edges to $o-o$.\\
 
-\begin{table}[h!]
-	\begin{tabular}{|l l|}
+Next the colliders must be reoriented. This is done on a similar way however now edges can be bi-directional.\\
+
+Once the final skeleton has been estimated, A series of orientation rules can be performed repeatedly until no more orientations can be found. Theses rules are described in.\\
+
+
+	\begin{longtable}{|l l|}
 		\hline
 		\multicolumn{2}{|l|}{FCI Algorithm to Orient Edges}\\ 
 		\hline
@@ -372,24 +407,49 @@ Once the final skeleton has been estimated, repeat the step to orient collider e
 		\multicolumn{2}{|l|}{\quad\textbf{end for}}\\
 		\multicolumn{2}{|l|}{\textbf{end for}}\\	
 		&\\
+		
 		\multicolumn{2}{|l|}{set all edges in G to o-o}\\
 		&\\
-		\multicolumn{2}{|l|}{\textbf{while} no more edges can be oriented:}\\
-		\multicolumn{2}{|l|}{\quad\textbf{for all} $ i,j,k $ in N:}\\
-		\multicolumn{2}{|l|}{\quad\quad\textbf{if} $ k $ \textbf{not in} $ adj(i,G) $:}\\
-		\multicolumn{2}{|l|}{\quad\quad\quad orient $ i\rightarrow j-k $ as $ i\rightarrow j \rightarrow k $ }\\
-		\multicolumn{2}{|l|}{\quad\quad\textbf{end if}}\\
-		\multicolumn{2}{|l|}{\quad\quad\textbf{if} $ directedpath(i,j)$ \textbf{in} $G $:}\\
-		\multicolumn{2}{|l|}{\quad\quad\quad orient $ i- j $ as $ i\rightarrow j $ }\\
-		\multicolumn{2}{|l|}{\quad\quad\textbf{end if}}\\
+		\multicolumn{2}{|l|}{\textbf{for all} $ i,j,k $ in N:}\\
+		\multicolumn{2}{|l|}{\quad\textbf{if} $ k $ \textbf{not in} $ adj(i,G) $ \textbf{and} $ j $ \textbf{in} $sepSet( i,k)$:}\\
+		\multicolumn{2}{|l|}{\quad\quad orient $ i*-*j*-*k $ as $ i*\rightarrow j \leftarrow *k $ }\\
+		\multicolumn{2}{|l|}{\quad\textbf{end if}}\\
+		\multicolumn{2}{|l|}{\textbf{end for}}\\
+		&\\
 		
+		\multicolumn{2}{|l|}{\textbf{while} no more edges can be oriented:}\\
+		\multicolumn{2}{|l|}{\quad\textbf{for all} $ i,j,k,l $ in N:}\\
+		\multicolumn{2}{|l|}{\quad\quad\textbf{if} $ directedpath(i,j)$ \textbf{in} $G $:}\\
+		\multicolumn{2}{|l|}{\quad\quad\quad orient $ i*-*j $ as $ i*\rightarrow j $ }\\
+		
+		\multicolumn{2}{|l|}{\quad\quad\textbf{else if} $i*\rightarrow j *-* k$ in G: }\\
+		
+		\multicolumn{2}{|l|}{\quad\quad\quad orient $i*\rightarrow j *-* k$ as $i*\rightarrow j \rightarrow k$}\\
+		
+		\multicolumn{2}{|l|}{\quad\quad\textbf{else if} $i*\rightarrow j \leftarrow * k$ in G \textbf{and} $l \in adj(j,G)$ \textbf{and} $k \notin adj(i)$: }\\
+		
+		\multicolumn{2}{|l|}{\quad\quad\quad orient $j *-* l$ as $j \leftarrow *l$}\\
+		
+		\multicolumn{2}{|l|}{\quad\quad\textbf{else if} $i\leftarrow* j$ \textbf{in} G \textbf{and} $i\rightarrow k$ \textbf{in} G \textbf{and} $k o-* j$ \textbf{in} G: }\\
+		
+		\multicolumn{2}{|l|}{\quad\quad\quad orient $k o-* j$ as $k \leftarrow* j$}\\
+		
+		\multicolumn{2}{|l|}{\quad\quad\textbf{else if} $l \in adj(j,DiscPath(i,j,k))$ \textbf{and} i,l,k form a triangle in G:}\\
+		
+		\multicolumn{2}{|l|}{\quad\quad\quad \textbf{if} $k \notin sepset(i,j)$:}\\
+		
+		\multicolumn{2}{|l|}{\quad\quad\quad\quad orient $l *-* k *-*j$ as $l *\rightarrow k \leftarrow * j$}\\
+		
+		\multicolumn{2}{|l|}{\quad\quad\quad \textbf{else}: }\\
+		\multicolumn{2}{|l|}{\quad\quad\quad\quad mark $k$ as non-collider on path $(l,k,j)$ }\\
+		\multicolumn{2}{|l|}{\quad\quad\quad \textbf{end if}: }\\
+		\multicolumn{2}{|l|}{\quad\quad \textbf{end if}: }\\
 		\multicolumn{2}{|l|}{\quad\textbf{end for}}\\
 		\multicolumn{2}{|l|}{\textbf{end while}}\\
 		&\\
 		\multicolumn{2}{|l|}{\textbf{return} G}\\
 		\hline 
-	\end{tabular}
-\end{table}
+	\end{longtable}
 
 \subsection{RFCI Algorithm}
 Like the other two algorithms the RFCI begins by estimating the skeleton of the final graph.
@@ -399,9 +459,9 @@ Next the colliders in the graph are found, this is done differently than in the 
 \\
 
 \begin{enumerate}[i]
-	\item $A \independent$ $B$ $|$ $((sepset(A,B) \setminus \{C\})\cup S)$
-	\item $B \independent$ $C$ $|$ $((sepset(A,B) \setminus \{C\})\cup S)$\end{enumerate}
-where sepset(X,Y) is the separating set of Nodes X and Y and S is the set of selection variables. If both of these tests hold, add to list L. If only the first test holds, find the minimal separating set of A and B and record it as the separating set of A and B. Next, remove the edge A-B, add any newly create unshielded triples to M, and remove any destroyed triples from L and M. If only the second test passes do the same as above but for nodes B and C.
+	\item $A \independent$ $B$ $|$ $((sepset(A,B) \setminus \{C\}))$
+	\item $B \independent$ $C$ $|$ $((sepset(A,B) \setminus \{C\}))$\end{enumerate}
+where sepset(X,Y) is the separating set of Nodes X and Y. If both of these tests hold, add to list L. If only the first test holds, find the minimal separating set of A and B and record it as the separating set of A and B. Next, remove the edge A-B, add any newly create unshielded triples to M, and remove any destroyed triples from L and M. If only the second test passes do the same as above but for nodes B and C.
 \\
 
 Finally the edges must be oriented. To begin edge orientation apply rules $R1-R3$ found in \cite{ZHANG20081873}. Next triangles (X,Y,Z) must be found with edges $Yo-*Z$, $X<-*Y$, and $X-->Z$. Once a triangle is found the shortest discriminating path from X to Z must be found.

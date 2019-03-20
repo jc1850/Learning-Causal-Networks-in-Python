@@ -86,6 +86,14 @@ def chi(data, X,Y,Z):
                 for x in xvalues:
                     observed.append(cont[z][y][x])
                     expected.append(max(ygz[z][y] * xgz[z][x] * ztotal[z],0.000000000001))
-        freedom = len(xvalues) * len(yvalues) * len(zvalues) - ((len(xvalues) - 1) * (len(yvalues) - 1) * (len(xvalues) - 1)) -1
+        zlength = 1
+        for i in range(len(zvalues[0][:-1].split(','))):
+            values = []
+            for value in zvalues:
+                if value.split(',')[i] not in values:
+                    values.append(value.split(',')[i])
+            zlength *= len(values)
+
+        freedom = len(observed) - ((len(yvalues) - 1) * (len(xvalues) - 1) * zlength)-1
         chisq, p =  scipy.stats.chisquare(observed, f_exp=expected, ddof=freedom)
         return p, chisq
