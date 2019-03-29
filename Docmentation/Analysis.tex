@@ -7,8 +7,23 @@
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
 \begin{document}
 \section{Analysis}
-\subsection{Run Speed}
+Analysis of this project will mainly consist of comparison to th implementation fo the algorithms in R. It will compare the functionality of the algorithms on data and also the run speed of the code.\\
+
 \subsection{Skeleton Generation}
+The skeleton generation code has almost identical functionality as the R implementation. Even the order in which edges are tested is the same. However the R implementation has a non-order dependent mode which is not currently implemented in the python version however could be added as an option in the future.\\
+
+The Alarm\_1000, Asia\_1000, and Diabetes\_1000 datasets found in  all produce identical skeletons as seen in Figure \_.\\
+
+The $\chi^2$ test for independence was not implemented in the pcalg library in R. Other independence test for discrete data, such ad the $G^2$ test, were implemented. However, the bnlearn library has an implementation of the $\chi^2$ test to use for comparison.\\
+
+Both tests return identical results on all tested data as seen in Table \_.
 \subsection{PC Algorithm Edge Alignment}
 \subsection{FCI Algorithm Edge Alignment}
+\subsection{Run Speed}
+\subsubsection{Algorithms}
+\subsection{Skeleton Generation}
+\subsubsection{Independence Tests}
+The independence test was the main bottleneck of the algorithms, and was significantly slower than the R implementation. This is because the R implementation actually runs C code behind the scenes, c code is compiled rather than interpreted like python and R. This makes the code much faster.\\
+ 
+However the independence test in the algoirthm is a parameter and thus the current slow test could be replaced by a faster version which calls C code like the R implementation.\\ 
 \end{document}

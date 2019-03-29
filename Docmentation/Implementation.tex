@@ -3,8 +3,12 @@
 \setlength{\parindent}{0pt}
 \usepackage{cite}
 \usepackage{tikz}
+\usepackage{pgflibraryarrows}
 \newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+
+
 \begin{document}
 \section{Implementation}
 \subsection{Skeleton}
@@ -136,11 +140,90 @@ Testing the edge orientation for the PC algorithm first started with small sanit
 
 The path checking needed for the pc algorithm was also  tested on small networks where paths were linear and some with many branches. It was also tested on a few negative examples.\\
 
-Finally a skeleton and separation set generated from the alarms data was oriented in both R and python to test the whole edge orientation process as a whole. However due to the order dependence of the edge orientation the implementations produced slightly different results for the same graphs\\
+Finally a skeleton and separation set generated from the alarms data was oriented in both R and python to test the whole edge orientation process as a whole. However due to the order dependence of the edge orientation the implementations produced slightly different results for the same graphs.\\
 
 This meant that to test the edge orientation section of the pc algorithm, graphs had to be manually oriented using the algorithm and then compared to those estimated by the software.\\
 
+Testing for the FCI algorithm was done in a similar way, however there are many more rules in the FCI algorithm for edge orientation, 10 compared to just 2. To ensure every rule functioned correctly tests were prepared for each rule.\\
+
 
 \subsection{Final Structure}
+The final implementation consisted of four main components. The$\chi^2$ test for independence, the skeleton estimation, PC edge orientation, and FCI edge orientation.\\
+
+\subsubsection{Independence Test}
+The $\chi^2$ test was a stand-alone function that can take a data frame along with the names of variables to be tested and a conditioning set. it returns a the $\chi^2$ statistic and a p-value from the test. The p-value represents the probability that the variables are not dependent conditioned on the conditioning set, if this statistic is high enough the variables can be considered independent.
+
+\subsubsection{Graph Learners}
+Each algorithm is implemented as a class, the base class of all algorithms is the graph leaner class. These class takes data and an independence test and learn a graph.\\
+
+The base class implements the skeleton learning that all the algorithms use. It can also find and orient colliders on that skeleton. Finally, it has a static method to prepare data, this reads data from a file into a dataframe which can be used by the other methods.\\
+
+The PC algorithm and the FCI algorithms were implemented as subclasses of the Graph learner. The PC algorithm only needed to implement the edge orientation step to complete the algorithm.\\
+
+The FCI algorithm had to both implement edge orientation and extend the skeleton estimation of the graph learner.\\
+
+
+\subsubsection{Graphs}  
+Two new graph classes were implemented, the PDAG and the PAG. The PDAG is a fairly simple extension of networkx's built in Directed graph class in which undirected edges are merely stored as bidirected edges, in PDAGS there are no bidirected edges so ther will be no confusions between bidirected and undirected edges.\\
+
+This implementation is simple but fairly powerful. Most built in networkkx functions will work in a reasonable manner. For example, the has\_edge function will be direction dependent on directed edges but not on undirected edges. Path finding algorithms will also work assuming undiected edges can be tarversed in either direction.\\
+
+\begin{center}
+	\begin{tikzpicture}[shorten >=1pt,->]
+	\tikzstyle{vertex}=[circle, draw=black!60, minimum size=12pt]
+	\node[vertex] (G_1) at (-1,-1) {1};
+	\node[vertex] (G_2) at (0,0)   {2};
+	\node[vertex] (G_3) at (1,-1)  {3};
+	\node[vertex] (G_4) at (0,-2)  {4};
+	\draw [->] (G_1) -- (G_2);
+	\draw [<-] (G_2) -- (G_3);
+	\draw [-] (G_3) -- (G_4);
+	\end{tikzpicture}
+	\quad\quad
+	\begin{tikzpicture}[shorten >=1pt,->]
+	\tikzstyle{vertex}=[circle, draw=black!60, minimum size=12pt]
+	\node[vertex] (G_1) at (-1,-1) {1};
+	\node[vertex] (G_2) at (0,0)   {2};
+	\node[vertex] (G_3) at (1,-1)  {3};
+	\node[vertex] (G_4) at (0,-2)  {4};
+	\draw [->] (G_1) -- (G_2);
+	\draw [<-] (G_2) -- (G_3);
+	\draw [<-] (G_3) -- (G_4);
+	\draw [->] (G_3) -- (G_4);
+	\end{tikzpicture}
+\end{center}
+
+The PAG was more complex to implement due to the increased complexity of the graph. The PAG class is an extension of the undirected graph from networkx. All information about the tags, and therefore the directionality of the edges is stored in an attribute associated with particular edge. The attribute is a dictionary with keys being the nodes at each end of the edge and the values being the tag at that end of the edge.\\
+
+This implementation meant that mayn new methods needed to be added and many existing methods modified. For example, when adding a new edge the tags of the edge needed to be assigned. methods for testing if edges were directed from u to v (had an arrow head into v) or fully directed from u to v (tail at u, arrowhead at v) were created and used during the FCI algorithm.\\
+
+The built in methods for finding paths did however still work with this implementation which was very useful for edge orientation.\\
+
+Currently viewing the graph as a whole is tricky, the built in functions for displaying graphs can not display the edge tags. It may be possible to use the display edge labels function to show the tags as a label on the graph.\\
+
+\begin{center}
+	\begin{tikzpicture}[shorten >=1pt,->]
+	\tikzstyle{vertex}=[circle, draw=black!60, minimum size=12pt]
+	\node[vertex] (G_1) at (-1,-1) {1};
+	\node[vertex] (G_2) at (1,1)   {2};
+	\node[vertex] (G_3) at (3,-1)  {3};
+	\node[vertex] (G_4) at (1,-3)  {4};
+	\draw [o->] (G_1) -- (G_2);
+	\draw [<-] (G_2) -- (G_3);
+	\draw [o-o] (G_3) -- (G_4);
+	\end{tikzpicture}
+\end{center}
+\begin{center}	
+	\begin{tikzpicture}[shorten >=1pt,->]
+	\tikzstyle{vertex}=[circle, draw=black!60, minimum size=12pt]
+	\node[vertex] (G_1) at (-1,-1) {1};
+	\node[vertex] (G_2) at (1,1)   {2};
+	\node[vertex] (G_3) at (3,-1)  {3};
+	\node[vertex] (G_4) at (1,-3)  {4};
+	\draw [-] (G_1) -- node[sloped, above]{\{1: 'o', 2: '$>$'\}} (G_2) ;
+	\draw [-] (G_2) -- node[sloped, above]{\{2: '$>$', 3: '-'\}} (G_3);
+	\draw [-] (G_3) -- node[sloped, above]{\{3: 'o', 4: 'o'\}} (G_4);
+	\end{tikzpicture}
+\end{center}
 
 \end{document}

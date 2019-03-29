@@ -4,6 +4,9 @@ from pandas import DataFrame
 from graphs import PDAG
 
 class GraphLearner(object):
+    """
+
+    """
 
     def __init__(self, data, indep_test,  alpha = 0.05):
         # TODO: Validate values 
@@ -14,20 +17,12 @@ class GraphLearner(object):
     def learnSkeleton(self):
         """ A  function to build the skeleton of a causal graph from data
         
-        Parameters
-        ----------
-            data : pandas.DataFrame, 
-                The data from which the causal graph is learned, 
-            indep_test : function
-                A function which will determine if two variables are 
-                independent in data based on a conditioning set
-            alpha : float, optional
-                The minimum p-value returned by the indepence test
-                for the data to be considered independent
         Returns
         -------
             networkx.Graph
                 The skeleton of the causal network
+            dict
+                Dicitonary containg separation sets of all pairs of nodes
         """ 
         
         # Find variable labels
@@ -72,7 +67,7 @@ class GraphLearner(object):
 
     def gen_cond_sets(self, x,y, g, size):
         """ A  function to build the set of conditioning sets to be for variables x and y
-        on graph g of a certain size when generting a skeleton
+        on graph g of a certain size when generating a skeleton
         
         Parameters
         ----------
@@ -108,6 +103,10 @@ class GraphLearner(object):
 
     @staticmethod
     def prepare_data(data_file, delim = ' ', isLabeled = False, ):
+        """
+
+        """
+
         with open(data_file, 'r') as f:
             if isLabeled:
                 labels = f.readline().replace('\n','').split(delim)
@@ -125,6 +124,10 @@ class GraphLearner(object):
 
     @staticmethod
     def findPath( x,y, directed, explored):
+        """
+
+        """
+
         explored.append(x)
         neigh = []
         for n in directed.successors(x):

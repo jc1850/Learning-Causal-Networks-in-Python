@@ -1,6 +1,8 @@
 import networkx as nx  
 import unittest
 import matplotlib.pyplot as plt
+import sys
+sys.path.append('../src')
 from pc import PCAlg
 from indepTests import chi
 from graphs import PDAG, PAG
@@ -8,7 +10,7 @@ from fci import FCIAlg
 
 class ChiSquareTests(unittest.TestCase):
     def setUp(self):
-        self.data = PCAlg.prepare_data('alarm_10000.dat', ' ', True)
+        self.data = PCAlg.prepare_data('../data/alarm_10000.dat', ' ', True)
 
     
     def test1(self):
@@ -38,29 +40,29 @@ class ChiSquareTests(unittest.TestCase):
         assert(round(h,3)== 3.862)
     
     def test7(self):
-        self.data = PCAlg.prepare_data('asia_1000.data', ' ', True)
+        self.data = PCAlg.prepare_data('../data/asia_1000.data', ' ', True)
         p, h = chi(self.data, 'asia', 'tub', [])
         assert(round(h,3)== 34.496)
 
     def test8(self):
-        self.data = PCAlg.prepare_data('asia_1000.data', ' ', True)
+        self.data = PCAlg.prepare_data('../data/asia_1000.data', ' ', True)
         p, h = chi(self.data, 'asia', 'tub', ['smoke'])
         assert(round(h,3)== 37.322)
 
     def test9(self):
-        self.data = PCAlg.prepare_data('asia_1000.data', ' ', True)
+        self.data = PCAlg.prepare_data('../data/asia_1000.data', ' ', True)
         p, h = chi(self.data, 'asia', 'tub', ['smoke', 'lung'])
         assert(round(h,3)== 36.997)
 
     def test10(self):
-        self.data = PCAlg.prepare_data('asia_1000.data', ' ', True)
+        self.data = PCAlg.prepare_data('../data/asia_1000.data', ' ', True)
         p, h = chi(self.data, 'either', 'tub', ['bronc', 'xray'])
         assert(round(h,3)== 991)
 
 class SkeletonTests(unittest.TestCase):
     
     def setUp(self):
-        self.data = PCAlg.prepare_data('asia_1000.data', ' ', True)
+        self.data = PCAlg.prepare_data('../data/asia_1000.data', ' ', True)
         self.pcalg = PCAlg(self.data, chi)
         self.skeleton = nx.Graph()
         
@@ -192,13 +194,16 @@ class DiscPathTest(unittest.TestCase):
         self.pag.fully_direct_edge(3,4)
         assert(not self.pag.hasDiscPath(1,4,3))
     
-    def test4(self):
+    def test5(self):
         self.pag.add_edges_from([[1,2],[2,3],[3,4],[2,4]])
         self.pag.fully_direct_edge(1,2)
         self.pag.fully_direct_edge(3,2)
         self.pag.fully_direct_edge(3,4)
         self.pag.fully_direct_edge(1,4)
         assert(not self.pag.hasDiscPath(1,4,3))
+    
+    class RulesTests(unittest.TestCase):
+        pass
 
 if __name__ == '__main__':
     unittest.main()

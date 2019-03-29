@@ -96,7 +96,30 @@ All software written was thoroughly documented. Every class, method and function
 
 NumPy style documentation was used. An example is shown in ---. This style was chosen because it gives a useful summary of the functionality of a piece of code. It also allows other developers to easily use the code by showing exactly what arguments are taken and exactly what will be returned by a function.\\
 
+\textit{ '''''' A  function to build the set of conditioning sets to be for variables x and y
+	on graph g of a certain size when generating a skeleton\\}
+	
+	\textit{Parameters\\
+$ 	---------- $\\
+	X : str, \\
+	One variable being tested for independence\\ 
+	Y : str\\
+	The other variable being tested for independence\\
+	graph : float, optional\\
+	The minimum p-value returned by the indepence test\\
+	for the data to be considered independent\\
+	size: int\\
+	the size of each conditioning set to be returned\\
+	Returns\\
+	$ ------- $\\
+	list of lists of strings\\
+	a list of conditioning sets to be tested\\}
+	''''''\\
+
+
 Inline comments were also used to clarify areas of code within methods or functions. These comments can allow a developer to quickly and easily understand the code for the purposes of extension or maintenance. 
+
+
 
 \subsection{Tools}
 A number of existing tools were used throughout the project to aid in development. 
@@ -122,6 +145,3 @@ This improvement could be one of many things. Obvious things like speed and meme
 
 Refactoring may however fail and render previously functional code nonfunctional. However, this is easily mitigated by string unittesting and version control. Unittesting allows a developer to see whether code that has been refactored still functions in the same way as old code, this will show if refactoring has been unsuccessful. In the case where refactoring fails a developer can either attempt to identify the non-functional area of code and repair/replace it or use the version control system to easily roll back to an existing functional version of the software. These two systems hugely mitigate the risks of refactoring.\\
 \end{document}
-
-
-\subsection{Style Guide}

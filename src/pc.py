@@ -5,7 +5,9 @@ from indepTests import chi
 
 
 class PCAlg(GraphLearner):
-    
+    """
+
+    """
     
     def orientEdges(self, skeleton, sepset):
         """ A method to orient the edges of a skeleton
@@ -45,10 +47,11 @@ class PCAlg(GraphLearner):
         pdag = self.pdag_union(directed, undirected)
         return pdag
     
-    
-    
-    
+        
     def learnGraph(self):
+        """
+
+        """
         print('Learning Skeleton of graph...')
         skeleton, sepset = self.learnSkeleton()
         print('...Skeleton learnt')
@@ -57,9 +60,4 @@ class PCAlg(GraphLearner):
         print('...Learning complete')
         return pdag
     
-if __name__ == '__main__':
-    data = PCAlg.prepare_data('alarm_10000.dat', isLabeled=True)
-    pc = PCAlg(data, chi, 0.05)
-    print(len([('KINKEDTUBE', 'PRESS'), ('INTUBATION', 'MINVOL'), ('INTUBATION', 'VENTLUNG'), ('INTUBATION', 'VENTALV'), ('MINVOL', 'EXPCO2'), ('MINVOL', 'VENTLUNG'), ('VENTMACH', 'VENTTUBE'), ('VENTMACH', 'MINVOLSET'), ('VENTTUBE', 'PRESS'), ('DISCONNECT', 'VENTTUBE'), ('VENTLUNG', 'EXPCO2'), ('VENTLUNG', 'INTUBATION'), ('VENTLUNG', 'VENTALV'), ('VENTLUNG', 'MINVOL'), ('SHUNT', 'SAO2'), ('SHUNT', 'PULMEMBOLUS'), ('VENTALV', 'PVSAT'), ('VENTALV', 'INTUBATION'), ('VENTALV', 'VENTLUNG'), ('VENTALV', 'ARTCO2'), ('PVSAT', 'SAO2'), ('FIO2', 'PVSAT'), ('ARTCO2', 'EXPCO2'), ('ARTCO2', 'CATECHOL'), ('ARTCO2', 'VENTALV'), ('CATECHOL', 'HRSAT'), ('CATECHOL', 'HR'), ('TPR', 'CATECHOL'), ('TPR', 'BP'), ('TPR', 'ANAPHYLAXIS'), ('HR', 'HREKG'), ('HR', 'HRSAT'), ('HR', 'CO'), ('HR', 'HRBP'),
-('CO', 'BP'), ('ERRCAUTER', 'HRSAT'), ('ERRCAUTER', 'HREKG'), ('HYPOVOLEMIA', 'LVEDVOLUME'), ('HYPOVOLEMIA', 'STROKEVOLUME'), ('LVEDVOLUME', 'CVP'), ('LVEDVOLUME', 'PCWP'), ('STROKEVOLUME', 'CO'), ('LVFAILURE', 'LVEDVOLUME'), ('LVFAILURE', 'STROKEVOLUME'), ('LVFAILURE', 'HISTORY'), ('CVP', 'PCWP'), ('PCWP', 'CVP'), ('ERRLOWOUTPUT', 'HRBP'), ('PULMEMBOLUS', 'PAP'), ('PULMEMBOLUS', 'SHUNT'), ('PAP', 'PULMEMBOLUS'), ('MINVOLSET', 'VENTMACH'), ('ANAPHYLAXIS', 'TPR'), ('HISTORY', 'LVFAILURE')]))
-
+#
