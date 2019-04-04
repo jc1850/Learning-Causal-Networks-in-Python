@@ -72,6 +72,19 @@ class PAG(nx.Graph):
         else:
             return False
 
+    def has_fully_undirected_edge(self, u,v):
+        """
+
+        """
+        if super().has_edge(u,v):
+            tags = super().get_edge_data(u,v)
+            if tags[u] == '-' and tags[v] == '-':
+                return True
+            else:
+                return False
+        else:
+            return False
+
     def add_edges_from(self, bunch):
         """
 
@@ -114,10 +127,9 @@ class PAG(nx.Graph):
 
         """
         all_paths = nx.all_simple_paths(self, u, v)
-        discpath = False
-        for path in all_paths:
+        for path in all_paths:             
             if b in path:
-                b_pred  = (path.index(v) - path.index(b)) == 1 and self.has_directed_edge(b,v)
+                b_pred  = (path.index(v) - path.index(b)) == 1 and self.has_edge(b,v)
                 all_colliders = True
                 for node in path[1:-1]:
                     prev = path[path.index(node)-1]
@@ -125,12 +137,13 @@ class PAG(nx.Graph):
                     if (node != b) and not ((self.has_directed_edge(prev,node)) and (self.has_directed_edge(suc,node))):
                         all_colliders = False
                 all_pred = True
-                for node in path[1:-1]:
-                    if not (self.has_fully_directed_edge(node, v)):
+                for node in path[1:-2]:
+                    if not (self.has_directed_edge(node, v)):
                         all_pred = False
                 nonadj = not self.has_edge(u,v)
-                discpath = discpath or (b_pred and all_colliders and all_pred and nonadj)
-        return discpath
+                if (b_pred and all_colliders and all_pred and nonadj):       
+                    return True
+        return False
 
     def findDiscPath(self,u,v,b):
         """
@@ -140,7 +153,7 @@ class PAG(nx.Graph):
         discpaths = []
         for path in all_paths:
             if b in path:
-                b_pred  = (path.index(v) - path.index(b)) == 1 and self.has_directed_edge(b,v)
+                b_pred  = (path.index(v) - path.index(b)) == 1 and self.has_edge(b,v)
                 all_colliders = True
                 for node in path[1:-1]:
                     prev = path[path.index(node)-1]
@@ -148,8 +161,8 @@ class PAG(nx.Graph):
                     if (node != b) and not ((self.has_directed_edge(prev,node)) and (self.has_directed_edge(suc,node))):
                         all_colliders = False
                 all_pred = True
-                for node in path[1:-1]:
-                    if not (self.has_fully_directed_edge(node, v)):
+                for node in path[1:-2]:
+                    if not (self.has_directed_edge(node, v)):
                         all_pred = False
                 nonadj = not self.has_edge(u,v)
                 if (b_pred and all_colliders and all_pred and nonadj):
@@ -177,6 +190,24 @@ class PAG(nx.Graph):
             node = path[x]
             suc = path[x+1]
             edge = self.get_edge_data(node,suc)
-            if (edge[suc] == '-' or edge[node] == '<'):
+            if (edge[suc] == '-' or edge[node] == '>'):
                 return False
         return True
+
+    def isCirclePath(self,path):
+        for i in range(len(path[:-1])):
+            node = path[i]
+            suc = path[i+1]
+            if not (self.has_o(node,suc,node) and self.has_o(suc,node,suc)):
+                return False
+        return True
+
+    
+    def findUncoveredCirclePaths(self,u,v):
+        paths = []
+        for path in nx.all_simple_paths(self, u,v):
+            if self.isUncovered(path) and self.isCirclePath(path):
+                paths.append(path)
+        return paths
+
+

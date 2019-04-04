@@ -4,6 +4,7 @@ from algorithms import GraphLearner
 import itertools
 from indepTests import chi
 import copy
+import sys
 
 class FCIAlg(GraphLearner):
     """
@@ -38,13 +39,14 @@ class FCIAlg(GraphLearner):
                             self.rule1(pag,i,j,k)
                             self.rule2(pag,i,j,k)
                             for l in pag:
-                                self.rule3(pag,i,j,k,l)
-                                self.rule4(pag,i,j,k,l, sepSet)
-                                self.rule5(pag,i,j,k,l)
-                                self.rule67(pag,i,j,k,l)
-                                self.rule8(pag,i,j,k,l)
-                                self.rule9(pag,i,j,k,l)
-                                self.rule10(pag,i,j,k,l)
+                                if l not in [i,j,k]:
+                                    self.rule3(pag,i,j,k,l)
+                                    self.rule4(pag,i,j,k,l, sepSet)
+                                    self.rule5(pag,i,j,k,l)
+                                    self.rule67(pag,i,j,k)
+                                    self.rule8(pag,i,j,k)
+                                    self.rule9(pag,i,j,k,l)
+                                    self.rule10(pag,i,j,k,l)
         return pag
 
     def learnSkeleton(self):
@@ -63,40 +65,29 @@ class FCIAlg(GraphLearner):
         directed = nx.DiGraph()
         directed.add_nodes_from(skeleton.nodes)
         undirected = skeleton.copy()
+        print('finalising skeleton')
         self.orient_V(undirected, directed, sepSet)
         pdag = self.pdag_union(directed, undirected)
         dseps = self.possible_d_seps(skeleton, pdag)
         for x in skeleton:
             for y in skeleton.neighbors(x):
-                for i in range(len(dseps[x])):
+                for i in range(1,len(dseps[x])):
+                    print(dseps)
                     for dsepset in itertools.combinations(dseps[x],i):
                         dsepset = list(dsepset)
                         if y in dsepset:
                             dsepset.remove(y)
-                        p, *_ = self.indep_test(self.data, x, y, dsepset)
-                        indep = p > self.alpha
-                        #stop testing if independence is found and remove edge
-                        if indep:
-                            print('removing edge {},{}'.format(x,y))
-                            skeleton.remove_edge(x,y)
-                            sepSet[(x,y)] = dsepset
-                            sepSet[(y,x)] = dsepset
-                            break
-                    if indep:
-                        break
-                    for dsepset in itertools.combinations(dseps[y],i):
-                        dsepset = list(dsepset)
-                        if x in dsepset:
-                            dsepset.remove(x)
-                        p, *_ = self.indep_test(self.data, x, y, dsepset)
-                        indep = p > self.alpha
-                        #stop testing if independence is found and remove edge
-                        if indep:
-                            print('removing edge {},{}'.format(x,y))
-                            skeleton.remove_edge(x,y)
-                            sepSet[(x,y)] = dsepset
-                            sepSet[(y,x)] = dsepset
-                            break
+                        if len(dsepset )>= 1:
+                            print('testing {} indep {} given {}'.format(x,y,dsepset) )
+                            p, *_ = self.indep_test(self.data, x, y, dsepset)
+                            indep = p > self.alpha
+                            #stop testing if independence is found and remove edge
+                            if indep:
+                                print('removing edge {},{}'.format(x,y))
+                                skeleton.remove_edge(x,y)
+                                sepSet[(x,y)] = dsepset
+                                sepSet[(y,x)] = dsepset
+                                break
                     if indep:
                         break
         return skeleton, sepSet
@@ -154,16 +145,16 @@ class FCIAlg(GraphLearner):
 
         """
         all_paths = nx.all_simple_paths(skeleton,X,Y)
-        d_sep = False
         for path in all_paths:
             path_sep = True
-            for i in range(1, len(path[1:])):
+            for i in range(1, len(path[:-1])):
                 collider = (pdag.has_directed_edge(path[i-1],path[i]) and pdag.has_directed_edge(path[i+1],path[i]))
                 triangle = (skeleton.has_edge(path[i-1],path[i]) and skeleton.has_edge(path[i+1],path[i]) and skeleton.has_edge(path[i-1],path[i+1]))
-                if not(collider) and not(triangle):
+                if not(collider or triangle):
                     path_sep = False
-            d_sep = d_sep or path_sep
-        return d_sep
+            if path_sep:
+                return True
+        return False
 
     @staticmethod
     def possible_d_seps(skeleton, pdag):
@@ -174,8 +165,9 @@ class FCIAlg(GraphLearner):
         for i in skeleton:
             dseps[i] = []
             for j in skeleton:
-                if FCIAlg.is_possible_d_sep(i,j,skeleton,pdag):
-                    dseps[i].append(j)
+                if i != j:
+                    if FCIAlg.is_possible_d_sep(i,j,skeleton,pdag):
+                        dseps[i].append(j)
         return dseps
     
     @staticmethod
@@ -214,49 +206,33 @@ class FCIAlg(GraphLearner):
 
     @staticmethod
     def rule4(pag,i,j,k,l, sepSet):
-        if pag.hasDiscPath(l,k,j):
-            paths = pag.findDiscPath(l,k,j)
-            for path in paths:
-                if i in path:
-                    if path.index(i) == len(path)-3 and  pag.has_o(j,k,j) :
-                        if j in sepSet(l,k):
-                            pag.fully_direct_edge(i,k)
-                        else:
-                            pag.direct_edge(i,j)
-                            pag.direct_edge(j,k)
-                            pag.direct_edge(j,i)
-                            pag.direct_edge(k,j)    
+        paths = pag.findDiscPath(l,k,j)
+        for path in paths:
+            if i in path:
+                if path.index(i) == len(path)-3 and  pag.has_o(j,k,j) :
+                    if j in sepSet[(l,k)]:
+                        pag.fully_direct_edge(j,k)
+                    else:
+                        pag.direct_edge(i,j)
+                        pag.direct_edge(j,k)
+                        pag.direct_edge(j,i)
+                        pag.direct_edge(k,j)    
     
     @staticmethod
     def rule5(pag,i,j,k,l):
-        for path in nx.all_simple_paths(pag, i,j):
-            uncovered_circle = True
-            for x in range(1,len(path)-1):
-                pred = path[x-1]
-                suc = path[x+1]
-                node = path[x]
-                if pag.has_edge(pred,suc):
-                    uncovered_circle = False
-                edge1_data = pag.get_edge_data(pred,node)
-                edge2_data = pag.get_edge_data(suc,node)
-                if not (edge1_data[node] == 'o' and edge1_data[pred] == 'o'):
-                    uncovered_circle = False
-                if not (edge2_data[node] == 'o' and edge2_data[suc] == 'o'):
-                    uncovered_circle = False
-            if uncovered_circle:
-                edge = pag.has_o(i,j,j) and pag.has_o(i,j,j)
-                on_path = False
-                if l in path and k in path:
-                    print(path.index(k))
-                    on_path = path.index(k) == 1 and path.index(l) == (len(path) - 2)
-                nonadj = not pag.has_edge(i,l) and not pag.has_edge(k,j)
-                if edge and on_path and nonadj:
-                    pag.undirect_edge(i,j)
-                    for x in range(len(path)-1):
-                        pag.undirect_edge(path[x], path[x+1])
+        for path in pag.findUncoveredCirclePaths(i,j):
+            edge = pag.has_o(i,j,j) and pag.has_o(i,j,j)
+            on_path = False
+            if l in path and k in path:
+                on_path = path.index(k) == 1 and path.index(l) == (len(path) - 2)
+            nonadj = not pag.has_edge(i,l) and not pag.has_edge(k,j)
+            if edge and on_path and nonadj:
+                pag.undirect_edge(i,j)
+                for x in range(len(path)-1):
+                    pag.undirect_edge(path[x], path[x+1])
     
     @staticmethod
-    def rule67(pag,i,j,k,l):
+    def rule67(pag,i,j,k):
         if pag.has_edge(i,j) and pag.has_edge(j,k):
             edge1 = pag.get_edge_data(i,j)
             edge2 = pag.get_edge_data(j,k)
@@ -267,7 +243,7 @@ class FCIAlg(GraphLearner):
 
     
     @staticmethod
-    def rule8(pag,i,j,k,l):
+    def rule8(pag,i,j,k):
         chain1 = pag.has_fully_directed_edge(i,j) and pag.has_directed_edge(j,k)#
         chain2 = False
         edge = False
@@ -282,7 +258,7 @@ class FCIAlg(GraphLearner):
         if pag.has_directed_edge(i,k) and pag.has_o(i,k,i):
             for path in nx.all_simple_paths(pag,i,k):
                 if pag.isUncovered(path) and pag.isPD(path):
-                    if path[1] == j and not pag.has_edge(j,k):
+                    if path[1] == j and path[2] == l and not pag.has_edge(j,k):
                         pag.fully_direct_edge(i,k)
                         break
 
@@ -302,7 +278,8 @@ class FCIAlg(GraphLearner):
 
 
 if __name__ == '__main__':
-    data = FCIAlg.prepare_data('asia_1000.data', isLabeled=True)
+    data_path = sys.argv[1]
+    data = FCIAlg.prepare_data(data_path, isLabeled=True)
     fci = FCIAlg(data, chi, 0.05)
     pag = fci.learnGraph()
     print(pag.edges)

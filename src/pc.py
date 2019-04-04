@@ -2,7 +2,7 @@ import networkx as nx
 from graphs import PDAG
 from algorithms import GraphLearner
 from indepTests import chi
-
+import sys
 
 class PCAlg(GraphLearner):
     """
@@ -60,4 +60,9 @@ class PCAlg(GraphLearner):
         print('...Learning complete')
         return pdag
     
-#
+if __name__ == '__main__':
+    data_path = sys.argv[1]
+    data = PCAlg.prepare_data(data_path, isLabeled=True)
+    pc = PCAlg(data, chi, 0.05)
+    pdag = pc.learnGraph()
+    print(pdag.edges)

@@ -144,7 +144,9 @@ Finally a skeleton and separation set generated from the alarms data was oriente
 
 This meant that to test the edge orientation section of the pc algorithm, graphs had to be manually oriented using the algorithm and then compared to those estimated by the software.\\
 
-Testing for the FCI algorithm was done in a similar way, however there are many more rules in the FCI algorithm for edge orientation, 10 compared to just 2. To ensure every rule functioned correctly tests were prepared for each rule.\\
+For the FCI algorithm, the first part of the skeleton estimation is the same as in the PC algorithm  which is confirmed to function correctly. However, the final skeleton estimation needs to be tested so comparison testing was done with the R implementation.\\
+
+Comparison of the edge orientation was performed, however due to the number of edge orientation rules it is likely that only some of them would be applied in a particular run. This means that to fully test  the rules they should be tested individually. So the rules were tested on graphs which should be oriented by the rule and that shouldn't be oriented by the rule. The graphs were then tested after rule had been applied to see if the rule functioned correctly.\\ 
 
 
 \subsection{Final Structure}
@@ -166,7 +168,7 @@ The FCI algorithm had to both implement edge orientation and extend the skeleton
 \subsubsection{Graphs}  
 Two new graph classes were implemented, the PDAG and the PAG. The PDAG is a fairly simple extension of networkx's built in Directed graph class in which undirected edges are merely stored as bidirected edges, in PDAGS there are no bidirected edges so ther will be no confusions between bidirected and undirected edges.\\
 
-This implementation is simple but fairly powerful. Most built in networkkx functions will work in a reasonable manner. For example, the has\_edge function will be direction dependent on directed edges but not on undirected edges. Path finding algorithms will also work assuming undiected edges can be tarversed in either direction.\\
+This implementation is simple but fairly powerful. Most built in networkkx functions will work in a reasonable manner. For example, the has\_edge function will be direction dependent on directed edges but not on undirected edges. Path finding algorithms will also work assuming undirected edges can be traversed in either direction.\\
 
 \begin{center}
 	\begin{tikzpicture}[shorten >=1pt,->]

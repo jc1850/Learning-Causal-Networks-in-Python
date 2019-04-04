@@ -1,0 +1,66 @@
+\contentsline {section}{\numberline {1}Introduction}{4}% 
+\contentsline {section}{\numberline {2}Literature Review}{4}% 
+\contentsline {subsection}{\numberline {2.1}Causal Networks}{4}% 
+\contentsline {subsection}{\numberline {2.2}Probability and Independence}{5}% 
+\contentsline {subsection}{\numberline {2.3}D Separation}{6}% 
+\contentsline {subsection}{\numberline {2.4}Faithfulness}{7}% 
+\contentsline {subsection}{\numberline {2.5}Discriminating paths}{7}% 
+\contentsline {subsection}{\numberline {2.6}Tests for Independence}{7}% 
+\contentsline {subsection}{\numberline {2.7}Algorithms For Learning Causal Networks}{8}% 
+\contentsline {subsubsection}{\numberline {2.7.1}Constraint Based Methods}{8}% 
+\contentsline {subsubsection}{\numberline {2.7.2}Score Based Methods}{9}% 
+\contentsline {subsection}{\numberline {2.8}Computing a skeleton}{9}% 
+\contentsline {subsection}{\numberline {2.9}The PC Algorithm}{10}% 
+\contentsline {subsection}{\numberline {2.10}The FCI algorithm}{11}% 
+\contentsline {subsection}{\numberline {2.11}RFCI Algorithm}{13}% 
+\contentsline {section}{\numberline {3}Design}{14}% 
+\contentsline {subsection}{\numberline {3.1}Methodology}{14}% 
+\contentsline {subsubsection}{\numberline {3.1.1}Waterfall}{14}% 
+\contentsline {subsubsection}{\numberline {3.1.2}Agile}{15}% 
+\contentsline {subsubsection}{\numberline {3.1.3}Spiral}{15}% 
+\contentsline {subsubsection}{\numberline {3.1.4}Chosen Approach}{15}% 
+\contentsline {subsection}{\numberline {3.2}Requirements}{16}% 
+\contentsline {subsubsection}{\numberline {3.2.1}Epics}{16}% 
+\contentsline {subsubsection}{\numberline {3.2.2}User Stories}{16}% 
+\contentsline {subsection}{\numberline {3.3}Sprints}{16}% 
+\contentsline {subsubsection}{\numberline {3.3.1}Tasks}{17}% 
+\contentsline {subsection}{\numberline {3.4}Architecture}{17}% 
+\contentsline {subsubsection}{\numberline {3.4.1}Unit Testing}{18}% 
+\contentsline {subsection}{\numberline {3.5}Documentation}{18}% 
+\contentsline {subsection}{\numberline {3.6}Tools}{19}% 
+\contentsline {subsubsection}{\numberline {3.6.1}Version Control}{19}% 
+\contentsline {subsubsection}{\numberline {3.6.2}Python Libraries}{19}% 
+\contentsline {subsection}{\numberline {3.7}Refactoring}{19}% 
+\contentsline {section}{\numberline {4}Implementation}{20}% 
+\contentsline {subsection}{\numberline {4.1}Skeleton}{20}% 
+\contentsline {subsubsection}{\numberline {4.1.1}Indpendence Test}{20}% 
+\contentsline {subsubsection}{\numberline {4.1.2}Variables to be tested}{21}% 
+\contentsline {subsubsection}{\numberline {4.1.3}Order dependence}{21}% 
+\contentsline {subsubsection}{\numberline {4.1.4}Separation sets}{21}% 
+\contentsline {subsection}{\numberline {4.2}PC edge orientation}{22}% 
+\contentsline {subsubsection}{\numberline {4.2.1}V-Structures}{22}% 
+\contentsline {subsubsection}{\numberline {4.2.2}FCI Algorithm}{23}% 
+\contentsline {subsubsection}{\numberline {4.2.3}Testing}{23}% 
+\contentsline {subsection}{\numberline {4.3}Final Structure}{25}% 
+\contentsline {subsubsection}{\numberline {4.3.1}Independence Test}{25}% 
+\contentsline {subsubsection}{\numberline {4.3.2}Graph Learners}{25}% 
+\contentsline {subsubsection}{\numberline {4.3.3}Graphs}{25}% 
+\contentsline {section}{\numberline {5}Analysis}{27}% 
+\contentsline {subsection}{\numberline {5.1}Initial Skeleton Generation}{27}% 
+\contentsline {subsection}{\numberline {5.2}PC Algorithm Edge Alignment}{28}% 
+\contentsline {subsubsection}{\numberline {5.2.1}Asia\_10000}{28}% 
+\contentsline {subsubsection}{\numberline {5.2.2}Diabetes\_1000}{28}% 
+\contentsline {subsubsection}{\numberline {5.2.3}Differences}{28}% 
+\contentsline {subsection}{\numberline {5.3}FCI Algorithm Final Skeleton}{29}% 
+\contentsline {subsection}{\numberline {5.4}FCI Algorithm Edge Alignment}{29}% 
+\contentsline {subsubsection}{\numberline {5.4.1}Asia\_10000}{29}% 
+\contentsline {subsubsection}{\numberline {5.4.2}Diabetes\_1000}{29}% 
+\contentsline {subsubsection}{\numberline {5.4.3}Differences}{29}% 
+\contentsline {subsection}{\numberline {5.5}Run Speed}{29}% 
+\contentsline {subsubsection}{\numberline {5.5.1}Method}{29}% 
+\contentsline {subsubsection}{\numberline {5.5.2}Measurements}{29}% 
+\contentsline {subsubsection}{\numberline {5.5.3}Algorithms}{29}% 
+\contentsline {subsection}{\numberline {5.6}Skeleton Generation}{29}% 
+\contentsline {subsubsection}{\numberline {5.6.1}Independence Tests}{29}% 
+\contentsline {section}{\numberline {6}Conclusion}{29}% 
+\contentsline {subsection}{\numberline {6.1}Further Work}{29}% 
