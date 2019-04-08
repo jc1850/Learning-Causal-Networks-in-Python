@@ -1,4 +1,5 @@
 import networkx as nx
+import numpy as np
 
 class PDAG(nx.DiGraph):
     """
@@ -25,6 +26,34 @@ class PDAG(nx.DiGraph):
 
         """
         return super().has_edge(u,v) and not super().has_edge(v,u)
+    
+    def to_matrix(self):
+        
+        labels = [node for node in self]
+        mat = np.zeros((len(labels), (len(labels))))
+        for x in labels:
+            for y in labels:
+                if self.has_edge(x,y):
+                    mat[labels.index(x)][labels.index(y)] = 1
+        return mat
+
+    def write_to_file(self, path):
+        mat = self.to_matrix()
+        labels = [node for node in self]
+        f = open(path, 'w')
+        for label in labels:
+            f.write(label)
+            f.write(' ')
+        f.write('\n')
+        for i in range(len(labels)):
+            f.write(labels[i])
+            f.write(' ')
+            for point in mat[i]:
+                f.write(str(int(point)))
+                f.write(' ')
+            f.write('\n')
+        f.close()
+
 
     
 class PAG(nx.Graph):
@@ -209,5 +238,37 @@ class PAG(nx.Graph):
             if self.isUncovered(path) and self.isCirclePath(path):
                 paths.append(path)
         return paths
+
+    def to_matrix(self):
+        symbol_map = {'o':1,'>':2,'-':3}
+        
+        labels = [node for node in self]
+        mat = np.zeros((len(labels), (len(labels))))
+        for x in labels:
+            for y in labels:
+                if self.has_edge(x,y):
+                    mat[labels.index(x)][labels.index(y)] = symbol_map[self.get_edge_data(x,y)[y]]
+        return mat
+    
+    def write_to_file(self, path):
+        mat = self.to_matrix()
+        labels = [node for node in self]
+        f = open(path, 'w')
+        for label in labels:
+            f.write(label)
+            f.write(' ')
+        f.write('\n')
+        for i in range(len(labels)):
+            f.write(labels[i]) 
+            f.write(' ')
+            for point in mat[i]:
+                f.write(str(int(point)))
+                f.write(' ')
+            f.write('\n')
+        f.close()
+
+
+
+
 
 

@@ -1,66 +1,122 @@
-\contentsline {section}{\numberline {1}Introduction}{4}% 
-\contentsline {section}{\numberline {2}Literature Review}{4}% 
-\contentsline {subsection}{\numberline {2.1}Causal Networks}{4}% 
-\contentsline {subsection}{\numberline {2.2}Probability and Independence}{5}% 
-\contentsline {subsection}{\numberline {2.3}D Separation}{6}% 
-\contentsline {subsection}{\numberline {2.4}Faithfulness}{7}% 
-\contentsline {subsection}{\numberline {2.5}Discriminating paths}{7}% 
-\contentsline {subsection}{\numberline {2.6}Tests for Independence}{7}% 
-\contentsline {subsection}{\numberline {2.7}Algorithms For Learning Causal Networks}{8}% 
-\contentsline {subsubsection}{\numberline {2.7.1}Constraint Based Methods}{8}% 
-\contentsline {subsubsection}{\numberline {2.7.2}Score Based Methods}{9}% 
-\contentsline {subsection}{\numberline {2.8}Computing a skeleton}{9}% 
-\contentsline {subsection}{\numberline {2.9}The PC Algorithm}{10}% 
-\contentsline {subsection}{\numberline {2.10}The FCI algorithm}{11}% 
-\contentsline {subsection}{\numberline {2.11}RFCI Algorithm}{13}% 
-\contentsline {section}{\numberline {3}Design}{14}% 
-\contentsline {subsection}{\numberline {3.1}Methodology}{14}% 
-\contentsline {subsubsection}{\numberline {3.1.1}Waterfall}{14}% 
-\contentsline {subsubsection}{\numberline {3.1.2}Agile}{15}% 
-\contentsline {subsubsection}{\numberline {3.1.3}Spiral}{15}% 
-\contentsline {subsubsection}{\numberline {3.1.4}Chosen Approach}{15}% 
-\contentsline {subsection}{\numberline {3.2}Requirements}{16}% 
-\contentsline {subsubsection}{\numberline {3.2.1}Epics}{16}% 
-\contentsline {subsubsection}{\numberline {3.2.2}User Stories}{16}% 
-\contentsline {subsection}{\numberline {3.3}Sprints}{16}% 
-\contentsline {subsubsection}{\numberline {3.3.1}Tasks}{17}% 
-\contentsline {subsection}{\numberline {3.4}Architecture}{17}% 
-\contentsline {subsubsection}{\numberline {3.4.1}Unit Testing}{18}% 
-\contentsline {subsection}{\numberline {3.5}Documentation}{18}% 
-\contentsline {subsection}{\numberline {3.6}Tools}{19}% 
-\contentsline {subsubsection}{\numberline {3.6.1}Version Control}{19}% 
-\contentsline {subsubsection}{\numberline {3.6.2}Python Libraries}{19}% 
-\contentsline {subsection}{\numberline {3.7}Refactoring}{19}% 
-\contentsline {section}{\numberline {4}Implementation}{20}% 
-\contentsline {subsection}{\numberline {4.1}Skeleton}{20}% 
-\contentsline {subsubsection}{\numberline {4.1.1}Indpendence Test}{20}% 
-\contentsline {subsubsection}{\numberline {4.1.2}Variables to be tested}{21}% 
-\contentsline {subsubsection}{\numberline {4.1.3}Order dependence}{21}% 
-\contentsline {subsubsection}{\numberline {4.1.4}Separation sets}{21}% 
-\contentsline {subsection}{\numberline {4.2}PC edge orientation}{22}% 
-\contentsline {subsubsection}{\numberline {4.2.1}V-Structures}{22}% 
-\contentsline {subsubsection}{\numberline {4.2.2}FCI Algorithm}{23}% 
-\contentsline {subsubsection}{\numberline {4.2.3}Testing}{23}% 
-\contentsline {subsection}{\numberline {4.3}Final Structure}{25}% 
-\contentsline {subsubsection}{\numberline {4.3.1}Independence Test}{25}% 
-\contentsline {subsubsection}{\numberline {4.3.2}Graph Learners}{25}% 
-\contentsline {subsubsection}{\numberline {4.3.3}Graphs}{25}% 
-\contentsline {section}{\numberline {5}Analysis}{27}% 
-\contentsline {subsection}{\numberline {5.1}Initial Skeleton Generation}{27}% 
-\contentsline {subsection}{\numberline {5.2}PC Algorithm Edge Alignment}{28}% 
-\contentsline {subsubsection}{\numberline {5.2.1}Asia\_10000}{28}% 
-\contentsline {subsubsection}{\numberline {5.2.2}Diabetes\_1000}{28}% 
-\contentsline {subsubsection}{\numberline {5.2.3}Differences}{28}% 
-\contentsline {subsection}{\numberline {5.3}FCI Algorithm Final Skeleton}{29}% 
-\contentsline {subsection}{\numberline {5.4}FCI Algorithm Edge Alignment}{29}% 
-\contentsline {subsubsection}{\numberline {5.4.1}Asia\_10000}{29}% 
-\contentsline {subsubsection}{\numberline {5.4.2}Diabetes\_1000}{29}% 
-\contentsline {subsubsection}{\numberline {5.4.3}Differences}{29}% 
-\contentsline {subsection}{\numberline {5.5}Run Speed}{29}% 
-\contentsline {subsubsection}{\numberline {5.5.1}Method}{29}% 
-\contentsline {subsubsection}{\numberline {5.5.2}Measurements}{29}% 
-\contentsline {subsubsection}{\numberline {5.5.3}Algorithms}{29}% 
-\contentsline {subsection}{\numberline {5.6}Skeleton Generation}{29}% 
-\contentsline {subsubsection}{\numberline {5.6.1}Independence Tests}{29}% 
-\contentsline {section}{\numberline {6}Conclusion}{29}% 
-\contentsline {subsection}{\numberline {6.1}Further Work}{29}% 
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {british}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\nonumberline Executive Summary}{vi}{chapter*.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Literature Review}{2}{chapter.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Causal Networks}{2}{section.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Probability and Independence}{2}{section.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}D Separation}{3}{section.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.4}Faithfulness}{5}{section.2.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.5}Discriminating paths}{5}{section.2.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.6}Possible D-Separation Set}{5}{section.2.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.7}Tests for Independence}{6}{section.2.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.7.1}Algorithms For Learning Causal Networks}{7}{subsection.2.7.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.7.2}Constraint Based Methods}{7}{subsection.2.7.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.7.3}Score Based Methods}{8}{subsection.2.7.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.8}Computing a skeleton}{8}{section.2.8}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.9}The PC Algorithm}{9}{section.2.9}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.10}The FCI algorithm}{10}{section.2.10}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.11}RFCI Algorithm}{11}{section.2.11}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Design}{14}{chapter.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Methodology}{14}{section.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.1}Waterfall}{14}{subsection.3.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.2}Agile}{14}{subsection.3.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.3}Spiral}{15}{subsection.3.1.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.4}Chosen Approach}{15}{subsection.3.1.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Requirements}{16}{section.3.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}Epics}{16}{subsection.3.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.2}User Stories}{16}{subsection.3.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Sprints}{16}{section.3.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.1}Tasks}{17}{subsection.3.3.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Architecture}{17}{section.3.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.4.1}Unit Testing}{18}{subsection.3.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.5}Documentation}{18}{section.3.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.6}Tools}{19}{section.3.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.6.1}Version Control}{19}{subsection.3.6.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.6.2}Python Libraries}{19}{subsection.3.6.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.7}Refactoring}{20}{section.3.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Implementation}{21}{chapter.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Skeleton}{21}{section.4.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.1}Indpendence Test}{21}{subsection.4.1.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.2}Variables to be tested}{22}{subsection.4.1.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.3}Order dependence}{22}{subsection.4.1.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.1.4}Separation sets}{22}{subsection.4.1.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}PC edge orientation}{23}{section.4.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.1}V-Structures}{23}{subsection.4.2.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.2}FCI Algorithm}{24}{subsection.4.2.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.3}Testing}{24}{subsection.4.2.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.4}Final Structure}{25}{subsection.4.2.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.5}Independence Test}{26}{subsection.4.2.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.6}Graph Learners}{26}{subsection.4.2.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.7}Graphs}{26}{subsection.4.2.7}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Usage}{28}{section.4.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Viewing Graphs}{28}{section.4.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Analysis}{30}{chapter.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Initial Skeleton Generation}{30}{section.5.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}PC Algorithm Edge Orientation}{30}{section.5.2}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.3}FCI Algorithm Final Skeleton}{31}{section.5.3}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.4}FCI Algorithm Edge Orientation}{32}{section.5.4}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.5}Run Speed}{32}{section.5.5}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Conclusion}{33}{chapter.6}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}Further Work}{33}{section.6.1}% 
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Some apendix}{34}{appendix.A}% 

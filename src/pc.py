@@ -66,3 +66,4 @@ if __name__ == '__main__':
     pc = PCAlg(data, chi, 0.05)
     pdag = pc.learnGraph()
     print(pdag.edges)
+    pdag.write_to_file('tmp')
