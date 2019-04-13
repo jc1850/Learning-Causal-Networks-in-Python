@@ -1,15 +1,17 @@
 [0] Config.pm:304> INFO - This is Biber 2.12
 [0] Config.pm:307> INFO - Logfile is 'Report.blg'
-[74] biber-MSWIN64:315> INFO - === 
-[179] Biber.pm:371> INFO - Reading 'Report.bcf'
-[266] Biber.pm:889> INFO - Found 8 citekeys in bib section 0
-[279] Biber.pm:4093> INFO - Processing section 0
-[340] Biber.pm:4254> INFO - Looking for bibtex format file 'Report.bib' for section 0
-[357] bibtex.pm:1523> INFO - LaTeX decoding ...
-[373] bibtex.pm:1340> INFO - Found BibTeX data source 'Report.bib'
-[419] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
-[419] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[420] Biber.pm:3921> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-GB'
-[420] Biber.pm:3927> INFO - No sort tailoring available for locale 'en-GB'
-[459] bbl.pm:636> INFO - Writing 'Report.bbl' with encoding 'UTF-8'
-[461] bbl.pm:739> INFO - Output to Report.bbl
+[30] biber-MSWIN64:315> INFO - === 
+[85] Biber.pm:371> INFO - Reading 'Report.bcf'
+[173] Biber.pm:889> INFO - Found 21 citekeys in bib section 0
+[186] Biber.pm:4093> INFO - Processing section 0
+[200] Biber.pm:4254> INFO - Looking for bibtex format file 'Report.bib' for section 0
+[214] bibtex.pm:1523> INFO - LaTeX decoding ...
+[252] bibtex.pm:1340> INFO - Found BibTeX data source 'Report.bib'
+[265] Utils.pm:193> WARN - month field 'Mar' in entry 'ogrady_2019' is not an integer - this will probably not sort properly.
+[374] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'variable = shifted' with 'variable = non-ignorable'
+[374] UCollate.pm:68> INFO - Overriding locale 'en-GB' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[374] Biber.pm:3921> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-GB'
+[374] Biber.pm:3927> INFO - No sort tailoring available for locale 'en-GB'
+[393] bbl.pm:636> INFO - Writing 'Report.bbl' with encoding 'UTF-8'
+[401] bbl.pm:739> INFO - Output to Report.bbl
+[405] Biber.pm:110> INFO - WARNINGS: 1

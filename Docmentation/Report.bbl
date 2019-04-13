@@ -19,6 +19,102 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
+    \entry{kalisch_hauser_maechler}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=df9a0e9859bb9965919cd59d2523022d}{%
+           family={Kalisch},
+           familyi={K\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=306794240c0c21f49e64540286ef1fda}{%
+           family={Hauser},
+           familyi={H\bibinitperiod},
+           given={Alain},
+           giveni={A\bibinitperiod}}}%
+        {{hash=0041cc0eb4aa28929ffbd059d5e4add5}{%
+           family={Maechler},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Comprehensive R Archive Network (CRAN)}%
+      }
+      \strng{namehash}{6e2149147e7d17f211def7d0e5cd65f9}
+      \strng{fullhash}{6e2149147e7d17f211def7d0e5cd65f9}
+      \strng{bibnamehash}{6e2149147e7d17f211def7d0e5cd65f9}
+      \strng{authorbibnamehash}{6e2149147e7d17f211def7d0e5cd65f9}
+      \strng{authornamehash}{6e2149147e7d17f211def7d0e5cd65f9}
+      \strng{authorfullhash}{6e2149147e7d17f211def7d0e5cd65f9}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Comprehensive R Archive Network}
+      \field{title}{Methods for Graphical Models and Causal Inference [R package pcalg version 2.6-0]}
+      \verb{urlraw}
+      \verb https://cran.r-project.org/web/packages/pcalg/index.html
+      \endverb
+      \verb{url}
+      \verb https://cran.r-project.org/web/packages/pcalg/index.html
+      \endverb
+    \endentry
+    \entry{piatetsky}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e103478863614965865b6b083d948f40}{%
+           family={Piatetsky},
+           familyi={P\bibinitperiod},
+           given={Gregory},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{e103478863614965865b6b083d948f40}
+      \strng{fullhash}{e103478863614965865b6b083d948f40}
+      \strng{bibnamehash}{e103478863614965865b6b083d948f40}
+      \strng{authorbibnamehash}{e103478863614965865b6b083d948f40}
+      \strng{authornamehash}{e103478863614965865b6b083d948f40}
+      \strng{authorfullhash}{e103478863614965865b6b083d948f40}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{KDnuggets Analytics Big Data Data Mining and Data Science}
+      \field{title}{KDnuggets}
+      \verb{urlraw}
+      \verb https://www.kdnuggets.com/2018/05/poll-tools-analytics-data-science-machine-learning-results.html
+      \endverb
+      \verb{url}
+      \verb https://www.kdnuggets.com/2018/05/poll-tools-analytics-data-science-machine-learning-results.html
+      \endverb
+    \endentry
+    \entry{ogrady_2019}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=12dfa4fd8508311b6d197502576434fe}{%
+           family={O'Grady},
+           familyi={O\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{12dfa4fd8508311b6d197502576434fe}
+      \strng{fullhash}{12dfa4fd8508311b6d197502576434fe}
+      \strng{bibnamehash}{12dfa4fd8508311b6d197502576434fe}
+      \strng{authorbibnamehash}{12dfa4fd8508311b6d197502576434fe}
+      \strng{authornamehash}{12dfa4fd8508311b6d197502576434fe}
+      \strng{authorfullhash}{12dfa4fd8508311b6d197502576434fe}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{tecosystems}
+      \field{month}{3}
+      \field{title}{The RedMonk Programming Language Rankings: January 2019}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://redmonk.com/sogrady/2019/03/20/language-rankings-1-19/
+      \endverb
+      \verb{url}
+      \verb https://redmonk.com/sogrady/2019/03/20/language-rankings-1-19/
+      \endverb
+    \endentry
     \entry{verma1990causal}{incollection}{}
       \name{author}{2}{}{%
         {{hash=2e06f78670eb35570c8e647e35752258}{%
@@ -41,8 +137,8 @@
       \strng{authorbibnamehash}{d6bfa96cdb6186a1452295c2e7176070}
       \strng{authornamehash}{d6bfa96cdb6186a1452295c2e7176070}
       \strng{authorfullhash}{d6bfa96cdb6186a1452295c2e7176070}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Machine Intelligence and Pattern Recognition}
@@ -67,8 +163,8 @@
       \strng{authornamehash}{00b06765d4d041da464652a126cfa7c1}
       \strng{authorfullhash}{00b06765d4d041da464652a126cfa7c1}
       \field{extraname}{1}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Machine Learning Research}
@@ -78,6 +174,33 @@
       \field{year}{2008}
       \field{pages}{1437\bibrangedash 1474}
       \range{pages}{38}
+    \endentry
+    \entry{barber_2012}{book}{}
+      \name{author}{1}{}{%
+        {{hash=9a97f74e5fb11fe785cbe0a83fc5276c}{%
+           family={Barber},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{9a97f74e5fb11fe785cbe0a83fc5276c}
+      \strng{fullhash}{9a97f74e5fb11fe785cbe0a83fc5276c}
+      \strng{bibnamehash}{9a97f74e5fb11fe785cbe0a83fc5276c}
+      \strng{authorbibnamehash}{9a97f74e5fb11fe785cbe0a83fc5276c}
+      \strng{authornamehash}{9a97f74e5fb11fe785cbe0a83fc5276c}
+      \strng{authorfullhash}{9a97f74e5fb11fe785cbe0a83fc5276c}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Bayesian Reasoning and Machine Learning}
+      \field{year}{2012}
+      \verb{doi}
+      \verb 10.1017/CBO9780511804779
+      \endverb
     \endentry
     \entry{pearl2003causality}{article}{}
       \name{author}{1}{}{%
@@ -94,8 +217,8 @@
       \strng{authornamehash}{809f695b398afbb54b544c49e8d1bbbb}
       \strng{authorfullhash}{809f695b398afbb54b544c49e8d1bbbb}
       \field{extraname}{1}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Econometric Theory}
@@ -125,8 +248,8 @@
       \strng{authornamehash}{809f695b398afbb54b544c49e8d1bbbb}
       \strng{authorfullhash}{809f695b398afbb54b544c49e8d1bbbb}
       \field{extraname}{2}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Statist. Surv.}
@@ -200,8 +323,9 @@
       \strng{authorbibnamehash}{0e42da14e178e2444a6ed09f14ec437d}
       \strng{authornamehash}{1716a3dca8d3cc0e64ec4faef0ef9597}
       \strng{authorfullhash}{0e42da14e178e2444a6ed09f14ec437d}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The Annals of Statistics}
@@ -209,6 +333,88 @@
       \field{year}{2012}
       \field{pages}{294\bibrangedash 321}
       \range{pages}{28}
+    \endentry
+    \entry{colombo2012learning2}{article}{}
+      \name{author}{4}{}{%
+        {{hash=e1fbe553ae8384b11ac51e5da7d67b1f}{%
+           family={Colombo},
+           familyi={C\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+        {{hash=8f905a89e7bf1cc9d54e6934783ebb3f}{%
+           family={Maathuis},
+           familyi={M\bibinitperiod},
+           given={Marloes\bibnamedelima H},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=df9a0e9859bb9965919cd59d2523022d}{%
+           family={Kalisch},
+           familyi={K\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=eabf99a26b5a1ac7dd40719ea6e697e2}{%
+           family={Richardson},
+           familyi={R\bibinitperiod},
+           given={Thomas\bibnamedelima S},
+           giveni={T\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JSTOR}%
+      }
+      \strng{namehash}{1716a3dca8d3cc0e64ec4faef0ef9597}
+      \strng{fullhash}{0e42da14e178e2444a6ed09f14ec437d}
+      \strng{bibnamehash}{0e42da14e178e2444a6ed09f14ec437d}
+      \strng{authorbibnamehash}{0e42da14e178e2444a6ed09f14ec437d}
+      \strng{authornamehash}{1716a3dca8d3cc0e64ec4faef0ef9597}
+      \strng{authorfullhash}{0e42da14e178e2444a6ed09f14ec437d}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Annals of Statistics}
+      \field{title}{). Supplement to “Learning high-dimensional directed acyclic graphs with latent and selection variables}
+      \field{year}{2012}
+    \endentry
+    \entry{Pearson}{article}{}
+      \name{author}{1}{}{%
+        {{hash=716c197f50c5e070b09b67f32636d3e7}{%
+           family={F.R.S.},
+           familyi={F\bibinitperiod},
+           given={Karl\bibnamedelima Pearson},
+           giveni={K\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor & Francis}%
+      }
+      \strng{namehash}{716c197f50c5e070b09b67f32636d3e7}
+      \strng{fullhash}{716c197f50c5e070b09b67f32636d3e7}
+      \strng{bibnamehash}{716c197f50c5e070b09b67f32636d3e7}
+      \strng{authorbibnamehash}{716c197f50c5e070b09b67f32636d3e7}
+      \strng{authornamehash}{716c197f50c5e070b09b67f32636d3e7}
+      \strng{authorfullhash}{716c197f50c5e070b09b67f32636d3e7}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science}
+      \field{number}{302}
+      \field{title}{X. On the criterion that a given system of deviations from the probable in the case of a correlated system of variables is such that it can be reasonably supposed to have arisen from random sampling}
+      \field{volume}{50}
+      \field{year}{1900}
+      \field{pages}{157\bibrangedash 175}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1080/14786440009463897
+      \endverb
+      \verb{eprint}
+      \verb https://doi.org/10.1080/14786440009463897
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1080/14786440009463897
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1080/14786440009463897
+      \endverb
     \endentry
     \entry{spirtes1991algorithm}{article}{}
       \name{author}{2}{}{%
@@ -232,8 +438,8 @@
       \strng{authorbibnamehash}{1a7a60fd207ba93151ece7d4c9929a8d}
       \strng{authornamehash}{1a7a60fd207ba93151ece7d4c9929a8d}
       \strng{authorfullhash}{1a7a60fd207ba93151ece7d4c9929a8d}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Social science computer review}
@@ -259,8 +465,8 @@
       \strng{authornamehash}{00b06765d4d041da464652a126cfa7c1}
       \strng{authorfullhash}{00b06765d4d041da464652a126cfa7c1}
       \field{extraname}{2}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{0004-3702}
@@ -281,6 +487,270 @@
       \verb http://www.sciencedirect.com/science/article/pii/S0004370208001008
       \endverb
       \keyw{Ancestral graphs,Automated causal discovery,Bayesian networks,Causal models,Markov equivalence,Latent variables}
+    \endentry
+    \entry{royce1987managing}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=541e173109dab443b9fc826b342e8e6f}{%
+           family={Royce},
+           familyi={R\bibinitperiod},
+           given={Winston\bibnamedelima W},
+           giveni={W\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE Computer Society Press}%
+      }
+      \strng{namehash}{541e173109dab443b9fc826b342e8e6f}
+      \strng{fullhash}{541e173109dab443b9fc826b342e8e6f}
+      \strng{bibnamehash}{541e173109dab443b9fc826b342e8e6f}
+      \strng{authorbibnamehash}{541e173109dab443b9fc826b342e8e6f}
+      \strng{authornamehash}{541e173109dab443b9fc826b342e8e6f}
+      \strng{authorfullhash}{541e173109dab443b9fc826b342e8e6f}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 9th international conference on Software Engineering}
+      \field{title}{Managing the development of large software systems: concepts and techniques}
+      \field{year}{1987}
+      \field{pages}{328\bibrangedash 338}
+      \range{pages}{11}
+    \endentry
+    \entry{beck2001agile}{misc}{}
+      \name{author}{17}{}{%
+        {{hash=c5dcbe71f60a8d55caa11fe1493614d0}{%
+           family={Beck},
+           familyi={B\bibinitperiod},
+           given={Kent},
+           giveni={K\bibinitperiod}}}%
+        {{hash=b081a82bcbc247aeb2a2ca9ae72f9566}{%
+           family={Beedle},
+           familyi={B\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a3d49db7c8b6de036095a80d96ee1461}{%
+           family={Bennekum},
+           familyi={B\bibinitperiod},
+           given={Arie},
+           giveni={A\bibinitperiod},
+           prefix={van},
+           prefixi={v\bibinitperiod}}}%
+        {{hash=c1e5acec4259bb4c17ca1a00866f32e1}{%
+           family={Cockburn},
+           familyi={C\bibinitperiod},
+           given={Alistair},
+           giveni={A\bibinitperiod}}}%
+        {{hash=dc98036d5d01f88b9fdd0b5ff2bc8a2d}{%
+           family={Cunningham},
+           familyi={C\bibinitperiod},
+           given={Ward},
+           giveni={W\bibinitperiod}}}%
+        {{hash=312ac886938a9b2be4f8eb607567fe4c}{%
+           family={Fowler},
+           familyi={F\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=61bdeb09cfbfab0465639014ab3b69be}{%
+           family={Grenning},
+           familyi={G\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+        {{hash=bae406ad0a87e2f65be045fff38c80ad}{%
+           family={Highsmith},
+           familyi={H\bibinitperiod},
+           given={Jim},
+           giveni={J\bibinitperiod}}}%
+        {{hash=10383d05f32f2a21518b493a3c546e5c}{%
+           family={Hunt},
+           familyi={H\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=3673ee61a410ba25401f2aeaf593748a}{%
+           family={Jeffries},
+           familyi={J\bibinitperiod},
+           given={Ron},
+           giveni={R\bibinitperiod}}}%
+        {{hash=0dd621758d63b6f0b80fb66db4c3f61e}{%
+           family={Kern},
+           familyi={K\bibinitperiod},
+           given={Jon},
+           giveni={J\bibinitperiod}}}%
+        {{hash=f520225da3039cab062eedb1e4ddc8d0}{%
+           family={Marick},
+           familyi={M\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod}}}%
+        {{hash=6f41df64eb0dc4855be70172368604c2}{%
+           family={Martin},
+           familyi={M\bibinitperiod},
+           given={Robert\bibnamedelima C.},
+           giveni={R\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=6ec958c6516fd90847b3266799d82f77}{%
+           family={Mellor},
+           familyi={M\bibinitperiod},
+           given={Steve},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ee6f08fcba839e09471a0bc69152b6a5}{%
+           family={Schwaber},
+           familyi={S\bibinitperiod},
+           given={Ken},
+           giveni={K\bibinitperiod}}}%
+        {{hash=6e3f26f6f816a26c6ab36bc7a899bcde}{%
+           family={Sutherland},
+           familyi={S\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod}}}%
+        {{hash=eb92fc3e1bc50392c9349cc38124af4c}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Dave},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{313c39d432f5bfc7cc4b41bada35a724}
+      \strng{fullhash}{6319ce73345b9ed5d04efa6747044498}
+      \strng{bibnamehash}{6319ce73345b9ed5d04efa6747044498}
+      \strng{authorbibnamehash}{6319ce73345b9ed5d04efa6747044498}
+      \strng{authornamehash}{313c39d432f5bfc7cc4b41bada35a724}
+      \strng{authorfullhash}{6319ce73345b9ed5d04efa6747044498}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Manifesto for Agile Software Development}
+      \field{title}{Manifesto for Agile Software Development}
+      \field{year}{2001}
+      \verb{urlraw}
+      \verb http://www.agilemanifesto.org/
+      \endverb
+      \verb{url}
+      \verb http://www.agilemanifesto.org/
+      \endverb
+      \keyw{imported}
+    \endentry
+    \entry{boehm1988spiral}{article}{}
+      \name{author}{1}{}{%
+        {{hash=30901c504c4e9f9f386b59986264609c}{%
+           family={Boehm},
+           familyi={B\bibinitperiod},
+           given={Barry\bibnamedelima W},
+           giveni={B\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{30901c504c4e9f9f386b59986264609c}
+      \strng{fullhash}{30901c504c4e9f9f386b59986264609c}
+      \strng{bibnamehash}{30901c504c4e9f9f386b59986264609c}
+      \strng{authorbibnamehash}{30901c504c4e9f9f386b59986264609c}
+      \strng{authornamehash}{30901c504c4e9f9f386b59986264609c}
+      \strng{authorfullhash}{30901c504c4e9f9f386b59986264609c}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer}
+      \field{number}{5}
+      \field{title}{A spiral model of software development and enhancement}
+      \field{year}{1988}
+      \field{pages}{61\bibrangedash 72}
+      \range{pages}{12}
+    \endentry
+    \entry{schwaber1997scrum}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=ee6f08fcba839e09471a0bc69152b6a5}{%
+           family={Schwaber},
+           familyi={S\bibinitperiod},
+           given={Ken},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{ee6f08fcba839e09471a0bc69152b6a5}
+      \strng{fullhash}{ee6f08fcba839e09471a0bc69152b6a5}
+      \strng{bibnamehash}{ee6f08fcba839e09471a0bc69152b6a5}
+      \strng{authorbibnamehash}{ee6f08fcba839e09471a0bc69152b6a5}
+      \strng{authornamehash}{ee6f08fcba839e09471a0bc69152b6a5}
+      \strng{authorfullhash}{ee6f08fcba839e09471a0bc69152b6a5}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Business object design and implementation}
+      \field{title}{Scrum development process}
+      \field{year}{1997}
+      \field{pages}{117\bibrangedash 134}
+      \range{pages}{18}
+    \endentry
+    \entry{cohn2004user}{book}{}
+      \name{author}{1}{}{%
+        {{hash=d33712bcde2d63bad054a832b61d01e8}{%
+           family={Cohn},
+           familyi={C\bibinitperiod},
+           given={Mike},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley Professional}%
+      }
+      \strng{namehash}{d33712bcde2d63bad054a832b61d01e8}
+      \strng{fullhash}{d33712bcde2d63bad054a832b61d01e8}
+      \strng{bibnamehash}{d33712bcde2d63bad054a832b61d01e8}
+      \strng{authorbibnamehash}{d33712bcde2d63bad054a832b61d01e8}
+      \strng{authornamehash}{d33712bcde2d63bad054a832b61d01e8}
+      \strng{authorfullhash}{d33712bcde2d63bad054a832b61d01e8}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{User stories applied: For agile software development}
+      \field{year}{2004}
+    \endentry
+    \entry{janzen2005test}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0721732c9a4f6f7a5f20af598146daa8}{%
+           family={Janzen},
+           familyi={J\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=d28b2ee210aad024eb6bbf2e15d494de}{%
+           family={Saiedian},
+           familyi={S\bibinitperiod},
+           given={Hossein},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{84f1a344a772a815c6ac63d3f6bbf868}
+      \strng{fullhash}{84f1a344a772a815c6ac63d3f6bbf868}
+      \strng{bibnamehash}{84f1a344a772a815c6ac63d3f6bbf868}
+      \strng{authorbibnamehash}{84f1a344a772a815c6ac63d3f6bbf868}
+      \strng{authornamehash}{84f1a344a772a815c6ac63d3f6bbf868}
+      \strng{authorfullhash}{84f1a344a772a815c6ac63d3f6bbf868}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer}
+      \field{number}{9}
+      \field{title}{Test-driven development concepts, taxonomy, and future direction}
+      \field{volume}{38}
+      \field{year}{2005}
+      \field{pages}{43\bibrangedash 50}
+      \range{pages}{8}
+    \endentry
+    \entry{Numpy}{misc}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Example NumPy Style Python Docstrings - napoleon 0.7 documentation}
+      \field{title}{Example NumPy Style Python Docstrings¶}
+      \verb{urlraw}
+      \verb https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html
+      \endverb
+      \verb{url}
+      \verb https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html
+      \endverb
     \endentry
   \enddatalist
 \endrefsection
