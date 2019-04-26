@@ -8,7 +8,7 @@ import sys
 
 class FCIAlg(GraphLearner):
     """
-
+    A graph learner which implements the FCI algorithm
     """
 
     def orientEdges(self, skeleton, sepSet):
@@ -98,9 +98,6 @@ class FCIAlg(GraphLearner):
                         break
         return pag, sepSet
 
-
-
-
     def orient_V(self, pag, sepSet):
         """
         A function to orient the colliders in a PAG
@@ -115,8 +112,6 @@ class FCIAlg(GraphLearner):
         -------
             PAG
                 PAG with v-structures oriented
-            
-
         """
         for i in pag:
             for j in pag:
@@ -131,7 +126,7 @@ class FCIAlg(GraphLearner):
     
     def learnGraph(self):
         """
-        function to learn a causal netwoork from data
+        function to learn a causal network from data
 
         Returns
         -------
@@ -149,7 +144,20 @@ class FCIAlg(GraphLearner):
     @staticmethod
     def is_possible_d_sep(X,Y, pag):
         """
-
+        A function to test if one node is in the possibled sep set of another
+            
+        Parameters
+        ----------
+            X: str
+                one node tested for d seperation
+            Y: str
+                other node to be tested
+            pag: PAG
+                PAG containing the nodes
+        Returns
+        -------
+            bool
+                true if nodes possibly d-sep eachother
         """
         all_paths = nx.all_simple_paths(pag,X,Y)
         for path in all_paths:
@@ -166,6 +174,17 @@ class FCIAlg(GraphLearner):
     @staticmethod
     def possible_d_seps(pag):
         """
+        Method to construct the possible d-sep-set of a pag
+        
+        Parameters
+        ----------
+            pag: PAG
+                PAG to find dseps for
+        Returns
+        -------
+            dict
+                keys: nodes
+                values: nodes which could d seperate other nodes from the key node
 
         """
         dseps = {}
@@ -176,30 +195,35 @@ class FCIAlg(GraphLearner):
                     if FCIAlg.is_possible_d_sep(i,j,pag):
                         dseps[i].append(j)
         return dseps
-    
-    @staticmethod
-    def hasDirectedPath(pag, X, Y):
-        """
-
-        """
-        all_paths = nx.all_simple_paths(pag,X,Y)
-        any_directed = False
-        for path in all_paths:
-            directed = True
-            for i in range(1, len(path[1:])+1):
-                if not pag.has_directed_edge(path[i-1],path[i]):
-                    directed = False
-            any_directed = any_directed or directed
-        return any_directed
 
     @staticmethod
     def rule1(pag,i,j,k):
+        """
+        rule 1 of edge orientation in the fci algorithm
+        
+        Parameters
+        ----------
+            pag: PAG
+                PAG to orient edges of
+            i,j,k: str
+                nodes to test for orientation rule
+        """
         if pag.has_directed_edge(i,j) and pag.has_o(j,k,j) and not pag.has_edge(i,k):
             pag.fully_direct_edge(j,k)
             print('Orienting edge {},{} with rule 1'.format(j,k))
         
     @staticmethod
     def rule2(pag,i,j,k):
+        """
+        rule 2 of edge orientation in the fci algorithm
+        
+        Parameters
+        ----------
+            pag: PAG
+                PAG to orient edges of
+            i,j,k: str
+                nodes to test for orientation rule
+        """
         chain1 = pag.has_fully_directed_edge(i,j) and pag.has_directed_edge(j,k)
         chain2 = pag.has_fully_directed_edge(j,k) and pag.has_directed_edge(i,j)
         if (chain1 or chain2) and pag.has_o(i,k,k):
@@ -208,6 +232,16 @@ class FCIAlg(GraphLearner):
             
     @staticmethod
     def rule3(pag,i,j,k,l):
+        """
+        rule 3 of edge orientation in the fci algorithm
+        
+        Parameters
+        ----------
+            pag: PAG
+                PAG to orient edges of
+            i,j,k,l: str
+                nodes to test for orientation rule
+        """
         chain1 = (pag.has_directed_edge(i,j)) and pag.has_directed_edge(k,j)
         chain2 = (pag.has_o(i,l,l)) and (pag.has_o(k,l,l))
         if chain1 and chain2 and not pag.has_edge(i,k) and pag.has_o(l,j,j):
@@ -216,6 +250,16 @@ class FCIAlg(GraphLearner):
 
     @staticmethod
     def rule4(pag,i,j,k,l, sepSet):
+        """
+        rule 4 of edge orientation in the fci algorithm
+        
+        Parameters
+        ----------
+            pag: PAG
+                PAG to orient edges of
+            i,j,k,l: str
+                nodes to test for orientation rule
+        """
         paths = pag.findDiscPath(l,k,j)
         for path in paths:
             if i in path:
@@ -234,6 +278,16 @@ class FCIAlg(GraphLearner):
     
     @staticmethod
     def rule5(pag,i,j,k,l):
+        """
+        rule 5 of edge orientation in the fci algorithm
+        
+        Parameters
+        ----------
+            pag: PAG
+                PAG to orient edges of
+            i,j,k,l: str
+                nodes to test for orientation rule
+        """
         for path in pag.findUncoveredCirclePaths(i,j):
             edge = pag.has_o(i,j,j) and pag.has_o(i,j,j)
             on_path = False
@@ -249,6 +303,16 @@ class FCIAlg(GraphLearner):
     
     @staticmethod
     def rule67(pag,i,j,k):
+        """
+        rules 6 and 7 of edge orientation in the fci algorithm
+        
+        Parameters
+        ----------
+            pag: PAG
+                PAG to orient edges of
+            i,j,k: str
+                nodes to test for orientation rule
+        """
         if pag.has_edge(i,j) and pag.has_edge(j,k):
             edge1 = pag.get_edge_data(i,j)
             edge2 = pag.get_edge_data(j,k)
@@ -262,6 +326,16 @@ class FCIAlg(GraphLearner):
     
     @staticmethod
     def rule8(pag,i,j,k):
+        """
+        rule 8 of edge orientation in the fci algorithm
+        
+        Parameters
+        ----------
+            pag: PAG
+                PAG to orient edges of
+            i,j,k: str
+                nodes to test for orientation rule
+        """
         chain1 = pag.has_fully_directed_edge(i,j) and pag.has_fully_directed_edge(j,k)#
         chain2 = False
         edge = False
@@ -274,6 +348,16 @@ class FCIAlg(GraphLearner):
         
     @staticmethod
     def rule9(pag,i,j,k,l):
+        """
+        rule 9 of edge orientation in the fci algorithm
+        
+        Parameters
+        ----------
+            pag: PAG
+                PAG to orient edges of
+            i,j,k,l: str
+                nodes to test for orientation rule
+        """
         if pag.has_directed_edge(i,k) and pag.has_o(i,k,i):
             for path in nx.all_simple_paths(pag,i,k):
                 if pag.isUncovered(path) and pag.isPD(path):
@@ -284,6 +368,16 @@ class FCIAlg(GraphLearner):
 
     @staticmethod
     def rule10(pag,i,j,k,l):
+        """
+        rule 10 of edge orientation in the fci algorithm
+        
+        Parameters
+        ----------
+            pag: PAG
+                PAG to orient edges of
+            i,j,k,l: str
+                nodes to test for orientation rule
+        """
         if pag.has_directed_edge(i,k) and pag.has_o(i,k,i):
             if pag.has_fully_directed_edge(j,k) and pag.has_fully_directed_edge(l,k):
                 for path1 in nx.all_simple_paths(pag,i,j):
@@ -293,11 +387,6 @@ class FCIAlg(GraphLearner):
                                 pag.fully_direct_edge(i,k) 
                                 print('Orienting edge {},{} with rule 10'.format(k,i)) 
 
-
-
-
-
-
 if __name__ == '__main__':
     data_path = sys.argv[1]
     data = FCIAlg.prepare_data(data_path, isLabeled=True)
@@ -306,6 +395,3 @@ if __name__ == '__main__':
     print(pag.to_matrix())
     for edge in pag.edges:
         print(pag.get_edge_data(*edge))
-
-
-    

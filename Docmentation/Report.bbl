@@ -752,6 +752,149 @@
       \verb https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_numpy.html
       \endverb
     \endentry
+    \entry{pandas}{misc}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{pandas}
+      \field{title}{Python Data Analysis Library¶}
+      \verb{urlraw}
+      \verb https://pandas.pydata.org/
+      \endverb
+      \verb{url}
+      \verb https://pandas.pydata.org/
+      \endverb
+    \endentry
+    \entry{networkx}{misc}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{NetworkX}
+      \field{title}{NetworkX}
+      \verb{urlraw}
+      \verb https://networkx.github.io/
+      \endverb
+      \verb{url}
+      \verb https://networkx.github.io/
+      \endverb
+    \endentry
+    \entry{scipy}{misc}{}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Statistical functions (scipy.stats) - SciPy v1.2.1 Reference Guide}
+      \field{title}{Statistical functions (scipy.stats)¶}
+      \verb{urlraw}
+      \verb https://docs.scipy.org/doc/scipy/reference/stats.html
+      \endverb
+      \verb{url}
+      \verb https://docs.scipy.org/doc/scipy/reference/stats.html
+      \endverb
+    \endentry
+    \entry{numpy}{misc}{}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{NumPy}
+      \field{title}{NumPy¶}
+      \verb{urlraw}
+      \verb http://www.numpy.org/
+      \endverb
+      \verb{url}
+      \verb http://www.numpy.org/
+      \endverb
+    \endentry
+    \entry{data}{misc}{}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{journaltitle}{GOBNILP DATA}
+      \verb{urlraw}
+      \verb https://www.cs.york.ac.uk/aig/sw/gobnilp/data/
+      \endverb
+      \verb{url}
+      \verb https://www.cs.york.ac.uk/aig/sw/gobnilp/data/
+      \endverb
+    \endentry
+    \entry{wilbers2009using}{article}{}
+      \name{author}{3}{}{%
+        {{hash=2fa0a0e8f29b7f05b71affd3449933e8}{%
+           family={Wilbers},
+           familyi={W\bibinitperiod},
+           given={Ilmar\bibnamedelima M},
+           giveni={I\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=b1ba9610a18cb091d0a9602e75b8476f}{%
+           family={Langtangen},
+           familyi={L\bibinitperiod},
+           given={Hans\bibnamedelima Petter},
+           giveni={H\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=b7c963afdc1ba711b8f337118b9f2447}{%
+           family={{Ø}deg{å}rd},
+           familyi={Ø\bibinitperiod},
+           given={{Å}smund},
+           giveni={Å\bibinitperiod}}}%
+      }
+      \strng{namehash}{15fea666cf18faef33e7ab8d0d6e6969}
+      \strng{fullhash}{15fea666cf18faef33e7ab8d0d6e6969}
+      \strng{bibnamehash}{15fea666cf18faef33e7ab8d0d6e6969}
+      \strng{authorbibnamehash}{15fea666cf18faef33e7ab8d0d6e6969}
+      \strng{authornamehash}{15fea666cf18faef33e7ab8d0d6e6969}
+      \strng{authorfullhash}{15fea666cf18faef33e7ab8d0d6e6969}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of MekIT}
+      \field{title}{Using cython to speed up numerical python programs}
+      \field{volume}{9}
+      \field{year}{2009}
+      \field{pages}{495\bibrangedash 512}
+      \range{pages}{18}
+    \endentry
+    \entry{wilkinson_2014}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=19479302b75fdb401e30ad7309f36e9d}{%
+           family={Wilkinson},
+           familyi={W\bibinitperiod},
+           given={Darren\bibnamedelima j},
+           giveni={D\bibinitperiod\bibinitdelim j\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Gibbs sampler in various languages}%
+      }
+      \strng{namehash}{19479302b75fdb401e30ad7309f36e9d}
+      \strng{fullhash}{19479302b75fdb401e30ad7309f36e9d}
+      \strng{bibnamehash}{19479302b75fdb401e30ad7309f36e9d}
+      \strng{authorbibnamehash}{19479302b75fdb401e30ad7309f36e9d}
+      \strng{authornamehash}{19479302b75fdb401e30ad7309f36e9d}
+      \strng{authorfullhash}{19479302b75fdb401e30ad7309f36e9d}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Darren Wilkinson's research blog}
+      \field{month}{11}
+      \field{title}{Gibbs sampler in various languages (revisited)}
+      \field{year}{2014}
+      \verb{urlraw}
+      \verb https://darrenjw.wordpress.com/2011/07/16/gibbs-sampler-in-various-languages-revisited/
+      \endverb
+      \verb{url}
+      \verb https://darrenjw.wordpress.com/2011/07/16/gibbs-sampler-in-various-languages-revisited/
+      \endverb
+    \endentry
+    \entry{cython}{misc}{}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Cython}
+      \field{title}{C-Extensions for Python}
+      \verb{urlraw}
+      \verb https://cython.org/
+      \endverb
+      \verb{url}
+      \verb https://cython.org/
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

@@ -2054,6 +2054,16 @@
     <bcf:citekey order="54">cohn2004user</bcf:citekey>
     <bcf:citekey order="55">janzen2005test</bcf:citekey>
     <bcf:citekey order="56">Numpy</bcf:citekey>
+    <bcf:citekey order="57">pandas</bcf:citekey>
+    <bcf:citekey order="58">networkx</bcf:citekey>
+    <bcf:citekey order="59">scipy</bcf:citekey>
+    <bcf:citekey order="60">numpy</bcf:citekey>
+    <bcf:citekey order="61">colombo2012learning2</bcf:citekey>
+    <bcf:citekey order="62">data</bcf:citekey>
+    <bcf:citekey order="63">wilbers2009using</bcf:citekey>
+    <bcf:citekey order="63">wilkinson_2014</bcf:citekey>
+    <bcf:citekey order="64">cython</bcf:citekey>
+    <bcf:citekey order="65">wilbers2009using</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

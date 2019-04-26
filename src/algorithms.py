@@ -5,11 +5,23 @@ from graphs import PDAG
 
 class GraphLearner(object):
     """
-
+    Base Class for all graph learning algorithms 
+    implementing functionality used across algorithms
     """
 
     def __init__(self, data, indep_test,  alpha = 0.05):
-        # TODO: Validate values 
+        """
+        Initialise graph learner object
+        Parameters
+        ----------
+            data : pandas.DataFrame, 
+                DataFrame with rows as datapoints and columns as variables 
+            indep_test : function
+                A function which can calculate indpendence of variabkles in data
+            alpha : float, optional
+                The minimum p-value returned by the indepence test
+                for the data to be considered independent
+        """
         self.alpha = alpha
         self.data = data
         self.indep_test = indep_test
@@ -104,7 +116,22 @@ class GraphLearner(object):
     @staticmethod
     def prepare_data(data_file, delim = ' ', isLabeled = False, ):
         """
-
+        A function which reads data from a file into a pandas dataframe
+        the file should consist of rows of datapoints with each variable
+        separated by some delimination string
+        
+        Parameters
+        ----------
+            data_file : str, 
+                The path to the file containing data 
+            delim : str, optional
+                the deliminating string, ',' for csv files
+            isLabeled : bool, optional
+                True if the first line in the file is the lit of variabe names
+        Returns
+        -------
+            pandas.DataFrame
+                data frame containing data from file
         """
 
         with open(data_file, 'r') as f:
@@ -122,30 +149,6 @@ class GraphLearner(object):
             data = DataFrame(data, columns = labels)   
         return data
 
-    @staticmethod
-    def findPath( x,y, directed, explored):
-        """
-
-        """
-
-        explored.append(x)
-        neigh = []
-        for n in directed.successors(x):
-            neigh.append(n)
-        Z = []
-        for n in neigh:
-            if n  not in explored:
-                Z.append(n)
-        if y in Z:
-            return True
-        if len(Z) == 0:
-            return False
-        isPath = False
-        for z in Z:    
-            zcont =  GraphLearner.findPath(z,y, directed, explored)
-            isPath = isPath or zcont
-
-        return isPath
 
     def orient_V(self, undirected, directed, sepset):
         """
@@ -153,7 +156,13 @@ class GraphLearner(object):
 
         Parameters
         ----------
-        undirected:
+        undirected: nx.Graph
+            graph containing the undirected edges
+        directed: nx.DiGraph
+            graph containing the directed edges
+        sepset: Dict
+            dictionary with pairs of nodes as keys and 
+            seperating sets of nodes as values
         """
         skeleton = undirected.copy()
         for i in undirected:
@@ -181,7 +190,15 @@ class GraphLearner(object):
 
         Parameters
         ----------
-        undirected:
+        undirected: nx.Graph
+            graph containing the undirected edges
+        directed: nx.DiGraph
+            graph containing the directed edges
+
+        Returns
+        -------
+            PDAG
+                a graph containing all edges from the two graphs
         """
         pdag = PDAG()
         for edge in directed.edges:
@@ -189,5 +206,41 @@ class GraphLearner(object):
         for edge in undirected.edges:
             pdag.add_edge(*edge, False)
         return pdag
-    
 
+    @staticmethod
+    def findPath( x,y, directed, explored):
+        """
+        A method to check if there is a path between two nodes in  graph
+        ----------
+        x: str
+            from node of a path
+        y: str
+            to node of a path
+        directed: nx.DiGraph
+            Directed graph
+        explored: str[]
+            list of nodes explored by previous recursive calls left as [] in calling
+        
+        Returns
+        -------
+        bool
+            True if there is a path between x and y in directed
+        """
+
+        explored.append(x)
+        neigh = []
+        for n in directed.successors(x):
+            neigh.append(n)
+        Z = []
+        for n in neigh:
+            if n  not in explored:
+                Z.append(n)
+        if y in Z:
+            return True
+        if len(Z) == 0:
+            return False
+        isPath = False
+        for z in Z:    
+            zcont =  GraphLearner.findPath(z,y, directed, explored)
+            isPath = isPath or zcont
+        return isPath

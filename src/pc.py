@@ -6,7 +6,7 @@ import sys
 
 class PCAlg(GraphLearner):
     """
-
+    A graph learner which implements the PC algorithm
     """
     
     def orientEdges(self, skeleton, sepset):
@@ -15,15 +15,15 @@ class PCAlg(GraphLearner):
         Parameters
         ----------
         skeleton : networkx.Graph
-        An undirected graph showing causal links to be oriented by
-        the pc algorithm. Can be genertaed using the learnSkeleton 
-        method.
+            An undirected graph showing causal links to be oriented by
+            the pc algorithm. Can be genertaed using the learnSkeleton 
+            method.
 
         Returns
         -------
         PDAG
-        A partially directed acyclic graph represnting a set of directed acyclic graphs.
-        this graph shows independence relationships between variables.
+            A partially directed acyclic graph represnting a set of directed acyclic graphs.
+            this graph shows independence relationships between variables.
         """
         directed = nx.DiGraph()
         directed.add_nodes_from(skeleton.nodes)
@@ -46,11 +46,15 @@ class PCAlg(GraphLearner):
         #generate PDAG
         pdag = self.pdag_union(directed, undirected)
         return pdag
-    
         
     def learnGraph(self):
         """
+        function to learn a causal network from data
 
+        Returns
+        -------
+        PDAG
+            causal network learned from data
         """
         print('Learning Skeleton of graph...')
         skeleton, sepset = self.learnSkeleton()

@@ -113,34 +113,39 @@ class PathTests(unittest.TestCase):
    
 class D_SepTests(unittest.TestCase):
     def setUp(self):
-        self.skeleton = nx.Graph()
-        self.skeleton.add_nodes_from([1,2,3,4,5,6])
-        self.pdag = PDAG()
-        self.pdag.add_nodes_from(self.skeleton)
+        self.pag = PAG()
+        self.pag.add_nodes_from([1,2,3,4,5,6])
         
     def test1(self):
-        self.pdag.add_edge(1,2)
-        self.pdag.add_edge(3,2)
-        self.skeleton.add_edges_from(self.pdag.edges)
-        dseps = FCIAlg.possible_d_seps(self.skeleton, self.pdag)
-        assert(dseps == {1:[2,3],2:[1,3],3:[1,2], 4:[], 5:[], 6:[]})
-    
-    def test2(self):
-        self.pdag.add_edge(1,2)
-        self.pdag.add_edge(2,3)
-        self.skeleton.add_edges_from(self.pdag.edges)
-        dseps = FCIAlg.possible_d_seps(self.skeleton, self.pdag)
+        self.pag.add_edge(1,2)
+        self.pag.add_edge(3,2)
+        dseps = FCIAlg.possible_d_seps(self.pag)
         assert(dseps == {1:[2],2:[1,3],3:[2], 4:[], 5:[], 6:[]})
     
+    def test2(self):
+        self.pag.add_edge(1,2)
+        self.pag.add_edge(2,3)
+        self.pag.fully_direct_edge(1,2)
+        self.pag.fully_direct_edge(3,2)
+        dseps = FCIAlg.possible_d_seps(self.pag)
+        assert(dseps == {1:[2,3],2:[1,3],3:[1,2], 4:[], 5:[], 6:[]})
+    
     def test3(self):
-        self.pdag.add_edge(1,2)
-        self.pdag.add_edge(3,2)
-        self.pdag.add_edge(2,4,False)
-        self.pdag.add_edge(3,4,False)
-        self.skeleton.add_edges_from(self.pdag.edges)
-        dseps = FCIAlg.possible_d_seps(self.skeleton, self.pdag)
+        self.pag.add_edge(1,2)
+        self.pag.add_edge(2,3)
+        self.pag.fully_direct_edge(1,2)
+        self.pag.fully_direct_edge(3,2)
+        self.pag.add_edge(2,4)
+        self.pag.add_edge(3,4)
+        dseps = FCIAlg.possible_d_seps(self.pag)
         assert(dseps == {1:[2,3,4],2:[1,3,4],3:[1,2,4,], 4:[1,2,3], 5:[], 6:[]})
 
+    def test4(self):
+        self.pag.add_edge(1,2)
+        self.pag.add_edge(3,2)
+        self.pag.add_edge(3,1)
+        dseps = FCIAlg.possible_d_seps(self.pag)
+        assert(dseps == {1:[2,3],2:[1,3],3:[1,2], 4:[], 5:[], 6:[]})
 class PagPathTests(unittest.TestCase):
 
     def setUp(self):
@@ -329,7 +334,7 @@ class RulesTests(unittest.TestCase):
         FCIAlg.rule67(self.pag,1,2,3)
         assert(self.pag.get_edge_data(2,3)[2] == '-')
     
-    # Rule 7 Test
+    # Rule 7 Tests
     def test12(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
@@ -405,11 +410,5 @@ class RulesTests(unittest.TestCase):
         assert(self.pag.has_fully_directed_edge(1,3))
 
 
-
-
-
-
 if __name__ == '__main__':
     unittest.main()
-    
-
