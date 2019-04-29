@@ -64,10 +64,47 @@ class PCAlg(GraphLearner):
         print('...Learning complete')
         return pdag
     
+    def pdag_union(self, directed, undirected):
+        """
+        A method to orient all "V-structures" in a graph
+
+        Parameters
+        ----------
+        undirected: nx.Graph
+            graph containing the undirected edges
+        directed: nx.DiGraph
+            graph containing the directed edges
+
+        Returns
+        -------
+            PDAG
+                a graph containing all edges from the two graphs
+        """
+        pdag = PDAG()
+        for edge in directed.edges:
+            pdag.add_edge(*edge)
+        for edge in undirected.edges:
+            pdag.add_edge(*edge, False)
+        return pdag
+
+    
 if __name__ == '__main__':
     data_path = sys.argv[1]
-    data = PCAlg.prepare_data(data_path, isLabeled=True)
+    if len(sys.argv) == 4:
+        if sys.argv[3] == 'space':
+            sys.argv[3] = ' '
+        delimeator = sys.argv[3]
+        labeled = sys.argv[2] == 'True'
+    elif len(sys.argv) == 3:
+        delimeator = ' '
+        labeled = sys.argv[2] == 'True'
+    else:
+        delimeator = ' '
+        labeled = True
+    data = PCAlg.prepare_data(data_path, isLabeled=labeled, delim = delimeator)
     pc = PCAlg(data, chi, 0.05)
     pdag = pc.learnGraph()
-    print(pdag.edges)
-    pdag.write_to_file('tmp')
+    pdag.write_to_file('adjmat')
+
+
+    

@@ -19,277 +19,39 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
-    \entry{kalisch_hauser_maechler}{misc}{}
-      \name{author}{3}{}{%
-        {{hash=df9a0e9859bb9965919cd59d2523022d}{%
-           family={Kalisch},
-           familyi={K\bibinitperiod},
-           given={Markus},
-           giveni={M\bibinitperiod}}}%
-        {{hash=306794240c0c21f49e64540286ef1fda}{%
-           family={Hauser},
-           familyi={H\bibinitperiod},
-           given={Alain},
-           giveni={A\bibinitperiod}}}%
-        {{hash=0041cc0eb4aa28929ffbd059d5e4add5}{%
-           family={Maechler},
-           familyi={M\bibinitperiod},
-           given={Martin},
-           giveni={M\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Comprehensive R Archive Network (CRAN)}%
-      }
-      \strng{namehash}{6e2149147e7d17f211def7d0e5cd65f9}
-      \strng{fullhash}{6e2149147e7d17f211def7d0e5cd65f9}
-      \strng{bibnamehash}{6e2149147e7d17f211def7d0e5cd65f9}
-      \strng{authorbibnamehash}{6e2149147e7d17f211def7d0e5cd65f9}
-      \strng{authornamehash}{6e2149147e7d17f211def7d0e5cd65f9}
-      \strng{authorfullhash}{6e2149147e7d17f211def7d0e5cd65f9}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{The Comprehensive R Archive Network}
-      \field{title}{Methods for Graphical Models and Causal Inference [R package pcalg version 2.6-0]}
-      \verb{urlraw}
-      \verb https://cran.r-project.org/web/packages/pcalg/index.html
-      \endverb
-      \verb{url}
-      \verb https://cran.r-project.org/web/packages/pcalg/index.html
-      \endverb
-    \endentry
-    \entry{piatetsky}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=e103478863614965865b6b083d948f40}{%
-           family={Piatetsky},
-           familyi={P\bibinitperiod},
-           given={Gregory},
-           giveni={G\bibinitperiod}}}%
-      }
-      \strng{namehash}{e103478863614965865b6b083d948f40}
-      \strng{fullhash}{e103478863614965865b6b083d948f40}
-      \strng{bibnamehash}{e103478863614965865b6b083d948f40}
-      \strng{authorbibnamehash}{e103478863614965865b6b083d948f40}
-      \strng{authornamehash}{e103478863614965865b6b083d948f40}
-      \strng{authorfullhash}{e103478863614965865b6b083d948f40}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{KDnuggets Analytics Big Data Data Mining and Data Science}
-      \field{title}{KDnuggets}
-      \verb{urlraw}
-      \verb https://www.kdnuggets.com/2018/05/poll-tools-analytics-data-science-machine-learning-results.html
-      \endverb
-      \verb{url}
-      \verb https://www.kdnuggets.com/2018/05/poll-tools-analytics-data-science-machine-learning-results.html
-      \endverb
-    \endentry
-    \entry{ogrady_2019}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=12dfa4fd8508311b6d197502576434fe}{%
-           family={O'Grady},
-           familyi={O\bibinitperiod},
-           given={Stephen},
-           giveni={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{12dfa4fd8508311b6d197502576434fe}
-      \strng{fullhash}{12dfa4fd8508311b6d197502576434fe}
-      \strng{bibnamehash}{12dfa4fd8508311b6d197502576434fe}
-      \strng{authorbibnamehash}{12dfa4fd8508311b6d197502576434fe}
-      \strng{authornamehash}{12dfa4fd8508311b6d197502576434fe}
-      \strng{authorfullhash}{12dfa4fd8508311b6d197502576434fe}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{tecosystems}
-      \field{month}{3}
-      \field{title}{The RedMonk Programming Language Rankings: January 2019}
-      \field{year}{2019}
-      \verb{urlraw}
-      \verb https://redmonk.com/sogrady/2019/03/20/language-rankings-1-19/
-      \endverb
-      \verb{url}
-      \verb https://redmonk.com/sogrady/2019/03/20/language-rankings-1-19/
-      \endverb
-    \endentry
-    \entry{verma1990causal}{incollection}{}
+    \entry{spirtes1991algorithm}{article}{}
       \name{author}{2}{}{%
-        {{hash=2e06f78670eb35570c8e647e35752258}{%
-           family={Verma},
-           familyi={V\bibinitperiod},
-           given={Thomas},
-           giveni={T\bibinitperiod}}}%
-        {{hash=809f695b398afbb54b544c49e8d1bbbb}{%
-           family={Pearl},
-           familyi={P\bibinitperiod},
-           given={Judea},
-           giveni={J\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Elsevier}%
-      }
-      \strng{namehash}{d6bfa96cdb6186a1452295c2e7176070}
-      \strng{fullhash}{d6bfa96cdb6186a1452295c2e7176070}
-      \strng{bibnamehash}{d6bfa96cdb6186a1452295c2e7176070}
-      \strng{authorbibnamehash}{d6bfa96cdb6186a1452295c2e7176070}
-      \strng{authornamehash}{d6bfa96cdb6186a1452295c2e7176070}
-      \strng{authorfullhash}{d6bfa96cdb6186a1452295c2e7176070}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{booktitle}{Machine Intelligence and Pattern Recognition}
-      \field{title}{Causal networks: Semantics and expressiveness}
-      \field{volume}{9}
-      \field{year}{1990}
-      \field{pages}{69\bibrangedash 76}
-      \range{pages}{8}
-    \endentry
-    \entry{zhang2008causal}{article}{}
-      \name{author}{1}{}{%
-        {{hash=00b06765d4d041da464652a126cfa7c1}{%
-           family={Zhang},
-           familyi={Z\bibinitperiod},
-           given={Jiji},
-           giveni={J\bibinitperiod}}}%
-      }
-      \strng{namehash}{00b06765d4d041da464652a126cfa7c1}
-      \strng{fullhash}{00b06765d4d041da464652a126cfa7c1}
-      \strng{bibnamehash}{00b06765d4d041da464652a126cfa7c1}
-      \strng{authorbibnamehash}{00b06765d4d041da464652a126cfa7c1}
-      \strng{authornamehash}{00b06765d4d041da464652a126cfa7c1}
-      \strng{authorfullhash}{00b06765d4d041da464652a126cfa7c1}
-      \field{extraname}{1}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Journal of Machine Learning Research}
-      \field{number}{Jul}
-      \field{title}{Causal reasoning with ancestral graphs}
-      \field{volume}{9}
-      \field{year}{2008}
-      \field{pages}{1437\bibrangedash 1474}
-      \range{pages}{38}
-    \endentry
-    \entry{barber_2012}{book}{}
-      \name{author}{1}{}{%
-        {{hash=9a97f74e5fb11fe785cbe0a83fc5276c}{%
-           family={Barber},
-           familyi={B\bibinitperiod},
-           given={David},
-           giveni={D\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Cambridge University Press}%
-      }
-      \strng{namehash}{9a97f74e5fb11fe785cbe0a83fc5276c}
-      \strng{fullhash}{9a97f74e5fb11fe785cbe0a83fc5276c}
-      \strng{bibnamehash}{9a97f74e5fb11fe785cbe0a83fc5276c}
-      \strng{authorbibnamehash}{9a97f74e5fb11fe785cbe0a83fc5276c}
-      \strng{authornamehash}{9a97f74e5fb11fe785cbe0a83fc5276c}
-      \strng{authorfullhash}{9a97f74e5fb11fe785cbe0a83fc5276c}
-      \field{sortinit}{7}
-      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Bayesian Reasoning and Machine Learning}
-      \field{year}{2012}
-      \verb{doi}
-      \verb 10.1017/CBO9780511804779
-      \endverb
-    \endentry
-    \entry{pearl2003causality}{article}{}
-      \name{author}{1}{}{%
-        {{hash=809f695b398afbb54b544c49e8d1bbbb}{%
-           family={Pearl},
-           familyi={P\bibinitperiod},
-           given={Judea},
-           giveni={J\bibinitperiod}}}%
-      }
-      \strng{namehash}{809f695b398afbb54b544c49e8d1bbbb}
-      \strng{fullhash}{809f695b398afbb54b544c49e8d1bbbb}
-      \strng{bibnamehash}{809f695b398afbb54b544c49e8d1bbbb}
-      \strng{authorbibnamehash}{809f695b398afbb54b544c49e8d1bbbb}
-      \strng{authornamehash}{809f695b398afbb54b544c49e8d1bbbb}
-      \strng{authorfullhash}{809f695b398afbb54b544c49e8d1bbbb}
-      \field{extraname}{1}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Econometric Theory}
-      \field{number}{675-685}
-      \field{title}{Causality: models, reasoning, and inference}
-      \field{volume}{19}
-      \field{year}{2003}
-      \field{pages}{46}
-      \range{pages}{1}
-    \endentry
-    \entry{pearl2009}{article}{}
-      \name{author}{1}{}{%
-        {{hash=809f695b398afbb54b544c49e8d1bbbb}{%
-           family={Pearl},
-           familyi={P\bibinitperiod},
-           given={Judea},
-           giveni={J\bibinitperiod}}}%
-      }
-      \list{publisher}{2}{%
-        {The American Statistical Association, the Bernoulli Society, the Institute of Mathematical Statistics,}%
-        {the Statistical Society of Canada}%
-      }
-      \strng{namehash}{809f695b398afbb54b544c49e8d1bbbb}
-      \strng{fullhash}{809f695b398afbb54b544c49e8d1bbbb}
-      \strng{bibnamehash}{809f695b398afbb54b544c49e8d1bbbb}
-      \strng{authorbibnamehash}{809f695b398afbb54b544c49e8d1bbbb}
-      \strng{authornamehash}{809f695b398afbb54b544c49e8d1bbbb}
-      \strng{authorfullhash}{809f695b398afbb54b544c49e8d1bbbb}
-      \field{extraname}{2}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Statist. Surv.}
-      \field{title}{Causal inference in statistics: An overview}
-      \field{volume}{3}
-      \field{year}{2009}
-      \field{pages}{96\bibrangedash 146}
-      \range{pages}{51}
-      \verb{doi}
-      \verb 10.1214/09-SS057
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1214/09-SS057
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1214/09-SS057
-      \endverb
-    \endentry
-    \entry{scheines1997introduction}{article}{}
-      \name{author}{1}{}{%
-        {{hash=02f6653c0e96cdc7d40f942944d5e3fb}{%
-           family={Scheines},
+        {{hash=f0924fa092ce0a8f24b79fcf1e746c8f}{%
+           family={Spirtes},
            familyi={S\bibinitperiod},
-           given={Richard},
-           giveni={R\bibinitperiod}}}%
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+        {{hash=d92f65fed9d3110577c6ff13a43603b6}{%
+           family={Glymour},
+           familyi={G\bibinitperiod},
+           given={Clark},
+           giveni={C\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Citeseer}%
+        {Sage Publications Sage CA: Thousand Oaks, CA}%
       }
-      \strng{namehash}{02f6653c0e96cdc7d40f942944d5e3fb}
-      \strng{fullhash}{02f6653c0e96cdc7d40f942944d5e3fb}
-      \strng{bibnamehash}{02f6653c0e96cdc7d40f942944d5e3fb}
-      \strng{authorbibnamehash}{02f6653c0e96cdc7d40f942944d5e3fb}
-      \strng{authornamehash}{02f6653c0e96cdc7d40f942944d5e3fb}
-      \strng{authorfullhash}{02f6653c0e96cdc7d40f942944d5e3fb}
+      \strng{namehash}{1a7a60fd207ba93151ece7d4c9929a8d}
+      \strng{fullhash}{1a7a60fd207ba93151ece7d4c9929a8d}
+      \strng{bibnamehash}{1a7a60fd207ba93151ece7d4c9929a8d}
+      \strng{authorbibnamehash}{1a7a60fd207ba93151ece7d4c9929a8d}
+      \strng{authornamehash}{1a7a60fd207ba93151ece7d4c9929a8d}
+      \strng{authorfullhash}{1a7a60fd207ba93151ece7d4c9929a8d}
       \field{sortinit}{1}
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{An introduction to causal inference}
+      \field{journaltitle}{Social science computer review}
+      \field{number}{1}
+      \field{title}{An algorithm for fast recovery of sparse causal graphs}
+      \field{volume}{9}
+      \field{year}{1991}
+      \field{pages}{62\bibrangedash 72}
+      \range{pages}{11}
     \endentry
     \entry{colombo2012learning}{article}{}
       \name{author}{4}{}{%
@@ -334,6 +96,312 @@
       \field{pages}{294\bibrangedash 321}
       \range{pages}{28}
     \endentry
+    \entry{kalisch_hauser_maechler}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=df9a0e9859bb9965919cd59d2523022d}{%
+           family={Kalisch},
+           familyi={K\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=306794240c0c21f49e64540286ef1fda}{%
+           family={Hauser},
+           familyi={H\bibinitperiod},
+           given={Alain},
+           giveni={A\bibinitperiod}}}%
+        {{hash=0041cc0eb4aa28929ffbd059d5e4add5}{%
+           family={Maechler},
+           familyi={M\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Comprehensive R Archive Network (CRAN)}%
+      }
+      \strng{namehash}{6e2149147e7d17f211def7d0e5cd65f9}
+      \strng{fullhash}{6e2149147e7d17f211def7d0e5cd65f9}
+      \strng{bibnamehash}{6e2149147e7d17f211def7d0e5cd65f9}
+      \strng{authorbibnamehash}{6e2149147e7d17f211def7d0e5cd65f9}
+      \strng{authornamehash}{6e2149147e7d17f211def7d0e5cd65f9}
+      \strng{authorfullhash}{6e2149147e7d17f211def7d0e5cd65f9}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Comprehensive R Archive Network}
+      \field{title}{Methods for Graphical Models and Causal Inference [R package pcalg version 2.6-0]}
+      \verb{urlraw}
+      \verb https://cran.r-project.org/web/packages/pcalg/index.html
+      \endverb
+      \verb{url}
+      \verb https://cran.r-project.org/web/packages/pcalg/index.html
+      \endverb
+    \endentry
+    \entry{colombo2014order}{article}{}
+      \name{author}{2}{}{%
+        {{hash=e1fbe553ae8384b11ac51e5da7d67b1f}{%
+           family={Colombo},
+           familyi={C\bibinitperiod},
+           given={Diego},
+           giveni={D\bibinitperiod}}}%
+        {{hash=8f905a89e7bf1cc9d54e6934783ebb3f}{%
+           family={Maathuis},
+           familyi={M\bibinitperiod},
+           given={Marloes\bibnamedelima H},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JMLR. org}%
+      }
+      \strng{namehash}{9c9483fa0d5049c233794e89576c46cf}
+      \strng{fullhash}{9c9483fa0d5049c233794e89576c46cf}
+      \strng{bibnamehash}{9c9483fa0d5049c233794e89576c46cf}
+      \strng{authorbibnamehash}{9c9483fa0d5049c233794e89576c46cf}
+      \strng{authornamehash}{9c9483fa0d5049c233794e89576c46cf}
+      \strng{authorfullhash}{9c9483fa0d5049c233794e89576c46cf}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Machine Learning Research}
+      \field{number}{1}
+      \field{title}{Order-independent constraint-based causal structure learning}
+      \field{volume}{15}
+      \field{year}{2014}
+      \field{pages}{3741\bibrangedash 3782}
+      \range{pages}{42}
+    \endentry
+    \entry{piatetsky}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e103478863614965865b6b083d948f40}{%
+           family={Piatetsky},
+           familyi={P\bibinitperiod},
+           given={Gregory},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{e103478863614965865b6b083d948f40}
+      \strng{fullhash}{e103478863614965865b6b083d948f40}
+      \strng{bibnamehash}{e103478863614965865b6b083d948f40}
+      \strng{authorbibnamehash}{e103478863614965865b6b083d948f40}
+      \strng{authornamehash}{e103478863614965865b6b083d948f40}
+      \strng{authorfullhash}{e103478863614965865b6b083d948f40}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{KDnuggets Analytics Big Data Data Mining and Data Science}
+      \field{title}{KDnuggets}
+      \verb{urlraw}
+      \verb https://www.kdnuggets.com/2018/05/poll-tools-analytics-data-science-machine-learning-results.html
+      \endverb
+      \verb{url}
+      \verb https://www.kdnuggets.com/2018/05/poll-tools-analytics-data-science-machine-learning-results.html
+      \endverb
+    \endentry
+    \entry{ogrady_2019}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=12dfa4fd8508311b6d197502576434fe}{%
+           family={O'Grady},
+           familyi={O\bibinitperiod},
+           given={Stephen},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{12dfa4fd8508311b6d197502576434fe}
+      \strng{fullhash}{12dfa4fd8508311b6d197502576434fe}
+      \strng{bibnamehash}{12dfa4fd8508311b6d197502576434fe}
+      \strng{authorbibnamehash}{12dfa4fd8508311b6d197502576434fe}
+      \strng{authornamehash}{12dfa4fd8508311b6d197502576434fe}
+      \strng{authorfullhash}{12dfa4fd8508311b6d197502576434fe}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{tecosystems}
+      \field{month}{3}
+      \field{title}{The RedMonk Programming Language Rankings: January 2019}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://redmonk.com/sogrady/2019/03/20/language-rankings-1-19/
+      \endverb
+      \verb{url}
+      \verb https://redmonk.com/sogrady/2019/03/20/language-rankings-1-19/
+      \endverb
+    \endentry
+    \entry{verma1990causal}{incollection}{}
+      \name{author}{2}{}{%
+        {{hash=2e06f78670eb35570c8e647e35752258}{%
+           family={Verma},
+           familyi={V\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=809f695b398afbb54b544c49e8d1bbbb}{%
+           family={Pearl},
+           familyi={P\bibinitperiod},
+           given={Judea},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{d6bfa96cdb6186a1452295c2e7176070}
+      \strng{fullhash}{d6bfa96cdb6186a1452295c2e7176070}
+      \strng{bibnamehash}{d6bfa96cdb6186a1452295c2e7176070}
+      \strng{authorbibnamehash}{d6bfa96cdb6186a1452295c2e7176070}
+      \strng{authornamehash}{d6bfa96cdb6186a1452295c2e7176070}
+      \strng{authorfullhash}{d6bfa96cdb6186a1452295c2e7176070}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Machine Intelligence and Pattern Recognition}
+      \field{title}{Causal networks: Semantics and expressiveness}
+      \field{volume}{9}
+      \field{year}{1990}
+      \field{pages}{69\bibrangedash 76}
+      \range{pages}{8}
+    \endentry
+    \entry{zhang2008causal}{article}{}
+      \name{author}{1}{}{%
+        {{hash=00b06765d4d041da464652a126cfa7c1}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Jiji},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{00b06765d4d041da464652a126cfa7c1}
+      \strng{fullhash}{00b06765d4d041da464652a126cfa7c1}
+      \strng{bibnamehash}{00b06765d4d041da464652a126cfa7c1}
+      \strng{authorbibnamehash}{00b06765d4d041da464652a126cfa7c1}
+      \strng{authornamehash}{00b06765d4d041da464652a126cfa7c1}
+      \strng{authorfullhash}{00b06765d4d041da464652a126cfa7c1}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{number}{Jul}
+      \field{title}{Causal reasoning with ancestral graphs}
+      \field{volume}{9}
+      \field{year}{2008}
+      \field{pages}{1437\bibrangedash 1474}
+      \range{pages}{38}
+    \endentry
+    \entry{barber_2012}{book}{}
+      \name{author}{1}{}{%
+        {{hash=9a97f74e5fb11fe785cbe0a83fc5276c}{%
+           family={Barber},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{9a97f74e5fb11fe785cbe0a83fc5276c}
+      \strng{fullhash}{9a97f74e5fb11fe785cbe0a83fc5276c}
+      \strng{bibnamehash}{9a97f74e5fb11fe785cbe0a83fc5276c}
+      \strng{authorbibnamehash}{9a97f74e5fb11fe785cbe0a83fc5276c}
+      \strng{authornamehash}{9a97f74e5fb11fe785cbe0a83fc5276c}
+      \strng{authorfullhash}{9a97f74e5fb11fe785cbe0a83fc5276c}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Bayesian Reasoning and Machine Learning}
+      \field{year}{2012}
+      \verb{doi}
+      \verb 10.1017/CBO9780511804779
+      \endverb
+    \endentry
+    \entry{pearl2003causality}{article}{}
+      \name{author}{1}{}{%
+        {{hash=809f695b398afbb54b544c49e8d1bbbb}{%
+           family={Pearl},
+           familyi={P\bibinitperiod},
+           given={Judea},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{809f695b398afbb54b544c49e8d1bbbb}
+      \strng{fullhash}{809f695b398afbb54b544c49e8d1bbbb}
+      \strng{bibnamehash}{809f695b398afbb54b544c49e8d1bbbb}
+      \strng{authorbibnamehash}{809f695b398afbb54b544c49e8d1bbbb}
+      \strng{authornamehash}{809f695b398afbb54b544c49e8d1bbbb}
+      \strng{authorfullhash}{809f695b398afbb54b544c49e8d1bbbb}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Econometric Theory}
+      \field{number}{675-685}
+      \field{title}{Causality: models, reasoning, and inference}
+      \field{volume}{19}
+      \field{year}{2003}
+      \field{pages}{46}
+      \range{pages}{1}
+    \endentry
+    \entry{pearl2009}{article}{}
+      \name{author}{1}{}{%
+        {{hash=809f695b398afbb54b544c49e8d1bbbb}{%
+           family={Pearl},
+           familyi={P\bibinitperiod},
+           given={Judea},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {The American Statistical Association, the Bernoulli Society, the Institute of Mathematical Statistics,}%
+        {the Statistical Society of Canada}%
+      }
+      \strng{namehash}{809f695b398afbb54b544c49e8d1bbbb}
+      \strng{fullhash}{809f695b398afbb54b544c49e8d1bbbb}
+      \strng{bibnamehash}{809f695b398afbb54b544c49e8d1bbbb}
+      \strng{authorbibnamehash}{809f695b398afbb54b544c49e8d1bbbb}
+      \strng{authornamehash}{809f695b398afbb54b544c49e8d1bbbb}
+      \strng{authorfullhash}{809f695b398afbb54b544c49e8d1bbbb}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Statist. Surv.}
+      \field{title}{Causal inference in statistics: An overview}
+      \field{volume}{3}
+      \field{year}{2009}
+      \field{pages}{96\bibrangedash 146}
+      \range{pages}{51}
+      \verb{doi}
+      \verb 10.1214/09-SS057
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1214/09-SS057
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1214/09-SS057
+      \endverb
+    \endentry
+    \entry{scheines1997introduction}{article}{}
+      \name{author}{1}{}{%
+        {{hash=02f6653c0e96cdc7d40f942944d5e3fb}{%
+           family={Scheines},
+           familyi={S\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Citeseer}%
+      }
+      \strng{namehash}{02f6653c0e96cdc7d40f942944d5e3fb}
+      \strng{fullhash}{02f6653c0e96cdc7d40f942944d5e3fb}
+      \strng{bibnamehash}{02f6653c0e96cdc7d40f942944d5e3fb}
+      \strng{authorbibnamehash}{02f6653c0e96cdc7d40f942944d5e3fb}
+      \strng{authornamehash}{02f6653c0e96cdc7d40f942944d5e3fb}
+      \strng{authorfullhash}{02f6653c0e96cdc7d40f942944d5e3fb}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{An introduction to causal inference}
+    \endentry
     \entry{colombo2012learning2}{article}{}
       \name{author}{4}{}{%
         {{hash=e1fbe553ae8384b11ac51e5da7d67b1f}{%
@@ -372,7 +440,7 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The Annals of Statistics}
-      \field{title}{). Supplement to “Learning high-dimensional directed acyclic graphs with latent and selection variables}
+      \field{title}{Supplement to “Learning high-dimensional directed acyclic graphs with latent and selection variables}
       \field{year}{2012}
     \endentry
     \entry{Pearson}{article}{}
@@ -392,8 +460,8 @@
       \strng{authorbibnamehash}{716c197f50c5e070b09b67f32636d3e7}
       \strng{authornamehash}{716c197f50c5e070b09b67f32636d3e7}
       \strng{authorfullhash}{716c197f50c5e070b09b67f32636d3e7}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science}
@@ -416,39 +484,25 @@
       \verb https://doi.org/10.1080/14786440009463897
       \endverb
     \endentry
-    \entry{spirtes1991algorithm}{article}{}
-      \name{author}{2}{}{%
+    \entry{spirtes2001anytime}{inproceedings}{}
+      \name{author}{1}{}{%
         {{hash=f0924fa092ce0a8f24b79fcf1e746c8f}{%
            family={Spirtes},
            familyi={S\bibinitperiod},
            given={Peter},
            giveni={P\bibinitperiod}}}%
-        {{hash=d92f65fed9d3110577c6ff13a43603b6}{%
-           family={Glymour},
-           familyi={G\bibinitperiod},
-           given={Clark},
-           giveni={C\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {Sage Publications Sage CA: Thousand Oaks, CA}%
-      }
-      \strng{namehash}{1a7a60fd207ba93151ece7d4c9929a8d}
-      \strng{fullhash}{1a7a60fd207ba93151ece7d4c9929a8d}
-      \strng{bibnamehash}{1a7a60fd207ba93151ece7d4c9929a8d}
-      \strng{authorbibnamehash}{1a7a60fd207ba93151ece7d4c9929a8d}
-      \strng{authornamehash}{1a7a60fd207ba93151ece7d4c9929a8d}
-      \strng{authorfullhash}{1a7a60fd207ba93151ece7d4c9929a8d}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \strng{namehash}{f0924fa092ce0a8f24b79fcf1e746c8f}
+      \strng{fullhash}{f0924fa092ce0a8f24b79fcf1e746c8f}
+      \strng{bibnamehash}{f0924fa092ce0a8f24b79fcf1e746c8f}
+      \strng{authorbibnamehash}{f0924fa092ce0a8f24b79fcf1e746c8f}
+      \strng{authornamehash}{f0924fa092ce0a8f24b79fcf1e746c8f}
+      \strng{authorfullhash}{f0924fa092ce0a8f24b79fcf1e746c8f}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Social science computer review}
-      \field{number}{1}
-      \field{title}{An algorithm for fast recovery of sparse causal graphs}
-      \field{volume}{9}
-      \field{year}{1991}
-      \field{pages}{62\bibrangedash 72}
-      \range{pages}{11}
+      \field{title}{An Anytime Algorithm for Causal Inference.}
     \endentry
     \entry{ZHANG20081873}{article}{}
       \name{author}{1}{}{%
@@ -465,8 +519,8 @@
       \strng{authornamehash}{00b06765d4d041da464652a126cfa7c1}
       \strng{authorfullhash}{00b06765d4d041da464652a126cfa7c1}
       \field{extraname}{2}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{issn}{0004-3702}
@@ -505,8 +559,8 @@
       \strng{authorbibnamehash}{541e173109dab443b9fc826b342e8e6f}
       \strng{authornamehash}{541e173109dab443b9fc826b342e8e6f}
       \strng{authorfullhash}{541e173109dab443b9fc826b342e8e6f}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Proceedings of the 9th international conference on Software Engineering}
@@ -611,8 +665,8 @@
       \strng{authorbibnamehash}{6319ce73345b9ed5d04efa6747044498}
       \strng{authornamehash}{313c39d432f5bfc7cc4b41bada35a724}
       \strng{authorfullhash}{6319ce73345b9ed5d04efa6747044498}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Manifesto for Agile Software Development}
@@ -643,8 +697,8 @@
       \strng{authorbibnamehash}{30901c504c4e9f9f386b59986264609c}
       \strng{authornamehash}{30901c504c4e9f9f386b59986264609c}
       \strng{authorfullhash}{30901c504c4e9f9f386b59986264609c}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computer}
@@ -671,8 +725,8 @@
       \strng{authorbibnamehash}{ee6f08fcba839e09471a0bc69152b6a5}
       \strng{authornamehash}{ee6f08fcba839e09471a0bc69152b6a5}
       \strng{authorfullhash}{ee6f08fcba839e09471a0bc69152b6a5}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{booktitle}{Business object design and implementation}
@@ -698,8 +752,8 @@
       \strng{authorbibnamehash}{d33712bcde2d63bad054a832b61d01e8}
       \strng{authornamehash}{d33712bcde2d63bad054a832b61d01e8}
       \strng{authorfullhash}{d33712bcde2d63bad054a832b61d01e8}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{User stories applied: For agile software development}
@@ -727,8 +781,8 @@
       \strng{authorbibnamehash}{84f1a344a772a815c6ac63d3f6bbf868}
       \strng{authornamehash}{84f1a344a772a815c6ac63d3f6bbf868}
       \strng{authorfullhash}{84f1a344a772a815c6ac63d3f6bbf868}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Computer}
@@ -740,8 +794,8 @@
       \range{pages}{8}
     \endentry
     \entry{Numpy}{misc}{}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Example NumPy Style Python Docstrings - napoleon 0.7 documentation}
       \field{title}{Example NumPy Style Python Docstrings¶}
@@ -753,8 +807,8 @@
       \endverb
     \endentry
     \entry{pandas}{misc}{}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labeltitlesource}{title}
       \field{journaltitle}{pandas}
       \field{title}{Python Data Analysis Library¶}
@@ -766,8 +820,8 @@
       \endverb
     \endentry
     \entry{networkx}{misc}{}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labeltitlesource}{title}
       \field{journaltitle}{NetworkX}
       \field{title}{NetworkX}
@@ -779,8 +833,8 @@
       \endverb
     \endentry
     \entry{scipy}{misc}{}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Statistical functions (scipy.stats) - SciPy v1.2.1 Reference Guide}
       \field{title}{Statistical functions (scipy.stats)¶}
@@ -792,8 +846,8 @@
       \endverb
     \endentry
     \entry{numpy}{misc}{}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labeltitlesource}{title}
       \field{journaltitle}{NumPy}
       \field{title}{NumPy¶}
@@ -805,8 +859,8 @@
       \endverb
     \endentry
     \entry{data}{misc}{}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{journaltitle}{GOBNILP DATA}
       \verb{urlraw}
       \verb https://www.cs.york.ac.uk/aig/sw/gobnilp/data/
@@ -839,8 +893,8 @@
       \strng{authorbibnamehash}{15fea666cf18faef33e7ab8d0d6e6969}
       \strng{authornamehash}{15fea666cf18faef33e7ab8d0d6e6969}
       \strng{authorfullhash}{15fea666cf18faef33e7ab8d0d6e6969}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Proceedings of MekIT}
@@ -867,8 +921,8 @@
       \strng{authorbibnamehash}{19479302b75fdb401e30ad7309f36e9d}
       \strng{authornamehash}{19479302b75fdb401e30ad7309f36e9d}
       \strng{authorfullhash}{19479302b75fdb401e30ad7309f36e9d}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Darren Wilkinson's research blog}
@@ -883,8 +937,8 @@
       \endverb
     \endentry
     \entry{cython}{misc}{}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{8}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Cython}
       \field{title}{C-Extensions for Python}

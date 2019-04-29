@@ -342,7 +342,7 @@ class FCIAlg(GraphLearner):
         if pag.has_edge(i,j) and pag.has_edge(i,k):
             chain2 = pag.has_directed_edge(j,k) and pag.get_edge_data(i,j)[j] == 'o' and pag.get_edge_data(i,j)[i] == '-'
             edge =  pag.get_edge_data(i,k)[i] == 'o' and pag.has_directed_edge(i,k)
-        if chain1 or chain2 and edge:
+        if (chain1 or chain2) and edge:
             pag.fully_direct_edge(i,k)
             print('Orienting edge {},{} with rule 8'.format(k,i))
         
@@ -389,9 +389,18 @@ class FCIAlg(GraphLearner):
 
 if __name__ == '__main__':
     data_path = sys.argv[1]
-    data = FCIAlg.prepare_data(data_path, isLabeled=True)
+    if len(sys.argv) == 4:
+        if sys.argv[3] == 'space':
+            sys.argv[3] = ' '
+        delimeator = sys.argv[3]
+        labeled = sys.argv[2] == 'True'
+    elif len(sys.argv) == 3:
+        delimeator = ' '
+        labeled = sys.argv[2] == 'True'
+    else:
+        delimeator = ' '
+        labeled = True
+    data = FCIAlg.prepare_data(data_path, isLabeled=labeled, delim = delimeator)
     fci = FCIAlg(data, chi, 0.05)
     pag = fci.learnGraph()
-    print(pag.to_matrix())
-    for edge in pag.edges:
-        print(pag.get_edge_data(*edge))
+    pag.write_to_file('adjmat')

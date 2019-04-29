@@ -9,6 +9,7 @@ from graphs import PDAG, PAG
 from fci import FCIAlg
 
 class ChiSquareTests(unittest.TestCase):
+    # Chi squared independence test functions
     def setUp(self):
         self.data = PCAlg.prepare_data('data/alarm_10000.dat', ' ', True)
 
@@ -54,13 +55,29 @@ class ChiSquareTests(unittest.TestCase):
         p, h = chi(self.data, 'asia', 'tub', ['smoke', 'lung'])
         assert(round(h,3)== 36.997)
 
+    
     def test10(self):
         self.data = PCAlg.prepare_data('data/asia_1000.data', ' ', True)
         p, h = chi(self.data, 'either', 'tub', ['bronc', 'xray'])
         assert(round(h,3)== 991)
+    
+    def test11(self):
+        self.data = PCAlg.prepare_data('data/asia_10000.data', ' ', True)
+        p, h = chi(self.data, 'either', 'tub', ['bronc', 'xray'])
+        assert(round(h,3)== 9884.0 )
+    
+    def test12(self):
+        self.data = PCAlg.prepare_data('data/alarm_1000.data', ' ', False)
+        p, h = chi(self.data, '1', '2', ['3', '4'])
+        assert(round(h,3)==3.115)
+    
+    def test13(self):
+        self.data = PCAlg.prepare_data('data/insurance_1000.data', ' ', False)
+        p, h = chi(self.data, '0', '1', ['2', '3'])
+        assert(round(h,3)==35.531)
 
 class SkeletonTests(unittest.TestCase):
-    
+    # Tests for the skeleton estimation
     def setUp(self):
         self.data = PCAlg.prepare_data('data/asia_1000.data', ' ', True)
         self.pcalg = PCAlg(self.data, chi)
@@ -76,7 +93,7 @@ class SkeletonTests(unittest.TestCase):
         self.skeleton.add_edges_from([[1,2],[3,4],[3,5],[4,2],[5,2]])
         directed = self.pcalg.orientEdges(self.skeleton, sepset)
         assert(list(directed.edges) ==  [(1, 2), (4, 2), (4, 3), (5, 2), (5, 3), (3, 4), (3, 5)])
-    
+
 
 class PathTests(unittest.TestCase):
     def setUp(self):
@@ -112,6 +129,7 @@ class PathTests(unittest.TestCase):
         assert(not PCAlg.findPath(2,5,self.directed, []))
    
 class D_SepTests(unittest.TestCase):
+    #Tests for possible d sep set calculation
     def setUp(self):
         self.pag = PAG()
         self.pag.add_nodes_from([1,2,3,4,5,6])
@@ -146,25 +164,9 @@ class D_SepTests(unittest.TestCase):
         self.pag.add_edge(3,1)
         dseps = FCIAlg.possible_d_seps(self.pag)
         assert(dseps == {1:[2,3],2:[1,3],3:[1,2], 4:[], 5:[], 6:[]})
-class PagPathTests(unittest.TestCase):
-
-    def setUp(self):
-        self.pag = PAG()
-        self.pag.add_nodes_from([1,2,3,4,5])
-    
-    def test1(self):
-        self.pag.add_edges_from([[1,2],[2,3]])
-        self.pag.setTag([1,2],2,'>')
-        self.pag.setTag([2,3],3,'>')
-        assert(FCIAlg.hasDirectedPath(self.pag, 1,3))
-    
-    def test2(self):
-        self.pag.add_edges_from([[1,2],[2,3]])
-        self.pag.setTag([1,2],2,'>')
-        assert(not FCIAlg.hasDirectedPath(self.pag, 1,3))
     
 class DiscPathTest(unittest.TestCase):
-
+    # tests for finding discriminating paths on a graph
     def setUp(self):
         self.pag = PAG()
         self.pag.add_nodes_from([1,2,3,4])
@@ -206,28 +208,72 @@ class DiscPathTest(unittest.TestCase):
         self.pag.fully_direct_edge(3,4)
         self.pag.fully_direct_edge(1,4)
         assert(not self.pag.hasDiscPath(1,4,3))
-    
-class RulesTests(unittest.TestCase):
+
+
+class VOrientTests(unittest.TestCase):
+    # tests for v structure orientation
     def setUp(self):
-            self.pag = PAG()
-            self.pag.add_nodes_from([1,2,3,4,5])
+        self.data = PCAlg.prepare_data('data/asia_1000.data', ' ', True)
+        self.pcalg = PCAlg(self.data, chi)
+        self.fcialg = FCIAlg(self.data, chi)
+        self.directed = nx.DiGraph()
+        self.undirected = nx.Graph()
+        self.directed.add_nodes_from([1,2,3,4])
+        self.undirected.add_nodes_from(self.directed)
+        self.pag = PAG()
+        self.pag.add_nodes_from(self.undirected)
+        self.sepset = {(x,y): [] for x in [1,2,3,4,5] for y in [1,2,3,4,5] if x!=y}
+
+    def test1(self):
+        self.undirected.add_edges_from([(1,2), (2,3)])
+        self.pcalg.orient_V(self.undirected, self.directed, self.sepset)
+        part1 = not self.undirected.has_edge(1,2) and not self.undirected.has_edge(3,2) 
+        part2 =  self.directed.has_edge(1,2) and  self.directed.has_edge(3,2) 
+        assert(part1 and part2)
+
+    def test2(self):
+        self.undirected.add_edges_from([(1,2), (2,3)])
+        self.sepset[(1,3)].append(2)
+        self.sepset[(3,1)].append(2)
+        self.pcalg.orient_V(self.undirected, self.directed, self.sepset)
+        part1 = not self.undirected.has_edge(1,2) and not self.undirected.has_edge(3,2) 
+        part2 =  self.directed.has_edge(1,2) and  self.directed.has_edge(3,2) 
+        assert(not (part1 and part2))
+    
+    def test3(self):
+        self.pag.add_edges_from([(1,2), (2,3)])
+        self.fcialg.orient_V(self.pag, self.sepset)
+        assert(self.pag.has_directed_edge(1,2) and self.pag.has_directed_edge(3,2))
+    
+    def test4(self):
+        self.pag.add_edges_from([(1,2), (2,3)])        
+        self.sepset[(1,3)].append(2)
+        self.sepset[(3,1)].append(2)
+        self.fcialg.orient_V(self.pag, self.sepset)
+        assert(not self.pag.has_directed_edge(1,2) and not self.pag.has_directed_edge(3,2))
+
+class RulesTests(unittest.TestCase):
+    # tests for fci algorithm orientation rules
+    def setUp(self):
+        self.pag = PAG()
+        self.pag.add_nodes_from([1,2,3,4,5])
     
     # Rule 1 Tests
-    def test1(self):
+    def test11(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         self.pag.direct_edge(1,2)
         FCIAlg.rule1(self.pag,1,2,3)
         assert(self.pag.has_fully_directed_edge(2,3))
     
-    def test2(self):
+    def test12(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         FCIAlg.rule1(self.pag,1,2,3)
         assert(not self.pag.has_fully_directed_edge(2,3))
     
     # Rule 2 Tests
-    def test3(self):
+    def test21(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         self.pag.add_edge(1,3)
@@ -236,7 +282,7 @@ class RulesTests(unittest.TestCase):
         FCIAlg.rule2(self.pag,1,2,3)
         assert(self.pag.has_directed_edge(1,3))
 
-    def test4(self):
+    def test22(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         self.pag.add_edge(1,3)
@@ -245,7 +291,7 @@ class RulesTests(unittest.TestCase):
         FCIAlg.rule2(self.pag,1,2,3)
         assert(self.pag.has_directed_edge(1,3))
     
-    def test5(self):
+    def test23(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         self.pag.add_edge(1,3)
@@ -255,7 +301,7 @@ class RulesTests(unittest.TestCase):
         assert(not self.pag.has_directed_edge(1,3))
 
     # Rule 3 Tests
-    def test6(self):
+    def test31(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         self.pag.add_edge(1,4)
@@ -266,7 +312,7 @@ class RulesTests(unittest.TestCase):
         FCIAlg.rule3(self.pag,1,2,3,4)
         assert(self.pag.has_directed_edge(4,2))
     
-    def test7(self):
+    def test32(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         self.pag.add_edge(1,4)
@@ -279,7 +325,7 @@ class RulesTests(unittest.TestCase):
         assert(not self.pag.has_directed_edge(4,2))
 
     # Rule 4 Tests
-    def test8(self):
+    def test41(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         self.pag.add_edge(3,4)
@@ -298,7 +344,7 @@ class RulesTests(unittest.TestCase):
         FCIAlg.rule4(self.pag, 3,4,5,1, sepset)
         assert(self.pag.has_directed_edge(4,5))
     
-    def test9(self):
+    def test42(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         self.pag.add_edge(3,4)
@@ -318,7 +364,30 @@ class RulesTests(unittest.TestCase):
         assert(self.pag.has_directed_edge(4,5) and self.pag.has_directed_edge(5,4) and self.pag.has_directed_edge(4,3) and self.pag.has_directed_edge(3,4))
 
     # Rule 5 Tests
-    def test10(self):
+    def test51(self):
+        self.pag.add_edge(1,2)
+        self.pag.add_edge(1,3)
+        self.pag.add_edge(3,4)
+        self.pag.add_edge(2,4)
+        FCIAlg.rule5(self.pag, 1,2,3,4)
+        assert(self.pag.has_fully_undirected_edge(1,2) and self.pag.has_fully_undirected_edge(1,3) and self.pag.has_fully_undirected_edge(3,4) and self.pag.has_fully_undirected_edge(4,2))
+    
+    def test52(self):
+        self.pag.add_edge(1,2)
+        self.pag.add_edge(1,3)
+        self.pag.add_edge(2,4)
+        FCIAlg.rule5(self.pag, 1,2,3,4)
+        assert(not( self.pag.has_fully_undirected_edge(1,2) and self.pag.has_fully_undirected_edge(1,3) and self.pag.has_fully_undirected_edge(3,4) and self.pag.has_fully_undirected_edge(4,2)))
+
+    def test53(self):
+        self.pag.add_edge(1,2)
+        self.pag.add_edge(1,3)
+        self.pag.add_edge(3,4)
+        FCIAlg.rule5(self.pag, 1,2,3,4)
+        assert(not(self.pag.has_fully_undirected_edge(1,2) and self.pag.has_fully_undirected_edge(1,3) and self.pag.has_fully_undirected_edge(3,4) and self.pag.has_fully_undirected_edge(4,2)))
+
+    def test54(self):
+        self.pag.add_edge(1,5)
         self.pag.add_edge(1,2)
         self.pag.add_edge(1,3)
         self.pag.add_edge(3,4)
@@ -326,24 +395,44 @@ class RulesTests(unittest.TestCase):
         FCIAlg.rule5(self.pag, 1,2,3,4)
         assert(self.pag.has_fully_undirected_edge(1,2) and self.pag.has_fully_undirected_edge(1,3) and self.pag.has_fully_undirected_edge(3,4) and self.pag.has_fully_undirected_edge(4,2))
 
+
+
     # Rule 6 Tests
-    def test11(self):
+    def test61(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         self.pag.undirect_edge(1,2)
         FCIAlg.rule67(self.pag,1,2,3)
         assert(self.pag.get_edge_data(2,3)[2] == '-')
     
+    def test62(self):
+        self.pag.add_edge(1,2)
+        self.pag.add_edge(2,3)
+        FCIAlg.rule67(self.pag,1,2,3)
+        assert(not (self.pag.get_edge_data(2,3)[2] == '-'))
+
+    def test63(self):
+        self.pag.add_edge(2,3)
+        self.pag.undirect_edge(1,2)
+        FCIAlg.rule67(self.pag,1,2,3)
+        assert(not (self.pag.get_edge_data(2,3)[2] == '-'))
+    
     # Rule 7 Tests
-    def test12(self):
+    def test71(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         self.pag.setTag([1,2],1,'-')
         FCIAlg.rule67(self.pag,1,2,3)
         assert(self.pag.get_edge_data(2,3)[2] == '-')
 
+    def test72(self):
+        self.pag.add_edge(1,2)
+        self.pag.add_edge(2,3)
+        FCIAlg.rule67(self.pag,1,2,3)
+        assert(not (self.pag.get_edge_data(2,3)[2] == '-'))
+
     # Rule 8 Tests
-    def test13(self):
+    def test81(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         self.pag.add_edge(1,3)
@@ -353,7 +442,7 @@ class RulesTests(unittest.TestCase):
         FCIAlg.rule8(self.pag,1,2,3)
         assert(self.pag.has_fully_directed_edge(1,3))
 
-    def test14(self):
+    def test82(self):
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
         self.pag.add_edge(1,3)
@@ -364,7 +453,7 @@ class RulesTests(unittest.TestCase):
         assert(self.pag.has_fully_directed_edge(1,3))
 
     # Rule 9 Tests
-    def test15(self):
+    def test91(self):
         self.pag.add_edge(1,3)
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,4)
@@ -374,7 +463,7 @@ class RulesTests(unittest.TestCase):
         FCIAlg.rule9(self.pag,1,2,3,4)
         assert(self.pag.has_fully_directed_edge(1,3))
 
-    def test16(self):
+    def test92(self):
         self.pag.add_edge(1,3)
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,4)
@@ -384,7 +473,7 @@ class RulesTests(unittest.TestCase):
         FCIAlg.rule9(self.pag,1,2,3,4)
         assert(not self.pag.has_fully_directed_edge(1,3))
 
-    def test17(self):
+    def test93(self):
         self.pag.add_edge(1,3)
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,4)
@@ -395,7 +484,7 @@ class RulesTests(unittest.TestCase):
         assert(not self.pag.has_fully_directed_edge(1,3))
 
     # Rule 10 Tests
-    def test18(self):
+    def test101(self):
         self.pag.add_edge(1,3)
         self.pag.add_edge(1,2)
         self.pag.add_edge(2,3)
@@ -408,6 +497,44 @@ class RulesTests(unittest.TestCase):
         self.pag.fully_direct_edge(4,3)
         FCIAlg.rule10(self.pag,1,2,3,4)
         assert(self.pag.has_fully_directed_edge(1,3))
+
+    def test102(self):
+        self.pag.add_edge(1,3)
+        self.pag.add_edge(1,2)
+        self.pag.add_edge(2,3)
+        self.pag.add_edge(4,3)
+        self.pag.add_edge(1,5)
+        self.pag.add_edge(5,4)
+        self.pag.fully_direct_edge(2,3)
+        self.pag.direct_edge(1,5)
+        self.pag.fully_direct_edge(4,3)
+        FCIAlg.rule10(self.pag,1,2,3,4)
+        assert(not (self.pag.has_fully_directed_edge(1,3)))
+
+    def test103(self):
+        self.pag.add_edge(1,3)
+        self.pag.add_edge(1,2)
+        self.pag.add_edge(2,3)
+        self.pag.add_edge(4,3)
+        self.pag.add_edge(1,5)
+        self.pag.direct_edge(1,3)
+        self.pag.direct_edge(1,5)
+        self.pag.fully_direct_edge(4,3)
+        FCIAlg.rule10(self.pag,1,2,3,4)
+        assert(not (self.pag.has_fully_directed_edge(1,3)))
+
+    def test104(self):
+        self.pag.add_edge(1,3)
+        self.pag.add_edge(1,2)
+        self.pag.add_edge(2,3)
+        self.pag.add_edge(4,3)
+        self.pag.add_edge(1,5)
+        self.pag.direct_edge(1,3)
+        self.pag.fully_direct_edge(2,3)
+        self.pag.direct_edge(1,5)
+        self.pag.fully_direct_edge(4,3)
+        FCIAlg.rule10(self.pag,1,2,3,4)
+        assert(not (self.pag.has_fully_directed_edge(1,3)))
 
 
 if __name__ == '__main__':

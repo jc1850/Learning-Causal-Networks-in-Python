@@ -21,25 +21,25 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Numpy Style docstring}}{20}{figure.3.1}% 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Numpy Style docstring}}{19}{figure.3.1}% 
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.1}{\ignorespaces A skeleton of a Causal Network}}{25}{figure.4.1}% 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces A skeleton of a Causal Network}}{24}{figure.4.1}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Two potential colliders in a skeleton}}{26}{figure.4.2}% 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Two potential colliders in a skeleton}}{24}{figure.4.2}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.3}{\ignorespaces A potential orientation of the skeleton in Figure 4.1 containing colliders from Figure 4.2}}{26}{figure.4.3}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces A potential orientation of the skeleton in Figure 4.1 containing colliders from Figure 4.2}}{25}{figure.4.3}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.4}{\ignorespaces A PDAG and how it would be represented in the implementation}}{29}{figure.4.4}% 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces A PDAG and how it would be represented in the implementation}}{28}{figure.4.4}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.5}{\ignorespaces A PAG and how it would be represented in the implementation}}{30}{figure.4.5}% 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces A PAG and how it would be represented in the implementation}}{28}{figure.4.5}% 
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces The actual network that generated data in the asia\_1000 dataset}}{33}{figure.5.1}% 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces The actual network that generated data in the asia\_1000 dataset}}{31}{figure.5.1}% 
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces The networks estimated by the R (left) and python (right) implementation from the Asia\_1000 dataset}}{33}{figure.5.2}% 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces The networks estimated by the R (left) and Python (right) implementation from the Asia\_1000 dataset}}{31}{figure.5.2}% 
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

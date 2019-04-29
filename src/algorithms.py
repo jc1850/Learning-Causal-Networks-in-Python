@@ -182,31 +182,6 @@ class GraphLearner(object):
                                 if undirected.has_edge(i,k):
                                     undirected.remove_edge(i,k)
                             
-    
-    
-    def pdag_union(self, directed, undirected):
-        """
-        A method to orient all "V-structures" in a graph
-
-        Parameters
-        ----------
-        undirected: nx.Graph
-            graph containing the undirected edges
-        directed: nx.DiGraph
-            graph containing the directed edges
-
-        Returns
-        -------
-            PDAG
-                a graph containing all edges from the two graphs
-        """
-        pdag = PDAG()
-        for edge in directed.edges:
-            pdag.add_edge(*edge)
-        for edge in undirected.edges:
-            pdag.add_edge(*edge, False)
-        return pdag
-
     @staticmethod
     def findPath( x,y, directed, explored):
         """
